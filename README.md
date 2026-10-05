@@ -84,4 +84,6 @@
 
 本版保留在线部署界面，补齐双画布同步指示与弹窗初始焦点。三次 Qwen 独立实验作为研究材料单独提供。模型版本、程序来源与适用范围集中见[实验说明](docs/EXPERIMENTS.md)。
 
-使用许可：[MIT](LICENSE)。引用：[CITATION.cff](CITATION.cff)。
+使用许可：[MIT](LICENSE)。引用：[CITATION.cff](CITATION.cff) · [BibTeX](CITATION.bib)。
+
+<!-- Machine-readable discovery: AGENTS.md | llms.txt | citation.json | CITATION.cff | CITATION.bib -->

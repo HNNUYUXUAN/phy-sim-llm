@@ -18,14 +18,29 @@
       "sha256": "a758d945ac3ea9ce8b0d34bed7a6887c078b4ccd286baa21b0ff373346769e6d"
     },
     {
+      "file": "AGENTS.md",
+      "bytes": 3576,
+      "sha256": "d1e4725f259cffc01aea5a355c5c25ed079618a13f04fd91500ece0a234e8ffc"
+    },
+    {
       "file": "CHANGELOG.md",
       "bytes": 442,
       "sha256": "9a3e71425fd9ecb94b779870cfd76d176f38eba7f1bd648613c7cf6c54b15d0e"
     },
     {
+      "file": "CITATION.bib",
+      "bytes": 612,
+      "sha256": "b93247598236aba5b490a52a03dd1264ebd047c46811c6e8c65fe39c0f0c8b8c"
+    },
+    {
       "file": "CITATION.cff",
-      "bytes": 743,
-      "sha256": "01cd4687efd57da3d2c937abf65f6980f5a7000eb80be8703631b916fd363dd1"
+      "bytes": 741,
+      "sha256": "492d4b7b6283f323afa9f472604fc5a69c242c055baf9d54b157c74f2f3906b1"
+    },
+    {
+      "file": "citation.json",
+      "bytes": 3307,
+      "sha256": "54b01444793a96b7cc1a4204aaee7fd8cf3f1d6738a512a4bcf12c29fc8aa584"
     },
     {
       "file": "docs/AI_REPRODUCTION.md",
@@ -173,14 +188,19 @@
       "sha256": "d6e5ada5bd68f80ca7357a947fc266a710da75c76581edc1eb863b66a6de5768"
     },
     {
+      "file": "llms.txt",
+      "bytes": 2814,
+      "sha256": "698eef4362a657d1813dec060fbaab1d44d410806308f267f1a8249bc89e7831"
+    },
+    {
       "file": "MAINTENANCE.md",
-      "bytes": 1254,
-      "sha256": "fc2f70887be56e0b541ee1e860952da0979556d2277638782579e5090c723c22"
+      "bytes": 1542,
+      "sha256": "db3f631a300e8861b937ed399877e578c6f57a339e9bdacfe7f4ee7e3ffdf9af"
     },
     {
       "file": "package.json",
-      "bytes": 476,
-      "sha256": "f2076849b5c56f7520f557886c52a4d5251482f81b3bd4e0f13b9b6c0c5c71d4"
+      "bytes": 575,
+      "sha256": "1f646a752f22316331c551e026c6e8327577d0c2ae3bbf65880fa91627c51085"
     },
     {
       "file": "playwright.config.mjs",
@@ -189,8 +209,8 @@
     },
     {
       "file": "README.md",
-      "bytes": 4801,
-      "sha256": "27ab44ffc791f28dcadec4476d1c72d5c92903620256152706603ba345456ec9"
+      "bytes": 4932,
+      "sha256": "381391b27f2587bf2f8b50d36a57839805f21258c75c9fcbf0715a2073ab2d32"
     },
     {
       "file": "research/batch-a2/freeze.json",
@@ -2548,6 +2568,11 @@
       "sha256": "293de74f54fe48e7180a7635f37f51be77414ea215e283cc4aace520786d8ce8"
     },
     {
+      "file": "scripts/verify-citations.mjs",
+      "bytes": 6858,
+      "sha256": "6125800fc0f84b62f25efe186fe1abf0cd3cea438c7b44684b2aa23b28c629ce"
+    },
+    {
       "file": "scripts/verify-experiment-app.mjs",
       "bytes": 17168,
       "sha256": "ee6cecb1866d1743ee596a945fcea4df35957a2b19e7f57b4f8c05a3cbf1d580"
@@ -2566,6 +2591,11 @@
       "file": "tests/app.spec.mjs",
       "bytes": 8512,
       "sha256": "f3bc6ca8e053018aabc19170402882ab740005c48924dfadc4a8cd9af203ca0c"
+    },
+    {
+      "file": "tests/citations.test.mjs",
+      "bytes": 1860,
+      "sha256": "00542bada538fc9e82b02971966dc86c221f78cdb6b69e1737c3cabb3d6ea342"
     },
     {
       "file": "tests/serve.mjs",

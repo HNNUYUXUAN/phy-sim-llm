@@ -10,6 +10,7 @@
     "preview": "node tests/serve.mjs",
     "test": "node scripts/run-fixed-tests.mjs",
     "test:tools": "node --test tests/tools.test.mjs",
+    "test:citations": "node scripts/verify-citations.mjs && node --test tests/citations.test.mjs",
     "reproduce": "node scripts/reproduce.mjs",
     "figures": "node scripts/capture-paper-figures.mjs"
   }

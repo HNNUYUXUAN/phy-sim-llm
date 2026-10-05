@@ -10,7 +10,7 @@ authors:
     given-names: Yuxuan
 preferred-citation:
   type: article
-  title: "基于 LLM 的大学物理可视化仿真平台开发"
+  title: "基于LLM的大学物理可视化仿真平台开发"
   authors:
     - family-names: Miao
       given-names: Yuxuan

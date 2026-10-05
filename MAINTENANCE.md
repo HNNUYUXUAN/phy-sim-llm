@@ -6,6 +6,7 @@
 npm run preview
 npm test
 npm run test:tools
+npm run test:citations
 node scripts/verify-reproduction.mjs index.html artifacts/check
 node scripts/audit-deployment.mjs index.html artifacts/deploy-check
 node scripts/capture-paper-figures.mjs --app index.html --out artifacts/new-figures
@@ -18,3 +19,5 @@ node scripts/capture-paper-figures.mjs --app index.html --out artifacts/new-figu
 公开资料分层：首页供教师使用；docs 解释原理与复现；research 保存三次正式实验，研究材料的候选 HTML 不等同于根目录的部署版。
 
 界面修改后重新运行主矩阵与部署测量，再生成截图、更新 SHA-256 清单。网站更新后可用 `node scripts/check-online.mjs https://yslit.yuxuan.wiki/` 比较正文哈希。
+
+Agent 检索入口见 [AGENTS.md](AGENTS.md) 和 [llms.txt](llms.txt)。更新文献信息后，运行引用一致性检查并更新 SHA-256 清单；[citation.json](citation.json)、[CITATION.cff](CITATION.cff) 和 [CITATION.bib](CITATION.bib) 应保持一致。

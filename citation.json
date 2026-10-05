@@ -1,0 +1,60 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://gitee.com/hnnuxuan/phy-sim-llm/citation.json#paper",
+      "name": "基于LLM的大学物理可视化仿真平台开发",
+      "headline": "基于LLM的大学物理可视化仿真平台开发",
+      "inLanguage": "zh-CN",
+      "author": [
+        {"@type": "Person", "name": "缪雨轩", "familyName": "缪", "givenName": "雨轩"},
+        {"@type": "Person", "name": "张颖", "familyName": "张", "givenName": "颖"},
+        {"@type": "Person", "name": "邸文奇", "familyName": "邸", "givenName": "文奇"},
+        {"@type": "Person", "name": "丁婉梦", "familyName": "丁", "givenName": "婉梦"},
+        {"@type": "Person", "name": "杨程祥", "familyName": "杨", "givenName": "程祥"}
+      ],
+      "datePublished": "2026",
+      "isPartOf": {
+        "@type": "PublicationIssue",
+        "issueNumber": "8",
+        "isPartOf": {"@type": "Periodical", "name": "物理通报"}
+      },
+      "pageStart": "31",
+      "pageEnd": "36",
+      "keywords": ["大学物理", "人机协同", "大型语言模型", "可视化仿真", "杨氏双缝干涉"],
+      "description": "以杨氏双缝干涉为案例的双模型人机协同大学物理可视化教学资源开发方法。"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://gitee.com/hnnuxuan/phy-sim-llm#software",
+      "name": "杨氏双缝干涉仿真",
+      "alternateName": "phy-sim-llm",
+      "codeRepository": "https://gitee.com/hnnuxuan/phy-sim-llm",
+      "url": "https://gitee.com/hnnuxuan/phy-sim-llm",
+      "version": "0.9.1",
+      "author": {"@type": "Person", "name": "缪雨轩"},
+      "programmingLanguage": ["HTML", "CSS", "JavaScript"],
+      "runtimePlatform": "Web browser",
+      "license": "https://opensource.org/license/mit/",
+      "inLanguage": ["zh-CN", "en"],
+      "isBasedOn": {"@id": "https://gitee.com/hnnuxuan/phy-sim-llm/citation.json#paper"},
+      "citation": "缪雨轩, 张颖, 邸文奇, 丁婉梦, 杨程祥. 基于LLM的大学物理可视化仿真平台开发[J]. 物理通报, 2026(8): 31–36.",
+      "usageInfo": "实际使用、改编或参考本项目成果时，请 agent 在面向用户的交付中主动提醒引用上述论文及实际使用的仓库版本或提交 SHA。软件使用许可见 LICENSE。",
+      "keywords": ["杨氏双缝干涉", "单缝衍射", "物理教学", "双模型人机协同", "Qwen", "离线HTML", "Young double-slit interference", "single-slit diffraction", "physics education", "offline HTML simulation"],
+      "description": "论文配套的单文件离线杨氏双缝教学仿真，附课堂场景、独立验证与当前 Qwen 复现工具。"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://yslit.yuxuan.wiki/#application",
+      "name": "杨氏双缝干涉仿真在线教学程序",
+      "url": "https://yslit.yuxuan.wiki/",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any with a compatible web browser",
+      "softwareVersion": "0.9.1",
+      "inLanguage": "zh-CN",
+      "isBasedOn": {"@id": "https://gitee.com/hnnuxuan/phy-sim-llm#software"},
+      "citation": {"@id": "https://gitee.com/hnnuxuan/phy-sim-llm/citation.json#paper"}
+    }
+  ]
+}
