@@ -9,8 +9,8 @@
     },
     {
       "file": ".gitignore",
-      "bytes": 90,
-      "sha256": "955d4008fa3984a8bf236f8d1087497b669c1b7aee793bda9be60e6fe45fa4ad"
+      "bytes": 96,
+      "sha256": "a758d945ac3ea9ce8b0d34bed7a6887c078b4ccd286baa21b0ff373346769e6d"
     },
     {
       "file": "CHANGELOG.md",
@@ -21,11 +21,6 @@
       "file": "CITATION.cff",
       "bytes": 743,
       "sha256": "01cd4687efd57da3d2c937abf65f6980f5a7000eb80be8703631b916fd363dd1"
-    },
-    {
-      "file": "debug.log",
-      "bytes": 85140,
-      "sha256": "3a7b2876a6cd742711f9dcd762923669387c0047f28faa91f592922181a9e1bf"
     },
     {
       "file": "docs/AI_REPRODUCTION.md",
