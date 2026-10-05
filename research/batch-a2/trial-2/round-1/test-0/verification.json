@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 2,
+  "appSha256": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+  "round": 1,
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "browserFallback": "Browser plugin not available",
+  "checks": [
+    {
+      "name": "strict offline safety",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: offline HTML and credential scan",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 1046,
+        "widthB": 1046,
+        "leftA": 365,
+        "leftB": 365,
+        "dpr": 1,
+        "ratioA": 1,
+        "ratioB": 1
+      }
+    },
+    {
+      "name": "core: normalized center",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "core: DPR 1: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: console and page health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 1047,
+        "maxIntensityError": 1.1102230246251565e-16
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.03306275509436368,
+        "gamma": 1.3100000000000007
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "desktop-file-offline-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 3
+      },
+      "theme": "light",
+      "palette": "grayscale",
+      "programSha256": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+      "sha256": "95d9cb44d2e631956c11741517a66d9bf4da058a0bb872972ab1e369244a0783"
+    }
+  ],
+  "observations": [],
+  "untestedBrowsers": [
+    "Firefox",
+    "WebKit"
+  ],
+  "core": {
+    "schemaVersion": 1,
+    "round": 1,
+    "appSha256": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+    "runtime": {
+      "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+      "browserStore": "C:/ProgramData/ms-playwright",
+      "version": "1.63.0-alpha-2026-08-31",
+      "chromiumRevision": "1243",
+      "browserVersion": "153.0.8010.12"
+    },
+    "checks": [
+      {
+        "name": "offline HTML and credential scan",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: title/content",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #wavelength",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitSeparation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitWidth",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #screenDistance",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #zoom",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #interferenceCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensityCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensity-tooltip",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: canvas alignment",
+        "passed": true,
+        "detail": {
+          "widthA": 1046,
+          "widthB": 1046,
+          "leftA": 365,
+          "leftB": 365,
+          "dpr": 1,
+          "ratioA": 1,
+          "ratioB": 1
+        }
+      },
+      {
+        "name": "normalized center",
+        "passed": true,
+        "detail": 1
+      },
+      {
+        "name": "DPR 1: zero external requests",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: console and page health",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "numericalRows": [],
+    "observations": [],
+    "screenshots": [
+      {
+        "file": "desktop-dpr1.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mode": "rendered",
+        "sha256": "abf9d6892402a42b4ee71742a61fc5c7c33fda5be3ab8d4686dccff9422b7772"
+      }
+    ],
+    "untestedBrowsers": [
+      "Firefox",
+      "WebKit"
+    ],
+    "passed": true
+  },
+  "passed": true
+}

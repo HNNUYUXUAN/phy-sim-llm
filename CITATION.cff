@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "如果本软件对您的教学或研究有帮助，请引用论文和本仓库。"
+title: "杨氏双缝干涉仿真"
+type: software
+version: 0.9.1
+license: MIT
+repository-code: "https://gitee.com/hnnuxuan/phy-sim-llm"
+authors:
+  - family-names: Miao
+    given-names: Yuxuan
+preferred-citation:
+  type: article
+  title: "基于 LLM 的大学物理可视化仿真平台开发"
+  authors:
+    - family-names: Miao
+      given-names: Yuxuan
+    - family-names: Zhang
+      given-names: Ying
+    - family-names: Di
+      given-names: Wenqi
+    - family-names: Ding
+      given-names: Wanmeng
+    - family-names: Yang
+      given-names: Chengxiang
+  journal: "物理通报"
+  year: 2026
+  issue: 8
+  start: 31
+  end: 36

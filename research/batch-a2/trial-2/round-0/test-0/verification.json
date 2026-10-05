@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 2,
+  "appSha256": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+  "round": 0,
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "browserFallback": "Browser plugin not available",
+  "checks": [
+    {
+      "name": "strict offline safety",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: offline HTML and credential scan",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 818.15625,
+        "widthB": 818.15625,
+        "leftA": 365,
+        "leftB": 365,
+        "dpr": 1,
+        "ratioA": 0.9998090218097093,
+        "ratioB": 0.9998090218097093
+      }
+    },
+    {
+      "name": "core: DPR 1: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: console and page health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "desktop-file-offline-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "grayscale",
+      "programSha256": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+      "sha256": "fafca8551b55a37898823894df35e8df2760ccd14f3ec6ebe8a5b9750e7d0a02"
+    }
+  ],
+  "observations": [],
+  "untestedBrowsers": [
+    "Firefox",
+    "WebKit"
+  ],
+  "core": {
+    "schemaVersion": 1,
+    "round": 0,
+    "appSha256": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+    "runtime": {
+      "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+      "browserStore": "C:/ProgramData/ms-playwright",
+      "version": "1.63.0-alpha-2026-08-31",
+      "chromiumRevision": "1243",
+      "browserVersion": "153.0.8010.12"
+    },
+    "checks": [
+      {
+        "name": "offline HTML and credential scan",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: title/content",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #wavelength",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitSeparation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitWidth",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #screenDistance",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #zoom",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #interferenceCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensityCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensity-tooltip",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: canvas alignment",
+        "passed": true,
+        "detail": {
+          "widthA": 818.15625,
+          "widthB": 818.15625,
+          "leftA": 365,
+          "leftB": 365,
+          "dpr": 1,
+          "ratioA": 0.9998090218097093,
+          "ratioB": 0.9998090218097093
+        }
+      },
+      {
+        "name": "DPR 1: zero external requests",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: console and page health",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "numericalRows": [],
+    "observations": [],
+    "screenshots": [
+      {
+        "file": "desktop-dpr1.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mode": "rendered",
+        "sha256": "78d6b0327d6912be61085a794b25db8a75c48198106ce3641c5e81f6a35fce40"
+      }
+    ],
+    "untestedBrowsers": [
+      "Firefox",
+      "WebKit"
+    ],
+    "passed": true
+  },
+  "passed": true
+}

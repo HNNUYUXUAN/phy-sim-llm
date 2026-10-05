@@ -1,0 +1,29 @@
+{
+  "round": 0,
+  "status": "finished",
+  "attempts": [
+    {
+      "attempt": 0,
+      "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r0-a0-generate",
+      "status": "passed",
+      "requestId": "chatcmpl-3a70fee5-00af-9f8f-aab2-2ad1dc9810f3",
+      "finishReason": "stop",
+      "responseHash": "fe7b7f1b7cca7ff7b1d780ec1ee204b10e2901b32379771712898ab69ac09e15",
+      "snapshot": "attempt-0.html",
+      "htmlHash": "98e1632576d420852cbdc27d0b4332d1f99b038bdff813ef1c5a3fd3eb8ac7c2",
+      "safetyIssues": [],
+      "testPassed": true,
+      "failures": [],
+      "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r0-a0-review",
+      "review": {
+        "passed": true,
+        "issues": []
+      }
+    }
+  ],
+  "modelRepairs": 0,
+  "safeSnapshot": "attempt-0.html",
+  "safeHash": "98e1632576d420852cbdc27d0b4332d1f99b038bdff813ef1c5a3fd3eb8ac7c2",
+  "passed": true,
+  "terminal": false
+}

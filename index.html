@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="color">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>杨氏双缝干涉仿真</title>
+  <style>
+    :root {
+      --page: #ffffff;
+      --surface: #ffffff;
+      --surface-soft: #f6f9fd;
+      --surface-strong: #edf3f9;
+      --ink: #0c2e59;
+      --text: #183b63;
+      --muted: #60758c;
+      --border: #d9e4ef;
+      --grid: #e6edf5;
+      --accent: #2378e5;
+      --accent-strong: #105fc5;
+      --focus: #7db7ff;
+      --shadow: 0 10px 28px rgba(29, 68, 111, 0.08);
+      --radius: 14px;
+      --font-ui: "Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", system-ui, sans-serif;
+      --font-math: "Cambria Math", "Times New Roman", serif;
+    }
+
+    html[data-theme="dark"] {
+      --page: #081523;
+      --surface: #0d1e31;
+      --surface-soft: #12263d;
+      --surface-strong: #19314b;
+      --ink: #e9f3ff;
+      --text: #d9e8f7;
+      --muted: #9db2c8;
+      --border: #29435f;
+      --grid: #294057;
+      --accent: #65a9ff;
+      --accent-strong: #8fc1ff;
+      --focus: #9cc8ff;
+      --shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--page); }
+
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: var(--font-ui);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input { font: inherit; }
+
+    button {
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    canvas:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--focus) 72%, transparent);
+      outline-offset: 3px;
+    }
+
+    .app-header {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 22px 8px;
+    }
+
+    .app-header h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(1.55rem, 2.25vw, 2.25rem);
+      font-weight: 750;
+      letter-spacing: -0.035em;
+    }
+
+    .help-button {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 4px 16px rgba(29, 92, 162, 0.08);
+      font-size: 1.25rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: border-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .help-button:hover { color: var(--accent); transform: translateY(-1px); }
+
+    .app-shell {
+      min-height: calc(100vh - 70px);
+      min-height: calc(100dvh - 70px);
+      display: grid;
+      grid-template-columns: minmax(260px, 316px) minmax(0, 1fr);
+      gap: 16px;
+      padding: 10px 22px 22px;
+    }
+
+    .panel {
+      min-width: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .controls-panel {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 18px 16px;
+      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
+    }
+
+    .section-heading {
+      margin: 0;
+      color: var(--ink);
+      font-size: 1.26rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .marker-legend {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 8px 0 5px;
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+
+    .legend-dot,
+    .slider-marker {
+      width: 9px;
+      height: 9px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      background: var(--surface);
+    }
+
+    .legend-dot.bright,
+    .slider-marker.bright { background: var(--accent); }
+
+    .controls-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .control-group {
+      min-width: 0;
+      padding: 10px 0 6px;
+      border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+    }
+
+    .control-group:last-child { border-bottom: 0; }
+
+    .control-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 9px;
+    }
+
+    .control-heading label {
+      color: var(--ink);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .control-heading output {
+      min-width: 88px;
+      padding: 5px 9px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 0.86rem;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+    }
+
+    .slider-wrap { position: relative; }
+
+    input[type="range"] {
+      width: 100%;
+      height: 22px;
+      margin: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent) 0 var(--fill, 50%), var(--surface-strong) var(--fill, 50%) 100%);
+    }
+
+    input[type="range"]::-moz-range-track {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--surface-strong);
+    }
+
+    input[type="range"]::-moz-range-progress {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      width: 18px;
+      height: 18px;
+      margin-top: -6px;
+      border: 3px solid var(--surface);
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 1px 5px rgba(16, 83, 158, 0.34);
+      appearance: none;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border: 3px solid var(--surface);
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 1px 5px rgba(16, 83, 158, 0.34);
+    }
+
+    .marker-container {
+      position: relative;
+      height: 12px;
+      margin: -1px 9px 0;
+      pointer-events: none;
+    }
+
+    .slider-marker {
+      position: absolute;
+      top: 1px;
+      transform: translateX(-50%);
+    }
+
+    .range-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .control-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    .utility-button {
+      min-height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+    }
+
+    .utility-button:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .utility-button.is-active { border-color: var(--accent); background: var(--accent); color: #fff; }
+
+    .visual-workspace {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: minmax(240px, 1.25fr) minmax(230px, 1fr) auto;
+      gap: 12px;
+    }
+
+    .visual-panel {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 13px 15px 15px;
+    }
+
+    .panel-title {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 1.02rem;
+      font-weight: 750;
+    }
+
+    .canvas-stage {
+      position: relative;
+      min-height: 0;
+      flex: 1;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #07111f;
+    }
+
+    .intensity-stage { background: var(--surface); }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      touch-action: none;
+    }
+
+    #intensityCanvas { cursor: crosshair; }
+
+    .fringe-orders {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .fringe-order {
+      position: absolute;
+      top: calc(10px + var(--label-row, 0) * 24px);
+      transform: translateX(-50%);
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: rgba(3, 13, 27, 0.58);
+      color: #fff;
+      font-size: clamp(0.65rem, 0.9vw, 0.78rem);
+      font-weight: 700;
+      line-height: 1.3;
+      text-shadow: 0 1px 3px #000;
+    }
+
+    #intensity-tooltip {
+      position: absolute;
+      z-index: 3;
+      display: none;
+      min-width: 132px;
+      transform: translate(-50%, calc(-100% - 12px));
+      padding: 7px 10px;
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
+      border-radius: 8px;
+      background: color-mix(in srgb, var(--surface) 94%, transparent);
+      color: var(--ink);
+      box-shadow: 0 8px 24px rgba(20, 66, 118, 0.16);
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      text-align: center;
+      pointer-events: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .explanation-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(250px, 0.8fr);
+      align-items: center;
+      gap: 18px;
+      padding: 15px 18px;
+    }
+
+    .explanation-copy p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 0.83rem;
+      line-height: 1.72;
+    }
+
+    .formula-block {
+      padding-left: 18px;
+      border-left: 1px solid var(--border);
+      color: var(--ink);
+      font-family: var(--font-math);
+      text-align: center;
+    }
+
+    .formula-main { font-size: clamp(1rem, 1.35vw, 1.25rem); }
+    .formula-defs { margin-top: 6px; font-size: 0.95rem; }
+    .formula-note { margin-top: 7px; color: var(--muted); font-family: var(--font-ui); font-size: 0.72rem; }
+
+    .modal-backdrop {
+      position: fixed;
+      z-index: 20;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(3, 12, 24, 0.66);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 180ms ease, visibility 180ms ease;
+    }
+
+    .modal-backdrop.is-open { opacity: 1; visibility: visible; transition: opacity 180ms ease; }
+
+    .modal-dialog {
+      width: min(860px, 100%);
+      max-height: min(720px, calc(100dvh - 36px));
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+      transform: translateY(8px) scale(0.99);
+      transition: transform 180ms ease;
+    }
+
+    .modal-backdrop.is-open .modal-dialog { transform: none; }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h2 { margin: 0; color: var(--ink); font-size: 1.15rem; }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--surface-soft);
+      color: var(--ink);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .principle-content { padding: 18px; }
+
+    .principle-diagram {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .principle-note {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.7;
+    }
+
+    body[data-compact="true"] .app-header { min-height: 54px; padding-top: 8px; }
+    body[data-compact="true"] .app-shell { min-height: calc(100dvh - 54px); padding-top: 4px; }
+    body[data-compact="true"] .visual-workspace { grid-template-rows: minmax(190px, 1fr) minmax(190px, 0.88fr); }
+    body[data-compact="true"] .explanation-panel { display: none; }
+    body[data-compact="true"] .fringe-orders { display: none; }
+
+    @media (max-width: 900px) {
+      .app-header { position: sticky; z-index: 8; top: 0; background: color-mix(in srgb, var(--page) 94%, transparent); backdrop-filter: blur(12px); }
+      .app-shell { grid-template-columns: 1fr; min-height: 0; }
+      .controls-panel { min-height: auto; }
+      .controls-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; }
+      .control-actions { margin-top: 8px; }
+      .visual-workspace { grid-template-rows: 280px 260px auto; }
+    }
+
+    @media (min-width: 901px) {
+      body { overflow: hidden; }
+      .app-shell { height: calc(100vh - 70px); height: calc(100dvh - 70px); }
+      .visual-workspace { height: 100%; }
+    }
+
+    @media (max-width: 560px) {
+      .app-header { padding-inline: 14px; }
+      .app-header h1 { font-size: 1.38rem; }
+      .help-button { width: 40px; height: 40px; }
+      .app-shell { gap: 12px; padding: 6px 12px 18px; }
+      .controls-panel { padding: 16px 14px 14px; }
+      .controls-list { grid-template-columns: 1fr; }
+      .control-group { padding-top: 8px; }
+      .visual-workspace { grid-template-rows: 248px 238px auto; }
+      .visual-panel { padding: 11px; }
+      .explanation-panel { grid-template-columns: 1fr; gap: 12px; }
+      .formula-block { padding: 12px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+      body[data-compact="true"] .visual-workspace { grid-template-rows: 230px 220px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <h1>杨氏双缝干涉仿真</h1>
+    <button id="principle-button" class="help-button" type="button" aria-label="查看杨氏双缝干涉原理" title="查看原理">?</button>
+  </header>
+
+  <main class="app-shell">
+    <aside id="controls-panel" class="panel controls-panel" aria-labelledby="controls-title">
+      <h2 id="controls-title" class="section-heading">参数调控</h2>
+      <div class="marker-legend" aria-label="临界点图例">
+        <span class="legend-item"><span class="legend-dot bright" aria-hidden="true"></span>亮纹</span>
+        <span class="legend-item"><span class="legend-dot" aria-hidden="true"></span>暗纹</span>
+      </div>
+
+      <div class="controls-list">
+        <section class="control-group">
+          <div class="control-heading">
+            <label for="wavelength">波长 <var>λ</var></label>
+            <output id="wavelength-output" for="wavelength">550 nm</output>
+          </div>
+          <div class="slider-wrap">
+            <input id="wavelength" type="range" min="380" max="750" step="1" value="550">
+            <div id="wavelength-markers" class="marker-container" aria-hidden="true"></div>
+          </div>
+          <div class="range-meta"><span>380</span><span>750 nm</span></div>
+        </section>
+
+        <section class="control-group">
+          <div class="control-heading">
+            <label for="slitSeparation">缝间距 <var>d</var></label>
+            <output id="slitSeparation-output" for="slitSeparation">5000 nm</output>
+          </div>
+          <div class="slider-wrap">
+            <input id="slitSeparation" type="range" min="1000" max="10000" step="100" value="5000">
+            <div id="slitSeparation-markers" class="marker-container" aria-hidden="true"></div>
+          </div>
+          <div class="range-meta"><span>1000</span><span>10000 nm</span></div>
+        </section>
+
+        <section class="control-group">
+          <div class="control-heading">
+            <label for="slitWidth">缝宽 <var>a</var></label>
+            <output id="slitWidth-output" for="slitWidth">1000 nm</output>
+          </div>
+          <input id="slitWidth" type="range" min="200" max="3000" step="50" value="1000">
+          <div class="range-meta"><span>200</span><span>3000 nm</span></div>
+        </section>
+
+        <section class="control-group">
+          <div class="control-heading">
+            <label for="screenDistance">屏距参数 <var>D</var><sub>sim</sub></label>
+            <output id="screenDistance-output" for="screenDistance">50</output>
+          </div>
+          <input id="screenDistance" type="range" min="1" max="100" step="1" value="50">
+          <div class="range-meta"><span>1</span><span>100</span></div>
+        </section>
+
+        <section class="control-group">
+          <div class="control-heading">
+            <label for="zoom">显示缩放 <var>Z</var></label>
+            <output id="zoom-output" for="zoom">1.0×</output>
+          </div>
+          <input id="zoom" type="range" min="1" max="5" step="0.1" value="1">
+          <div class="range-meta"><span>1</span><span>5×</span></div>
+        </section>
+      </div>
+
+      <div class="control-actions" aria-label="视图控制">
+        <button id="reset-button" class="utility-button" type="button">重置</button>
+        <button id="theme-button" class="utility-button" type="button" aria-label="切换主题">自动</button>
+        <button id="palette-button" class="utility-button is-active" type="button" aria-label="切换条纹色彩">彩色</button>
+      </div>
+    </aside>
+
+    <section class="visual-workspace" aria-label="仿真可视化与实验说明">
+      <section class="panel visual-panel">
+        <h2 class="panel-title">干涉条纹图样</h2>
+        <div id="pattern-container" class="canvas-stage">
+          <canvas id="interferenceCanvas" role="img" aria-label="杨氏双缝干涉条纹图样"></canvas>
+          <div id="fringe-orders" class="fringe-orders" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="panel visual-panel">
+        <h2 class="panel-title">归一化光强</h2>
+        <div id="intensity-container" class="canvas-stage intensity-stage">
+          <canvas id="intensityCanvas" tabindex="0" role="img" aria-label="归一化光强分布曲线；可使用鼠标、触控或左右方向键查看数值"></canvas>
+          <div id="intensity-tooltip" role="status" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="introduction-panel" class="panel explanation-panel" aria-labelledby="intro-title">
+        <div class="explanation-copy">
+          <h2 id="intro-title" class="section-heading">实验说明</h2>
+          <p>两条狭缝形成相干光源。调节波长、缝间距与缝宽，可同时观察干涉细节和单缝衍射包络；<var>D</var><sub>sim</sub> 与 <var>Z</var> 只改变屏幕显示尺度，不改变物理关系。</p>
+        </div>
+        <div class="formula-block" aria-label="归一化光强公式">
+          <div class="formula-main"><var>I</var><sub>N</sub>(<var>η</var>) = (sin <var>α</var> / <var>α</var>)<sup>2</sup> cos<sup>2</sup> <var>β</var></div>
+          <div class="formula-defs"><var>α</var> = π<var>aη</var>/<var>λ</var>, &nbsp; <var>β</var> = π<var>dη</var>/<var>λ</var></div>
+          <div class="formula-note">远场近似 · 光强已归一化至 [0, 1]</div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="principle-modal" class="modal-backdrop" aria-hidden="true">
+    <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="principle-title">
+      <header class="modal-header">
+        <h2 id="principle-title">杨氏双缝干涉原理</h2>
+        <button id="modal-close-button" class="modal-close" type="button" aria-label="关闭原理图">×</button>
+      </header>
+      <div class="principle-content">
+        <svg class="principle-diagram" viewBox="0 0 920 330" role="img" aria-labelledby="diagram-title diagram-desc">
+          <title id="diagram-title">杨氏双缝干涉几何关系</title>
+          <desc id="diagram-desc">单色光经双缝 S1 和 S2 后传播至观察屏 P 点，缝间距为 d，屏距为 D，观察位置为 x。</desc>
+          <defs>
+            <linearGradient id="wave" x1="0" x2="1">
+              <stop offset="0" stop-color="#7656ff"/>
+              <stop offset="0.5" stop-color="#27a9ff"/>
+              <stop offset="1" stop-color="#11c7b0"/>
+            </linearGradient>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#5d7085"/>
+            </marker>
+          </defs>
+          <rect width="920" height="330" fill="#fff"/>
+          <g font-family="Microsoft YaHei UI, sans-serif" fill="#12365e">
+            <circle cx="82" cy="165" r="14" fill="#2378e5"/>
+            <text x="42" y="205" font-size="18">单色光源</text>
+            <path d="M102 165 H235" stroke="url(#wave)" stroke-width="5" marker-end="url(#arrow)"/>
+            <g stroke="#99abc0" fill="none" stroke-width="2">
+              <path d="M130 112 Q180 165 130 218"/>
+              <path d="M157 96 Q220 165 157 234"/>
+              <path d="M186 82 Q262 165 186 248"/>
+            </g>
+            <rect x="286" y="42" width="18" height="246" rx="3" fill="#173f6e"/>
+            <rect x="282" y="120" width="26" height="12" fill="#fff"/>
+            <rect x="282" y="198" width="26" height="12" fill="#fff"/>
+            <text x="315" y="130" font-size="18">S₁</text>
+            <text x="315" y="208" font-size="18">S₂</text>
+            <line x1="345" y1="126" x2="790" y2="82" stroke="#2378e5" stroke-width="3"/>
+            <line x1="345" y1="204" x2="790" y2="82" stroke="#19a58f" stroke-width="3"/>
+            <line x1="304" y1="165" x2="790" y2="165" stroke="#a8b7c7" stroke-width="2" stroke-dasharray="7 7"/>
+            <rect x="790" y="35" width="16" height="255" rx="3" fill="#173f6e"/>
+            <circle cx="798" cy="82" r="8" fill="#e05252"/>
+            <text x="815" y="87" font-size="18">P</text>
+            <text x="815" y="170" font-size="18">O</text>
+            <line x1="350" y1="275" x2="780" y2="275" stroke="#5d7085" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="557" y="302" font-size="18">屏距 D</text>
+            <line x1="840" y1="90" x2="840" y2="158" stroke="#5d7085" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="854" y="130" font-size="18">x</text>
+            <line x1="262" y1="132" x2="262" y2="198" stroke="#5d7085" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+            <text x="240" y="169" font-size="18">d</text>
+          </g>
+        </svg>
+        <p class="principle-note">在小角度远场近似下，观察方向以 <var>η</var> 表示。双缝项决定明暗条纹的周期，单缝项决定包络；本页面的条纹图、光强曲线、悬停读数与临界点均调用同一归一化光强函数。</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const VERSION = "0.9.1";
+      const DEFAULTS = Object.freeze({
+        wavelength: 550,
+        slitSeparation: 5000,
+        slitWidth: 1000,
+        screenDistance: 50,
+        zoom: 1
+      });
+      const LIMITS = Object.freeze({
+        wavelength: Object.freeze({ min: 380, max: 750, step: 1 }),
+        slitSeparation: Object.freeze({ min: 1000, max: 10000, step: 100 }),
+        slitWidth: Object.freeze({ min: 200, max: 3000, step: 50 }),
+        screenDistance: Object.freeze({ min: 1, max: 100, step: 1 }),
+        zoom: Object.freeze({ min: 1, max: 5, step: 0.1 })
+      });
+      const NUMERIC_KEYS = Object.freeze(Object.keys(DEFAULTS));
+      const THEME_VALUES = new Set(["auto", "light", "dark"]);
+      const PALETTE_VALUES = new Set(["color", "grayscale"]);
+      const REFERENCE_ETA = DEFAULTS.wavelength / DEFAULTS.slitSeparation;
+      const state = {
+        params: { ...DEFAULTS },
+        theme: "auto",
+        palette: "color",
+        compact: false,
+        hoverX: null,
+        hoverEta: null,
+        renderFrame: 0,
+        cache: { key: "", values: new Float64Array(0) },
+        ready: false
+      };
+      const elements = {};
+      let lastFocusedElement = null;
+      let resolveReady;
+      const ready = new Promise((resolve) => { resolveReady = resolve; });
+      const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+      function decimalPlaces(step) {
+        const value = String(step);
+        return value.includes(".") ? value.length - value.indexOf(".") - 1 : 0;
+      }
+
+      function normalizeNumber(key, value, fallback = DEFAULTS[key]) {
+        const numeric = Number(value);
+        if (!Number.isFinite(numeric)) return fallback;
+        const limit = LIMITS[key];
+        const clamped = clamp(numeric, limit.min, limit.max);
+        const stepped = Math.round((clamped - limit.min) / limit.step) * limit.step + limit.min;
+        return Number(stepped.toFixed(decimalPlaces(limit.step)));
+      }
+
+      function normalizeParams(input = {}) {
+        const normalized = {};
+        for (const key of NUMERIC_KEYS) {
+          normalized[key] = normalizeNumber(key, input[key], DEFAULTS[key]);
+        }
+        normalized.slitWidth = Math.min(normalized.slitWidth, normalized.slitSeparation);
+        return normalized;
+      }
+
+      function readQueryState() {
+        const query = new URLSearchParams(window.location.search);
+        const candidate = {};
+        for (const key of NUMERIC_KEYS) {
+          if (query.has(key)) candidate[key] = query.get(key);
+          else candidate[key] = DEFAULTS[key];
+        }
+        state.params = normalizeParams(candidate);
+        state.theme = THEME_VALUES.has(query.get("theme")) ? query.get("theme") : "auto";
+        state.palette = PALETTE_VALUES.has(query.get("palette")) ? query.get("palette") : "color";
+        state.compact = query.get("compact") === "1";
+      }
+
+      function writeQueryState() {
+        const query = new URLSearchParams();
+        for (const key of NUMERIC_KEYS) query.set(key, String(state.params[key]));
+        query.set("theme", state.theme);
+        query.set("palette", state.palette);
+        query.set("compact", state.compact ? "1" : "0");
+        try {
+          history.replaceState(null, "", `${location.pathname}?${query}${location.hash}`);
+        } catch (_) {
+          // Some hardened file:// environments disallow history changes; simulation remains functional.
+        }
+      }
+
+      function resolveTheme() {
+        return state.theme === "auto" ? (colorScheme.matches ? "dark" : "light") : state.theme;
+      }
+
+      function applyViewState() {
+        document.documentElement.dataset.theme = resolveTheme();
+        document.documentElement.dataset.palette = state.palette;
+        document.body.dataset.compact = String(state.compact);
+        if (elements.themeButton) {
+          elements.themeButton.textContent = ({ auto: "自动", light: "浅色", dark: "深色" })[state.theme];
+          elements.themeButton.setAttribute("aria-pressed", String(state.theme !== "auto"));
+        }
+        if (elements.paletteButton) {
+          const isColor = state.palette === "color";
+          elements.paletteButton.textContent = isColor ? "彩色" : "灰度";
+          elements.paletteButton.classList.toggle("is-active", isColor);
+          elements.paletteButton.setAttribute("aria-pressed", String(isColor));
+        }
+      }
+
+      function setupElements() {
+        elements.patternCanvas = document.getElementById("interferenceCanvas");
+        elements.intensityCanvas = document.getElementById("intensityCanvas");
+        elements.patternStage = document.getElementById("pattern-container");
+        elements.intensityStage = document.getElementById("intensity-container");
+        elements.tooltip = document.getElementById("intensity-tooltip");
+        elements.fringeOrders = document.getElementById("fringe-orders");
+        elements.principleButton = document.getElementById("principle-button");
+        elements.principleModal = document.getElementById("principle-modal");
+        elements.modalCloseButton = document.getElementById("modal-close-button");
+        elements.resetButton = document.getElementById("reset-button");
+        elements.themeButton = document.getElementById("theme-button");
+        elements.paletteButton = document.getElementById("palette-button");
+        elements.sliders = {};
+        elements.outputs = {};
+        for (const key of NUMERIC_KEYS) {
+          elements.sliders[key] = document.getElementById(key);
+          elements.outputs[key] = document.getElementById(`${key}-output`);
+        }
+        elements.markerContainers = {
+          wavelength: document.getElementById("wavelength-markers"),
+          slitSeparation: document.getElementById("slitSeparation-markers")
+        };
+      }
+
+      function formatOutput(key, value) {
+        if (["wavelength", "slitSeparation", "slitWidth"].includes(key)) return `${value} nm`;
+        if (key === "zoom") return `${value.toFixed(1)}×`;
+        return String(value);
+      }
+
+      function syncControls() {
+        for (const key of NUMERIC_KEYS) {
+          const slider = elements.sliders[key];
+          const value = state.params[key];
+          slider.value = String(value);
+          const range = LIMITS[key].max - LIMITS[key].min;
+          const fill = range ? ((value - LIMITS[key].min) / range) * 100 : 0;
+          slider.style.setProperty("--fill", `${fill}%`);
+          elements.outputs[key].textContent = formatOutput(key, value);
+        }
+      }
+
+      function intensityAtEta(eta, input = state.params) {
+        const params = normalizeParams(input);
+        const alpha = Math.PI * params.slitWidth * eta / params.wavelength;
+        const beta = Math.PI * params.slitSeparation * eta / params.wavelength;
+        const sinc = Math.abs(alpha) < 1e-10 ? 1 : Math.sin(alpha) / alpha;
+        const intensity = sinc * sinc * Math.cos(beta) * Math.cos(beta);
+        return clamp(Number.isFinite(intensity) ? intensity : 0, 0, 1);
+      }
+
+      function pixelEta(pixelOffset, input = state.params) {
+        const params = normalizeParams(input);
+        return pixelOffset / (4 * params.screenDistance * params.zoom);
+      }
+
+      function canvasSize(canvas) {
+        const rect = canvas.getBoundingClientRect();
+        const cssWidth = Math.max(2, Math.round(rect.width));
+        const cssHeight = Math.max(2, Math.round(rect.height));
+        const dpr = Math.max(1, window.devicePixelRatio || 1);
+        const physicalWidth = Math.max(2, Math.round(cssWidth * dpr));
+        const physicalHeight = Math.max(2, Math.round(cssHeight * dpr));
+        if (canvas.width !== physicalWidth || canvas.height !== physicalHeight) {
+          canvas.width = physicalWidth;
+          canvas.height = physicalHeight;
+        }
+        return { cssWidth, cssHeight, physicalWidth, physicalHeight, dpr };
+      }
+
+      function sampleKey(width) {
+        const p = state.params;
+        return [width, p.wavelength, p.slitSeparation, p.slitWidth, p.screenDistance, p.zoom].join(":");
+      }
+
+      function intensitySamples(width) {
+        const key = sampleKey(width);
+        if (state.cache.key === key) return state.cache.values;
+        const values = new Float64Array(width);
+        const center = width / 2;
+        for (let x = 0; x < width; x += 1) values[x] = intensityAtEta(pixelEta(x - center));
+        state.cache = { key, values };
+        return values;
+      }
+
+      function hslToRgb(hue, saturation, lightness) {
+        const s = saturation / 100;
+        const l = lightness / 100;
+        const chroma = (1 - Math.abs(2 * l - 1)) * s;
+        const segment = ((hue % 360) + 360) % 360 / 60;
+        const secondary = chroma * (1 - Math.abs(segment % 2 - 1));
+        let r = 0, g = 0, b = 0;
+        if (segment < 1) [r, g] = [chroma, secondary];
+        else if (segment < 2) [r, g] = [secondary, chroma];
+        else if (segment < 3) [g, b] = [chroma, secondary];
+        else if (segment < 4) [g, b] = [secondary, chroma];
+        else if (segment < 5) [r, b] = [secondary, chroma];
+        else [r, b] = [chroma, secondary];
+        const match = l - chroma / 2;
+        return [r, g, b].map((channel) => Math.round((channel + match) * 255));
+      }
+
+      function wavelengthRgb(wavelength) {
+        const hue = 270 - ((wavelength - LIMITS.wavelength.min) / (LIMITS.wavelength.max - LIMITS.wavelength.min)) * 270;
+        return hslToRgb(hue, 100, 58);
+      }
+
+      function drawInterferencePattern() {
+        const canvas = elements.patternCanvas;
+        const size = canvasSize(canvas);
+        const values = intensitySamples(size.cssWidth);
+        const ctx = canvas.getContext("2d", { alpha: false });
+        const image = ctx.createImageData(size.physicalWidth, size.physicalHeight);
+        const base = wavelengthRgb(state.params.wavelength);
+        for (let x = 0; x < size.physicalWidth; x += 1) {
+          const cssX = Math.min(size.cssWidth - 1, Math.floor(x / size.dpr));
+          const intensity = Math.pow(values[cssX], 0.68);
+          let red, green, blue;
+          if (state.palette === "grayscale") {
+            red = green = blue = Math.round(15 + 240 * intensity);
+          } else {
+            const brightness = 0.035 + 0.965 * intensity;
+            red = Math.round(base[0] * brightness);
+            green = Math.round(base[1] * brightness);
+            blue = Math.round(base[2] * brightness);
+          }
+          for (let y = 0; y < size.physicalHeight; y += 1) {
+            const index = (y * size.physicalWidth + x) * 4;
+            image.data[index] = red;
+            image.data[index + 1] = green;
+            image.data[index + 2] = blue;
+            image.data[index + 3] = 255;
+          }
+        }
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.putImageData(image, 0, 0);
+        if (Number.isFinite(state.hoverX)) {
+          const x = clamp(Math.round(state.hoverX), 0, size.cssWidth - 1);
+          ctx.setTransform(size.dpr, 0, 0, size.dpr, 0, 0);
+          ctx.strokeStyle = "#ff4f70";
+          ctx.lineWidth = 1;
+          ctx.setLineDash([5, 4]);
+          ctx.beginPath();
+          ctx.moveTo(x + 0.5, 0);
+          ctx.lineTo(x + 0.5, size.cssHeight);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+        renderFringeOrders(size.cssWidth);
+      }
+
+      function cssColor(name) {
+        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      }
+
+      function drawIntensityPlot(hoverX = state.hoverX) {
+        const canvas = elements.intensityCanvas;
+        const size = canvasSize(canvas);
+        const values = intensitySamples(size.cssWidth);
+        const ctx = canvas.getContext("2d");
+        ctx.setTransform(size.dpr, 0, 0, size.dpr, 0, 0);
+        ctx.clearRect(0, 0, size.cssWidth, size.cssHeight);
+        ctx.fillStyle = cssColor("--surface");
+        ctx.fillRect(0, 0, size.cssWidth, size.cssHeight);
+        const top = 18;
+        const bottom = size.cssHeight - 28;
+        const plotHeight = Math.max(1, bottom - top);
+
+        ctx.strokeStyle = cssColor("--grid");
+        ctx.lineWidth = 1;
+        for (let i = 0; i <= 4; i += 1) {
+          const y = top + plotHeight * i / 4;
+          ctx.beginPath();
+          ctx.moveTo(0, y + 0.5);
+          ctx.lineTo(size.cssWidth, y + 0.5);
+          ctx.stroke();
+        }
+        for (let i = 1; i < 6; i += 1) {
+          const x = size.cssWidth * i / 6;
+          ctx.beginPath();
+          ctx.moveTo(x + 0.5, top);
+          ctx.lineTo(x + 0.5, bottom);
+          ctx.stroke();
+        }
+
+        ctx.strokeStyle = cssColor("--accent");
+        ctx.lineWidth = 2;
+        ctx.lineJoin = "round";
+        ctx.beginPath();
+        for (let x = 0; x < size.cssWidth; x += 1) {
+          const y = bottom - values[x] * plotHeight;
+          if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        ctx.fillStyle = cssColor("--muted");
+        ctx.font = `11px ${cssColor("--font-ui") || "sans-serif"}`;
+        ctx.textBaseline = "bottom";
+        ctx.fillText("1.0", 7, top + 1);
+        ctx.textBaseline = "top";
+        ctx.fillText("0", 7, bottom - 1);
+        ctx.textAlign = "center";
+        const centerEta = pixelEta(0);
+        ctx.fillText(`η ${centerEta.toFixed(3)}`, size.cssWidth / 2, bottom + 7);
+
+        if (Number.isFinite(hoverX)) {
+          const x = clamp(Math.round(hoverX), 0, size.cssWidth - 1);
+          const y = bottom - values[x] * plotHeight;
+          ctx.strokeStyle = cssColor("--muted");
+          ctx.lineWidth = 1;
+          ctx.setLineDash([5, 4]);
+          ctx.beginPath();
+          ctx.moveTo(x + 0.5, top);
+          ctx.lineTo(x + 0.5, bottom);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = cssColor("--accent");
+          ctx.beginPath();
+          ctx.arc(x, y, 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function renderFringeOrders(width) {
+        elements.fringeOrders.replaceChildren();
+        for (let order = -2; order <= 2; order += 1) {
+          const eta = order * state.params.wavelength / state.params.slitSeparation;
+          const x = width / 2 + eta * 4 * state.params.screenDistance * state.params.zoom;
+          if (x < 22 || x > width - 22) continue;
+          const label = document.createElement("span");
+          label.className = "fringe-order";
+          label.style.left = `${x}px`;
+          label.style.setProperty("--label-row", String(order + 2));
+          label.textContent = `m = ${order}`;
+          elements.fringeOrders.appendChild(label);
+        }
+      }
+
+      function getCriticalMarkers(input = state.params) {
+        const params = normalizeParams(input);
+        const markers = { wavelength: [], slitSeparation: [] };
+        const wavelengthDelta = params.slitSeparation * REFERENCE_ETA;
+        for (let order = 1; order <= 12; order += 1) {
+          markers.wavelength.push({ kind: "bright", order, value: wavelengthDelta / order });
+        }
+        for (let order = 0; order <= 12; order += 1) {
+          markers.wavelength.push({ kind: "dark", order: order + 0.5, value: wavelengthDelta / (order + 0.5) });
+        }
+        for (let order = 1; order <= 12; order += 1) {
+          markers.slitSeparation.push({ kind: "bright", order, value: order * params.wavelength / REFERENCE_ETA });
+        }
+        for (let order = 0; order <= 12; order += 1) {
+          markers.slitSeparation.push({ kind: "dark", order: order + 0.5, value: (order + 0.5) * params.wavelength / REFERENCE_ETA });
+        }
+        for (const key of Object.keys(markers)) {
+          const limit = LIMITS[key];
+          markers[key] = markers[key]
+            .filter((marker) => marker.value >= limit.min && marker.value <= limit.max)
+            .sort((a, b) => a.value - b.value)
+            .map((marker) => Object.freeze({ ...marker }));
+          Object.freeze(markers[key]);
+        }
+        return Object.freeze(markers);
+      }
+
+      function renderCriticalMarkers() {
+        const markers = getCriticalMarkers();
+        for (const key of Object.keys(elements.markerContainers)) {
+          const container = elements.markerContainers[key];
+          container.replaceChildren();
+          const limit = LIMITS[key];
+          for (const marker of markers[key]) {
+            const dot = document.createElement("span");
+            dot.className = `slider-marker ${marker.kind}`;
+            dot.style.left = `${(marker.value - limit.min) / (limit.max - limit.min) * 100}%`;
+            dot.title = `${marker.kind === "bright" ? "亮纹" : "暗纹"} m=${marker.order}: ${marker.value.toFixed(1)}`;
+            container.appendChild(dot);
+          }
+        }
+      }
+
+      function renderAll() {
+        if (Number.isFinite(state.hoverEta)) {
+          const rect = elements.intensityCanvas.getBoundingClientRect();
+          const x = rect.width / 2 + state.hoverEta * 4 * state.params.screenDistance * state.params.zoom;
+          if (x < 0 || x > rect.width - 1) {
+            state.hoverX = state.hoverEta = null;
+            elements.tooltip.style.display = "none";
+          } else {
+            state.hoverX = x;
+            elements.tooltip.style.left = `${clamp(x, 72, rect.width - 72)}px`;
+            elements.tooltip.textContent = `η ${state.hoverEta.toFixed(3)} · Iₙ ${(intensityAtEta(state.hoverEta) * 100).toFixed(1)}%`;
+          }
+        }
+        drawInterferencePattern();
+        drawIntensityPlot();
+        renderCriticalMarkers();
+        if (!state.ready) {
+          state.ready = true;
+          resolveReady();
+          window.dispatchEvent(new CustomEvent("physim:ready", { detail: { version: VERSION } }));
+        }
+      }
+
+      function requestRender() {
+        if (state.renderFrame) return;
+        state.renderFrame = requestAnimationFrame(() => {
+          state.renderFrame = 0;
+          renderAll();
+        });
+      }
+
+      function updateTooltip(clientX, clientY) {
+        const rect = elements.intensityCanvas.getBoundingClientRect();
+        if (rect.width <= 0 || rect.height <= 0) return;
+        const x = clamp(clientX - rect.left, 0, rect.width - 1);
+        state.hoverX = x;
+        const eta = pixelEta(x - rect.width / 2);
+        state.hoverEta = eta;
+        const intensity = intensityAtEta(eta);
+        elements.tooltip.style.display = "block";
+        elements.tooltip.style.left = `${clamp(x, 72, rect.width - 72)}px`;
+        elements.tooltip.style.top = `${clamp(clientY - rect.top, 44, rect.height - 6)}px`;
+        elements.tooltip.textContent = `η ${eta.toFixed(3)} · Iₙ ${(intensity * 100).toFixed(1)}%`;
+        drawIntensityPlot(x);
+        drawInterferencePattern();
+      }
+
+      function hideTooltip() {
+        state.hoverX = null;
+        state.hoverEta = null;
+        elements.tooltip.style.display = "none";
+        drawIntensityPlot();
+        drawInterferencePattern();
+      }
+
+      function setParams(partial = {}) {
+        const candidate = { ...state.params };
+        for (const key of NUMERIC_KEYS) {
+          if (Object.prototype.hasOwnProperty.call(partial, key)) candidate[key] = partial[key];
+        }
+        state.params = normalizeParams(candidate);
+        syncControls();
+        writeQueryState();
+        requestRender();
+        return getParams();
+      }
+
+      function getParams() { return Object.freeze({ ...state.params }); }
+
+      function handleSliderInput(key, rawValue) {
+        const candidate = { ...state.params, [key]: rawValue };
+        state.params = normalizeParams(candidate);
+        syncControls();
+        writeQueryState();
+        requestRender();
+      }
+
+      function openModal(trigger = elements.principleButton) {
+        lastFocusedElement = trigger instanceof HTMLElement ? trigger : document.activeElement;
+        elements.principleModal.classList.add("is-open");
+        elements.principleModal.setAttribute("aria-hidden", "false");
+        // Opening visibility changes immediately; force style resolution before focus.
+        void elements.principleModal.offsetWidth;
+        elements.modalCloseButton.focus();
+      }
+
+      function closeModal() {
+        elements.principleModal.classList.remove("is-open");
+        elements.principleModal.setAttribute("aria-hidden", "true");
+        if (lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
+      }
+
+      function bindEvents() {
+        for (const key of NUMERIC_KEYS) {
+          elements.sliders[key].addEventListener("input", (event) => handleSliderInput(key, event.currentTarget.value));
+        }
+        elements.resetButton.addEventListener("click", () => setParams(DEFAULTS));
+        elements.themeButton.addEventListener("click", () => {
+          const cycle = ["auto", "light", "dark"];
+          state.theme = cycle[(cycle.indexOf(state.theme) + 1) % cycle.length];
+          applyViewState();
+          writeQueryState();
+          requestRender();
+        });
+        elements.paletteButton.addEventListener("click", () => {
+          state.palette = state.palette === "color" ? "grayscale" : "color";
+          applyViewState();
+          writeQueryState();
+          requestRender();
+        });
+        elements.principleButton.addEventListener("click", (event) => openModal(event.currentTarget));
+        elements.modalCloseButton.addEventListener("click", closeModal);
+        elements.principleModal.addEventListener("click", (event) => {
+          if (event.target === elements.principleModal) closeModal();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && elements.principleModal.classList.contains("is-open")) closeModal();
+          if (event.key === "Tab" && elements.principleModal.classList.contains("is-open")) {
+            event.preventDefault();
+            elements.modalCloseButton.focus();
+          }
+        });
+        elements.intensityCanvas.addEventListener("pointermove", (event) => updateTooltip(event.clientX, event.clientY));
+        elements.intensityCanvas.addEventListener("pointerleave", hideTooltip);
+        elements.intensityCanvas.addEventListener("keydown", (event) => {
+          const rect = elements.intensityCanvas.getBoundingClientRect();
+          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          if (!Number.isFinite(state.hoverX)) state.hoverX = rect.width / 2;
+          if (event.key === "ArrowLeft") state.hoverX -= 2;
+          if (event.key === "ArrowRight") state.hoverX += 2;
+          if (event.key === "Home") state.hoverX = 0;
+          if (event.key === "End") state.hoverX = rect.width - 1;
+          const x = clamp(state.hoverX, 0, rect.width - 1);
+          updateTooltip(rect.left + x, rect.top + rect.height / 2);
+        });
+        colorScheme.addEventListener?.("change", () => {
+          if (state.theme === "auto") {
+            applyViewState();
+            requestRender();
+          }
+        });
+        if ("ResizeObserver" in window) {
+          const observer = new ResizeObserver(requestRender);
+          observer.observe(elements.patternStage);
+          observer.observe(elements.intensityStage);
+        } else {
+          window.addEventListener("resize", requestRender);
+        }
+      }
+
+      readQueryState();
+      setupElements();
+      applyViewState();
+      syncControls();
+      bindEvents();
+
+      window.PhySim = Object.freeze({
+        version: VERSION,
+        defaults: DEFAULTS,
+        limits: LIMITS,
+        ready,
+        getParams,
+        setParams,
+        intensityAtEta,
+        getCriticalMarkers,
+        render: renderAll
+      });
+
+      requestRender();
+    })();
+  </script>
+</body>
+</html>

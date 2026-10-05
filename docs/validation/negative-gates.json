@@ -1,0 +1,85 @@
+{
+  "purpose": "synthetic-negative-fixtures-only-never-model-input",
+  "sourceSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+  "results": [
+    {
+      "id": "wrong-formula",
+      "rejected": true,
+      "targetFailures": [
+        {
+          "name": "core: independent dense physical matrix",
+          "passed": false,
+          "detail": {
+            "rows": 54,
+            "samplesPerRow": 2001
+          }
+        }
+      ],
+      "sha256": "695d5aff1ed782ea3031ab982f2301f0145a5061b26ea2fe4969c44adca42ee5"
+    },
+    {
+      "id": "wrong-mapping",
+      "rejected": true,
+      "targetFailures": [
+        {
+          "name": "desktop/file-offline/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+          "passed": false,
+          "detail": {
+            "points": 1030,
+            "maxIntensityError": 0.8761661454376304
+          }
+        },
+        {
+          "name": "desktop/file-offline/DPR1: pattern pixel profile matches physics under monotone gamma",
+          "passed": false,
+          "detail": {
+            "meanIntensityError": 0.2582215548837778,
+            "gamma": 0.35
+          }
+        }
+      ],
+      "sha256": "7d8a85833d5e3f0e17b06f5164475e6a44ab4f939382b6941474f5af80121aed"
+    },
+    {
+      "id": "missing-sync",
+      "rejected": true,
+      "targetFailures": [
+        {
+          "name": "desktop/file-offline/DPR1: same-x indicator actually appears on both canvases",
+          "passed": false,
+          "detail": {
+            "interferenceCanvas": {
+              "changedRows": 0,
+              "height": 306
+            },
+            "intensityCanvas": {
+              "changedRows": 105,
+              "height": 233
+            }
+          }
+        }
+      ],
+      "sha256": "dbba805107f695f01c396e73b97e25c531a3684be23369f740232fa9587afeb9"
+    },
+    {
+      "id": "broken-focus",
+      "rejected": true,
+      "targetFailures": [
+        {
+          "name": "desktop/file-offline/DPR1: Tab/Shift+Tab focus closed loop",
+          "passed": false,
+          "detail": null
+        }
+      ],
+      "sha256": "9c8f21d64dfb87991ebf0d0ad5de44a74be742a774f75ca823fc9daaf61a9b6a"
+    },
+    {
+      "id": "fake-csp",
+      "rejected": true,
+      "issues": [
+        "exactly one real head offline CSP meta required"
+      ]
+    }
+  ],
+  "passed": true
+}

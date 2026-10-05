@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="color">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨氏双缝干涉仿真</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+    
+    <style id="phy-sim-style">
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --panel-bg: #f9f9f9;
+            --border-color: #cccccc;
+            --accent-color: #007bff;
+            --modal-backdrop: rgba(0, 0, 0, 0.5);
+            --canvas-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --panel-bg: #2d2d2d;
+            --border-color: #444444;
+            --accent-color: #4da3ff;
+            --modal-backdrop: rgba(0, 0, 0, 0.8);
+            --canvas-bg: #000000;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent body scroll, handle inside panels */
+        }
+
+        header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        h1 { font-size: 1.2rem; font-weight: bold; }
+
+        .toolbar button {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .toolbar button:hover { background-color: var(--border-color); }
+
+        main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        /* Layout Panels */
+        .panel-controls {
+            width: 300px;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .panel-visuals {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 0; /* Allow shrinking */
+        }
+
+        .visual-box {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .visual-box.pattern { flex: 1; min-height: 150px; }
+        .visual-box.curve { flex: 1; min-height: 150px; }
+
+        .box-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Controls */
+        .control-group { display: flex; flex-direction: column; gap: 0.3rem; }
+        
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        input[type=range] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: var(--accent-color);
+        }
+
+        .markers-container {
+            display: flex;
+            height: 10px;
+            position: relative;
+            margin-top: 2px;
+        }
+
+        .marker {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            top: 2px;
+            transform: translateX(-50%);
+        }
+
+        .marker.bright { background-color: var(--accent-color); border-radius: 50%; }
+        .marker.dark { border: 1px solid var(--accent-color); background: transparent; border-radius: 50%; }
+
+        /* Canvas Area */
+        .canvas-wrapper {
+            flex: 1;
+            position: relative;
+            width: 100%;
+            background-color: var(--canvas-bg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Tooltip */
+        #intensity-tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            z-index: 10;
+            white-space: pre;
+            display: none;
+            transform: translate(-50%, -120%);
+        }
+
+        /* Modal */
+        #principle-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--modal-backdrop);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 12px;
+        }
+
+        #principle-modal[open] { display: flex; }
+
+        .modal-content {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .modal-svg {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            main { flex-direction: column; overflow-y: auto; }
+            .panel-controls { width: 100%; height: auto; flex: none; }
+            .panel-visuals { height: 600px; flex: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>杨氏双缝干涉仿真</h1>
+        <div class="toolbar">
+            <button id="reset-button">重置</button>
+            <button id="theme-button">主题</button>
+            <button id="palette-button">调色板</button>
+            <button id="principle-button">原理</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Left Panel: Controls -->
+        <section class="panel-controls" aria-label="参数调控">
+            <div class="box-title">CONTROLS 参数调控</div>
+
+            <!-- Wavelength -->
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="wavelength">wavelength 波长</label>
+                    <output id="wavelength-output">550 nm</output>
+                </div>
+                <input type="range" id="wavelength" min="380" max="750" value="550" step="1">
+                <div id="wavelength-markers" class="markers-container"></div>
+            </div>
+
+            <!-- Slit Separation -->
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitSeparation">slitSeparation 缝间距</label>
+                    <output id="slitSeparation-output">5000 nm</output>
+                </div>
+                <input type="range" id="slitSeparation" min="1000" max="10000" value="5000" step="10">
+                <div id="slitSeparation-markers" class="markers-container"></div>
+            </div>
+
+            <!-- Slit Width -->
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitWidth">slitWidth 缝宽</label>
+                    <output id="slitWidth-output">1000 nm</output>
+                </div>
+                <input type="range" id="slitWidth" min="200" max="3000" value="1000" step="10">
+            </div>
+
+            <!-- Screen Distance -->
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="screenDistance">screenDistance 显示屏距</label>
+                    <output id="screenDistance-output">50</output>
+                </div>
+                <input type="range" id="screenDistance" min="1" max="100" value="50" step="1">
+            </div>
+
+            <!-- Zoom -->
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="zoom">zoom 缩放</label>
+                    <output id="zoom-output">1</output>
+                </div>
+                <input type="range" id="zoom" min="1" max="5" value="1" step="0.1">
+            </div>
+        </section>
+
+        <!-- Right Panel: Visuals -->
+        <section class="panel-visuals">
+            
+            <!-- Pattern Box -->
+            <div class="visual-box pattern">
+                <div class="box-title">PATTERN 干涉条纹图样</div>
+                <div class="canvas-wrapper">
+                    <canvas id="interferenceCanvas"></canvas>
+                </div>
+            </div>
+
+            <!-- Curve Box -->
+            <div class="visual-box curve">
+                <div class="box-title">CURVE 归一化光强</div>
+                <div class="canvas-wrapper">
+                    <canvas id="intensityCanvas" tabindex="0"></canvas>
+                    <div id="intensity-tooltip" role="tooltip" aria-hidden="true"></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Principle Modal -->
+    <dialog id="principle-modal" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-content" role="document">
+            <button id="modal-close-button" class="modal-close" aria-label="关闭">&times;</button>
+            <h2 id="modal-title">杨氏双缝干涉原理</h2>
+            <p>光通过两个狭缝后发生衍射和干涉，在屏幕上形成明暗相间的条纹。</p>
+            
+            <!-- Inline SVG Geometry Diagram -->
+            <svg class="modal-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Source -->
+                <circle cx="50" cy="100" r="5" fill="var(--accent-color)" />
+                <text x="30" y="90" font-size="12" fill="var(--text-color)">S</text>
+                
+                <!-- Slits -->
+                <line x1="150" y1="20" x2="150" y2="85" stroke="var(--text-color)" stroke-width="2" />
+                <line x1="150" y1="115" x2="150" y2="180" stroke="var(--text-color)" stroke-width="2" />
+                <text x="130" y="105" font-size="12" fill="var(--text-color)">d</text>
+                
+                <!-- Screen -->
+                <line x1="350" y1="20" x2="350" y2="180" stroke="var(--text-color)" stroke-width="2" />
+                <text x="360" y="100" font-size="12" fill="var(--text-color)">Screen</text>
+                
+                <!-- Rays -->
+                <path d="M 50 100 L 150 90 L 350 100" stroke="var(--accent-color)" stroke-dasharray="4" fill="none" />
+                <path d="M 50 100 L 150 110 L 350 100" stroke="var(--accent-color)" stroke-dasharray="4" fill="none" />
+                
+                <!-- Labels -->
+                <text x="200" y="140" font-size="12" fill="var(--text-color)">D (距离)</text>
+            </svg>
+            
+            <p>公式: $I(\theta) = I_0 \cos^2(\frac{\pi d \sin \theta}{\lambda})$</p>
+        </div>
+    </dialog>
+
+    <script id="phy-sim-script">
+        // Placeholder for simulation logic in future rounds.
+        // This script tag satisfies the requirement to include it without implementing logic yet.
+        console.log("PhySim v0.9.1 candidate loaded.");
+    </script>
+</body>
+</html>

@@ -1,0 +1,919 @@
+{
+  "batch": "a2",
+  "status": "complete",
+  "freeze": {
+    "configuration": {
+      "id": "a2",
+      "visual": "qwen3.7-plus-2026-05-26",
+      "coder": "qwen3.8-max-0902",
+      "thinking": 8192,
+      "completion": 40960,
+      "configurationLabel": "A",
+      "cohortKind": "fresh-formal-after-tool-correction"
+    },
+    "models": {
+      "visual": {
+        "role": "visual",
+        "authEpoch": "b9133064-1550-464f-989a-e653da91c5db",
+        "credentialSource": "local-env-first",
+        "route": "bailian",
+        "pricing": {
+          "input": 6,
+          "output": 24
+        },
+        "pricingTiers": [
+          {
+            "max": 256000,
+            "input": 2,
+            "output": 8
+          },
+          {
+            "max": 1000000,
+            "input": 6,
+            "output": 24
+          }
+        ],
+        "provider": "alibaba-bailian",
+        "modelLabel": "qwen3.7-plus-2026-05-26",
+        "modelId": "qwen3.7-plus-2026-05-26",
+        "baseUrl": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+        "endpoint": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+        "credentialEnvName": "DASHSCOPE_API_KEY",
+        "credentialConfigured": true
+      },
+      "coder": {
+        "role": "coder",
+        "authEpoch": "b9133064-1550-464f-989a-e653da91c5db",
+        "credentialSource": "local-env-first",
+        "route": "bailian",
+        "pricing": {
+          "input": 12,
+          "output": 36
+        },
+        "pricingTiers": [
+          {
+            "max": 1000000,
+            "input": 12,
+            "output": 36
+          }
+        ],
+        "provider": "alibaba-bailian",
+        "modelLabel": "qwen3.8-max-0902",
+        "modelId": "qwen3.8-max-0902",
+        "baseUrl": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+        "endpoint": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+        "credentialEnvName": "DASHSCOPE_API_KEY",
+        "credentialConfigured": true
+      }
+    },
+    "requirements": "c450fba8945d447f445cb7a350cd74b7a75ea0e9cade081e6a917133cb5725ee",
+    "stages": "c5e6a146dc2adb7eef6ab115a139393ac858f71a7adbe962d24fd78ff792b2b9",
+    "wireframe": "06cb0eed1024f8dcc1c53d16b870bbfd6ce64af4f4278a6393bbefd40f275ec5",
+    "verifiers": {
+      "verify-reproduction.mjs": "ffa88a6371cd24774e71d576d63ce62e8341ec0e196e19cff3957b1156a6f7fd",
+      "verify-experiment-app.mjs": "ee6cecb1866d1743ee596a945fcea4df35957a2b19e7f57b4f8c05a3cbf1d580",
+      "experiment-oracle.mjs": "82415b72091b9842d37780e3dc86617d535320b31510e25dac8ac5f822b7e569",
+      "fixed-playwright.mjs": "eee3d8450f62dd404d90a9ed5e83210831751557ca660daa6ea2625175f4783e"
+    },
+    "repetitions": 3,
+    "repairsPerStage": 2,
+    "manualProgramEdits": 0
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "status": "passed",
+      "manualProgramEdits": 0,
+      "modelRepairs": 1,
+      "stages": [
+        {
+          "round": 0,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r0-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-b3399199-b8ca-9cc5-893d-61df4a1603ff",
+              "finishReason": "stop",
+              "responseHash": "7fd0d851344a9c1e8e6e88d4ed2b0a8461855dfbd219040df91bda628f67b529",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "498e0affd5ea5555fd9e4d0dcc3c337a7e16ec63ae03080eb1d814acf6ca32d4",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r0-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "498e0affd5ea5555fd9e4d0dcc3c337a7e16ec63ae03080eb1d814acf6ca32d4",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 1,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r1-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-e5c357a4-d064-9132-8804-f7238cb98461",
+              "finishReason": "stop",
+              "responseHash": "c41ed5d1643b983d53cc874f760863e19d2808ea3673a370ad01a9d75d46f9cf",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "c41ed5d1643b983d53cc874f760863e19d2808ea3673a370ad01a9d75d46f9cf",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r1-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "c41ed5d1643b983d53cc874f760863e19d2808ea3673a370ad01a9d75d46f9cf",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 2,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r2-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-2f7e4b5d-3615-90fa-b197-c9b7af0d999d",
+              "finishReason": "stop",
+              "responseHash": "f40e4f08bbb43b9fae56e62ce5fe14b26e3f0a031e3e2c634edc20399d97b7aa",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "f40e4f08bbb43b9fae56e62ce5fe14b26e3f0a031e3e2c634edc20399d97b7aa",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r2-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "f40e4f08bbb43b9fae56e62ce5fe14b26e3f0a031e3e2c634edc20399d97b7aa",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 3,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r3-a0-generate",
+              "status": "tested",
+              "requestId": "chatcmpl-4eccb1ce-f469-9df0-9c9f-936f0e38b1eb",
+              "finishReason": "stop",
+              "responseHash": "d1ad299ba379b8e2167bca7d5d759ccfcd67a0a03780377c13ee2bc17e451d61",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "d1ad299ba379b8e2167bca7d5d759ccfcd67a0a03780377c13ee2bc17e451d61",
+              "safetyIssues": [],
+              "testPassed": false,
+              "failures": [
+                {
+                  "name": "desktop/file-offline/DPR1: hover percentage numerical accuracy",
+                  "passed": false,
+                  "detail": {
+                    "text": "η=0.06583  I_N=8.8%",
+                    "expectedPct": 10.190172807614463
+                  }
+                }
+              ],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r3-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            },
+            {
+              "attempt": 1,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r3-a1-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-88db8475-d3af-955a-8692-74c4c0d13fca",
+              "finishReason": "stop",
+              "responseHash": "62e861da4ebfcbfa56cf212e162abbf6dcc754e702d4ada2fec8301e35b8037e",
+              "snapshot": "attempt-1.html",
+              "htmlHash": "62e861da4ebfcbfa56cf212e162abbf6dcc754e702d4ada2fec8301e35b8037e",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r3-a1-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 1,
+          "safeSnapshot": "attempt-1.html",
+          "safeHash": "62e861da4ebfcbfa56cf212e162abbf6dcc754e702d4ada2fec8301e35b8037e",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 4,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r4-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-fc55cbb3-3826-94d7-8e2d-ca0741884f4f",
+              "finishReason": "stop",
+              "responseHash": "4d52d16a105ab8cdc97f20759e26078db6fede8bc7b561a86f8c5cf207db41b3",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "4d52d16a105ab8cdc97f20759e26078db6fede8bc7b561a86f8c5cf207db41b3",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r4-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "4d52d16a105ab8cdc97f20759e26078db6fede8bc7b561a86f8c5cf207db41b3",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 5,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r5-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-e94120ed-be68-9baf-b74b-a7ac34cff263",
+              "finishReason": "stop",
+              "responseHash": "6bee177b1b401d5ccbbc5430b53d6b6729474bc77d7ce9ca80cb9c292224ec0d",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "6bee177b1b401d5ccbbc5430b53d6b6729474bc77d7ce9ca80cb9c292224ec0d",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r5-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "6bee177b1b401d5ccbbc5430b53d6b6729474bc77d7ce9ca80cb9c292224ec0d",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 6,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r6-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-55141dbf-47cc-9056-bedf-bbad06470f3c",
+              "finishReason": "stop",
+              "responseHash": "fecac5130f0060166e9903bb8c3b80d6990d4c42de9ddb8bb5b9316e98e1a4c7",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "fecac5130f0060166e9903bb8c3b80d6990d4c42de9ddb8bb5b9316e98e1a4c7",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r6-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "fecac5130f0060166e9903bb8c3b80d6990d4c42de9ddb8bb5b9316e98e1a4c7",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 7,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r7-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-eef1b45b-6780-9948-9bbf-b2cf420c6acc",
+              "finishReason": "stop",
+              "responseHash": "e05c9102fad0f808eb761f2f629dc51f7b66457566aa244fe483e268c07419c8",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "e05c9102fad0f808eb761f2f629dc51f7b66457566aa244fe483e268c07419c8",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t1-r7-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "e05c9102fad0f808eb761f2f629dc51f7b66457566aa244fe483e268c07419c8",
+          "passed": true,
+          "terminal": false
+        }
+      ],
+      "finalSha256": "e05c9102fad0f808eb761f2f629dc51f7b66457566aa244fe483e268c07419c8",
+      "finalSnapshot": "final.html",
+      "gatesPassed": 553,
+      "gatesTotal": 553,
+      "reason": null,
+      "primaryAcceptance": "passed",
+      "deploymentAudit": {
+        "passed": true,
+        "checks": 84,
+        "freeze": {
+          "purpose": "Deployment checks implement frozen control/API/Canvas requirements; generation requirements and primary verifier remain unchanged",
+          "sha256": "ab3d64f38c500dcd11290842f04623b2ac386b558bd98154ba11b6637ad340c6",
+          "peakPixelTolerance": 2,
+          "hoverEtaRoundingTolerance": 0.00055,
+          "manualProgramEdits": 0
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "status": "passed",
+      "manualProgramEdits": 0,
+      "modelRepairs": 1,
+      "stages": [
+        {
+          "round": 0,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r0-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-1231b1b3-77eb-9909-9efb-f890f6b580d7",
+              "finishReason": "stop",
+              "responseHash": "ee154a180e415e1a7910d4cfd02298df9eb5917201297569c4c1ee37e1723e32",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r0-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 1,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r1-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-917aa58f-3b33-96ee-8db9-f38761d1e01d",
+              "finishReason": "stop",
+              "responseHash": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r1-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 2,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r2-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-9050f576-70ba-9413-a96b-bd7f116040a0",
+              "finishReason": "stop",
+              "responseHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r2-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 3,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r3-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-05ac4647-4d46-9288-8f5d-506bfb1ec593",
+              "finishReason": "stop",
+              "responseHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r3-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 4,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r4-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-9ae64407-a4ea-96ac-9e64-a9f3c5614296",
+              "finishReason": "stop",
+              "responseHash": "005f9f0bbd12b89cfe0654f461b8ad6c8958434f4d2e937c9c3d315f76441751",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "005f9f0bbd12b89cfe0654f461b8ad6c8958434f4d2e937c9c3d315f76441751",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r4-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "005f9f0bbd12b89cfe0654f461b8ad6c8958434f4d2e937c9c3d315f76441751",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 5,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r5-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-1b152525-95d0-9775-bddc-3239586a680c",
+              "finishReason": "stop",
+              "responseHash": "8e3b9da31143614d4e477fa3ba2fed89a0437536ff7759e79c0b6a27c336d0c5",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "8e3b9da31143614d4e477fa3ba2fed89a0437536ff7759e79c0b6a27c336d0c5",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r5-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "8e3b9da31143614d4e477fa3ba2fed89a0437536ff7759e79c0b6a27c336d0c5",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 6,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a0-generate",
+              "status": "tested",
+              "requestId": "chatcmpl-36524785-966a-931a-84e9-ef3159365bf1",
+              "finishReason": "stop",
+              "responseHash": "ecaee741000a6c60e1d668bf7c1231f411e1ee8e609899db5a67efbaf6eb606c",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "ecaee741000a6c60e1d668bf7c1231f411e1ee8e609899db5a67efbaf6eb606c",
+              "safetyIssues": [],
+              "testPassed": false,
+              "failures": [
+                {
+                  "name": "desktop/file-offline/DPR1: initial dialog focus",
+                  "passed": false,
+                  "detail": null
+                }
+              ],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a0-review",
+              "review": {
+                "passed": false,
+                "issues": [
+                  "A large modal window ('杨氏双缝干涉原理') is open and obscures the majority of the main simulation area (interference pattern) and the bottom intensity graph.",
+                  "The tooltip 'η = 0.0000 I_N = 100.0%' overlaps with the legend box in the bottom right corner.",
+                  "The text inside the open modal has very low contrast (dark grey text on dark grey background), making it difficult to read."
+                ]
+              }
+            },
+            {
+              "attempt": 1,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a1-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-27b262c1-4b2a-9555-816d-34ff7125f06f",
+              "finishReason": "stop",
+              "responseHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+              "snapshot": "attempt-1.html",
+              "htmlHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a1-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 1,
+          "safeSnapshot": "attempt-1.html",
+          "safeHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 7,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r7-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-8cc0b549-d7d3-9551-b96b-3086e7fbe5b1",
+              "finishReason": "stop",
+              "responseHash": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r7-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+          "passed": true,
+          "terminal": false
+        }
+      ],
+      "finalSha256": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+      "finalSnapshot": "final.html",
+      "gatesPassed": 553,
+      "gatesTotal": 553,
+      "reason": null,
+      "primaryAcceptance": "passed",
+      "deploymentAudit": {
+        "passed": true,
+        "checks": 84,
+        "freeze": {
+          "purpose": "Deployment checks implement frozen control/API/Canvas requirements; generation requirements and primary verifier remain unchanged",
+          "sha256": "ab3d64f38c500dcd11290842f04623b2ac386b558bd98154ba11b6637ad340c6",
+          "peakPixelTolerance": 2,
+          "hoverEtaRoundingTolerance": 0.00055,
+          "manualProgramEdits": 0
+        }
+      }
+    },
+    {
+      "trial": 3,
+      "status": "passed",
+      "manualProgramEdits": 0,
+      "modelRepairs": 0,
+      "stages": [
+        {
+          "round": 0,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r0-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-3a70fee5-00af-9f8f-aab2-2ad1dc9810f3",
+              "finishReason": "stop",
+              "responseHash": "fe7b7f1b7cca7ff7b1d780ec1ee204b10e2901b32379771712898ab69ac09e15",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "98e1632576d420852cbdc27d0b4332d1f99b038bdff813ef1c5a3fd3eb8ac7c2",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r0-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "98e1632576d420852cbdc27d0b4332d1f99b038bdff813ef1c5a3fd3eb8ac7c2",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 1,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r1-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-a0c9886f-b45a-9cd7-9eb8-c02692b1a995",
+              "finishReason": "stop",
+              "responseHash": "4349922f9bb1aeed8c06bf8ecea72fe6e93f9979c424a102941980aa57cae693",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "4349922f9bb1aeed8c06bf8ecea72fe6e93f9979c424a102941980aa57cae693",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r1-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "4349922f9bb1aeed8c06bf8ecea72fe6e93f9979c424a102941980aa57cae693",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 2,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r2-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-e4881593-04c3-9d8e-a5c5-ec76fd9184d7",
+              "finishReason": "stop",
+              "responseHash": "9ff06351abfb71a734023bacb817388b1a5fbeda408f07e25fa75a1643d9e638",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "9ff06351abfb71a734023bacb817388b1a5fbeda408f07e25fa75a1643d9e638",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r2-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "9ff06351abfb71a734023bacb817388b1a5fbeda408f07e25fa75a1643d9e638",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 3,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r3-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-f068b782-b54a-94aa-82e7-aa4ec91f0d41",
+              "finishReason": "stop",
+              "responseHash": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r3-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 4,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r4-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-7430b8be-61db-90a7-bd05-c282901b00ec",
+              "finishReason": "stop",
+              "responseHash": "fb037a95398855c835832aa5b3c26372e4e5f5b95812cc4bec6a90f6ca25c798",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "fb037a95398855c835832aa5b3c26372e4e5f5b95812cc4bec6a90f6ca25c798",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r4-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "fb037a95398855c835832aa5b3c26372e4e5f5b95812cc4bec6a90f6ca25c798",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 5,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r5-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-cf907858-65d6-9f04-bb9b-ed6fdd4c9394",
+              "finishReason": "stop",
+              "responseHash": "469613a918297bb9931fa1b3429ca09c732813afb9f85877bd3d0aac346eb49a",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "469613a918297bb9931fa1b3429ca09c732813afb9f85877bd3d0aac346eb49a",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r5-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "469613a918297bb9931fa1b3429ca09c732813afb9f85877bd3d0aac346eb49a",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 6,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r6-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-5473991f-10ae-918f-8e80-4cfcc8ce6729",
+              "finishReason": "stop",
+              "responseHash": "92cc4a6072540c3e7257b15a98ed22156cfbf5155976ac67692a22ab0e73c15a",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "92cc4a6072540c3e7257b15a98ed22156cfbf5155976ac67692a22ab0e73c15a",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r6-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "92cc4a6072540c3e7257b15a98ed22156cfbf5155976ac67692a22ab0e73c15a",
+          "passed": true,
+          "terminal": false
+        },
+        {
+          "round": 7,
+          "status": "finished",
+          "attempts": [
+            {
+              "attempt": 0,
+              "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r7-a0-generate",
+              "status": "passed",
+              "requestId": "chatcmpl-8d6b31dc-71bc-9c55-9b44-233c5351e60b",
+              "finishReason": "stop",
+              "responseHash": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+              "snapshot": "attempt-0.html",
+              "htmlHash": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+              "safetyIssues": [],
+              "testPassed": true,
+              "failures": [],
+              "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r7-a0-review",
+              "review": {
+                "passed": true,
+                "issues": []
+              }
+            }
+          ],
+          "modelRepairs": 0,
+          "safeSnapshot": "attempt-0.html",
+          "safeHash": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+          "passed": true,
+          "terminal": false
+        }
+      ],
+      "finalSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "finalSnapshot": "final.html",
+      "gatesPassed": 553,
+      "gatesTotal": 553,
+      "reason": null,
+      "primaryAcceptance": "passed",
+      "deploymentAudit": {
+        "passed": true,
+        "checks": 84,
+        "freeze": {
+          "purpose": "Deployment checks implement frozen control/API/Canvas requirements; generation requirements and primary verifier remain unchanged",
+          "sha256": "ab3d64f38c500dcd11290842f04623b2ac386b558bd98154ba11b6637ad340c6",
+          "peakPixelTolerance": 2,
+          "hoverEtaRoundingTolerance": 0.00055,
+          "manualProgramEdits": 0
+        }
+      }
+    }
+  ],
+  "successes": 3,
+  "attempted": 3,
+  "finalDeploymentAuditFreeze": {
+    "purpose": "Deployment checks implement frozen control/API/Canvas requirements; generation requirements and primary verifier remain unchanged",
+    "sha256": "ab3d64f38c500dcd11290842f04623b2ac386b558bd98154ba11b6637ad340c6",
+    "peakPixelTolerance": 2,
+    "hoverEtaRoundingTolerance": 0.00055,
+    "manualProgramEdits": 0
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "configuration": {
+    "id": "a2",
+    "visual": "qwen3.7-plus-2026-05-26",
+    "coder": "qwen3.8-max-0902",
+    "thinking": 8192,
+    "completion": 40960,
+    "configurationLabel": "A",
+    "cohortKind": "fresh-formal-after-tool-correction"
+  },
+  "models": {
+    "visual": {
+      "role": "visual",
+      "authEpoch": "b9133064-1550-464f-989a-e653da91c5db",
+      "credentialSource": "local-env-first",
+      "route": "bailian",
+      "pricing": {
+        "input": 6,
+        "output": 24
+      },
+      "pricingTiers": [
+        {
+          "max": 256000,
+          "input": 2,
+          "output": 8
+        },
+        {
+          "max": 1000000,
+          "input": 6,
+          "output": 24
+        }
+      ],
+      "provider": "alibaba-bailian",
+      "modelLabel": "qwen3.7-plus-2026-05-26",
+      "modelId": "qwen3.7-plus-2026-05-26",
+      "baseUrl": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "endpoint": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "credentialEnvName": "DASHSCOPE_API_KEY",
+      "credentialConfigured": true
+    },
+    "coder": {
+      "role": "coder",
+      "authEpoch": "b9133064-1550-464f-989a-e653da91c5db",
+      "credentialSource": "local-env-first",
+      "route": "bailian",
+      "pricing": {
+        "input": 12,
+        "output": 36
+      },
+      "pricingTiers": [
+        {
+          "max": 1000000,
+          "input": 12,
+          "output": 36
+        }
+      ],
+      "provider": "alibaba-bailian",
+      "modelLabel": "qwen3.8-max-0902",
+      "modelId": "qwen3.8-max-0902",
+      "baseUrl": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "endpoint": "https://ws-veodod3qkzw4kixn.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "credentialEnvName": "DASHSCOPE_API_KEY",
+      "credentialConfigured": true
+    }
+  },
+  "requirements": "c450fba8945d447f445cb7a350cd74b7a75ea0e9cade081e6a917133cb5725ee",
+  "stages": "c5e6a146dc2adb7eef6ab115a139393ac858f71a7adbe962d24fd78ff792b2b9",
+  "wireframe": "06cb0eed1024f8dcc1c53d16b870bbfd6ce64af4f4278a6393bbefd40f275ec5",
+  "verifiers": {
+    "verify-reproduction.mjs": "ffa88a6371cd24774e71d576d63ce62e8341ec0e196e19cff3957b1156a6f7fd",
+    "verify-experiment-app.mjs": "ee6cecb1866d1743ee596a945fcea4df35957a2b19e7f57b4f8c05a3cbf1d580",
+    "experiment-oracle.mjs": "82415b72091b9842d37780e3dc86617d535320b31510e25dac8ac5f822b7e569",
+    "fixed-playwright.mjs": "eee3d8450f62dd404d90a9ed5e83210831751557ca660daa6ea2625175f4783e"
+  },
+  "repetitions": 3,
+  "repairsPerStage": 2,
+  "manualProgramEdits": 0
+}

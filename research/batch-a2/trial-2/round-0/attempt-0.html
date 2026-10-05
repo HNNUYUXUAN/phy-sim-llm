@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="color">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杨氏双缝干涉仿真</title>
+<meta name="csp-nonce" content="">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<style id="phy-sim-style">
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  transition: background-color .3s, color .3s;
+}
+
+/* ===== Theme: Light ===== */
+html[data-theme="light"] body {
+  --bg: #f5f5f5; --surface: #ffffff; --border: #cccccc;
+  --text: #222222; --text-secondary: #555555; --accent: #1a73e8;
+  --canvas-bg: #fafafa; --modal-backdrop: rgba(0,0,0,.45);
+  --tooltip-bg: rgba(30,30,30,.92); --tooltip-text: #ffffff;
+  --marker-bright-fill: #1a73e8; --marker-dark-stroke: #d32f2f;
+  --slider-track: #ddd; --slider-thumb: #1a73e8;
+  --btn-bg: #e8e8e8; --btn-hover: #d0d0d0;
+  background: var(--bg); color: var(--text);
+}
+
+/* ===== Theme: Dark ===== */
+html[data-theme="dark"] body {
+  --bg: #121212; --surface: #1e1e1e; --border: #444444;
+  --text: #e0e0e0; --text-secondary: #aaaaaa; --accent: #64b5f6;
+  --canvas-bg: #2a2a2a; --modal-backdrop: rgba(0,0,0,.7);
+  --tooltip-bg: rgba(240,240,240,.92); --tooltip-text: #111111;
+  --marker-bright-fill: #64b5f6; --marker-dark-stroke: #ef5350;
+  --slider-track: #555; --slider-thumb: #64b5f6;
+  --btn-bg: #333; --btn-hover: #444;
+  background: var(--bg); color: var(--text);
+}
+
+/* ===== Layout ===== */
+.app-container {
+  max-width: 1440px; margin: 0 auto; padding: 16px;
+  display: grid; gap: 16px;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "controls pattern"
+    "controls curve";
+}
+h1.app-title {
+  grid-column: 1 / -1; grid-area: title;
+  font-size: 1.5rem; font-weight: 700; text-align: center;
+  padding: 8px 0 4px; letter-spacing: .02em;
+}
+
+/* ===== Controls Panel ===== */
+.controls-panel {
+  grid-area: controls;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 16px;
+  display: flex; flex-direction: column; gap: 14px;
+  overflow-y: auto;
+}
+.panel-heading {
+  font-size: 1.05rem; font-weight: 600;
+  border-bottom: 2px solid var(--accent); padding-bottom: 6px;
+  margin-bottom: 2px;
+}
+.param-group { display: flex; flex-direction: column; gap: 4px; }
+.param-label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: .88rem; color: var(--text-secondary);
+}
+.param-label .param-name { font-weight: 500; }
+.param-label .param-unit { font-size: .78rem; opacity: .7; }
+.param-value-output {
+  font-weight: 600; color: var(--accent);
+  font-variant-numeric: tabular-nums; min-width: 60px; text-align: right;
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 6px; border-radius: 3px;
+  background: var(--slider-track); outline: none; cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--slider-thumb); border: 2px solid var(--surface);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25); cursor: grab;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: var(--slider-thumb); border: 2px solid var(--surface);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25); cursor: grab;
+}
+input[type="range"]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+
+/* Markers container */
+.markers-container {
+  position: relative; height: 14px; margin-top: 2px;
+}
+.marker {
+  position: absolute; top: 0; width: 10px; height: 10px;
+  transform: translateX(-50%); border-radius: 50%;
+}
+.marker.bright {
+  background: var(--marker-bright-fill);
+  border: 1.5px solid var(--marker-bright-fill);
+}
+.marker.dark {
+  background: transparent;
+  border: 1.5px solid var(--marker-dark-stroke);
+}
+
+/* ===== Canvas Panels ===== */
+.pattern-panel, .curve-panel {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.pattern-panel { grid-area: pattern; }
+.curve-panel { grid-area: curve; }
+.canvas-heading {
+  font-size: .95rem; font-weight: 600; color: var(--text-secondary);
+}
+.canvas-wrapper {
+  position: relative; flex: 1; min-height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--canvas-bg); border-radius: 4px; overflow: hidden;
+}
+.canvas-wrapper canvas {
+  display: block; width: 100%; height: 100%;
+  image-rendering: pixelated;
+}
+
+/* ===== Tooltip ===== */
+#intensity-tooltip {
+  position: fixed; z-index: 100;
+  background: var(--tooltip-bg); color: var(--tooltip-text);
+  padding: 6px 10px; border-radius: 6px; font-size: .82rem;
+  pointer-events: none; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  transition: opacity .15s;
+}
+#intensity-tooltip.hidden { opacity: 0; visibility: hidden; }
+#intensity-tooltip .tip-eta { font-weight: 600; }
+#intensity-tooltip .tip-intensity { margin-left: 8px; }
+
+/* ===== Same-X Indicator ===== */
+.same-x-indicator {
+  position: absolute; top: 0; bottom: 0; width: 1px;
+  background: var(--accent); opacity: .6;
+  pointer-events: none; display: none;
+}
+.same-x-indicator.visible { display: block; }
+
+/* ===== Buttons Row ===== */
+.buttons-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.btn {
+  padding: 6px 14px; border: 1px solid var(--border);
+  border-radius: 6px; background: var(--btn-bg);
+  color: var(--text); font-size: .82rem; cursor: pointer;
+  transition: background .15s, border-color .15s;
+  white-space: nowrap;
+}
+.btn:hover { background: var(--btn-hover); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ===== Modal ===== */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 200;
+  background: var(--modal-backdrop);
+  display: flex; align-items: center; justify-content: center;
+  padding: 12px; opacity: 0; visibility: hidden;
+  transition: opacity .2s, visibility .2s;
+}
+.modal-backdrop.open { opacity: 1; visibility: visible; }
+.modal-dialog {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px; max-width: 640px;
+  width: 100%; max-height: 90vh; overflow-y: auto;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,.3);
+}
+.modal-close-btn {
+  position: absolute; top: 12px; right: 12px;
+  width: 32px; height: 32px; border: 1px solid var(--border);
+  border-radius: 50%; background: var(--btn-bg);
+  color: var(--text); font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+}
+.modal-close-btn:hover { background: var(--btn-hover); }
+.modal-close-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.modal-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; }
+.modal-body { font-size: .92rem; line-height: 1.7; color: var(--text-secondary); }
+.modal-body svg { display: block; margin: 16px auto; max-width: 100%; }
+.modal-body p { margin-bottom: 8px; }
+.modal-body .formula {
+  font-family: "Courier New", Courier, monospace;
+  background: var(--canvas-bg); padding: 8px 12px;
+  border-radius: 4px; margin: 8px 0; font-size: .85rem;
+  word-break: break-all;
+}
+
+/* ===== Compact Mode ===== */
+body[data-compact="true"] .app-container {
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "title"
+    "controls"
+    "pattern"
+    "curve";
+  padding: 8px; gap: 8px;
+}
+body[data-compact="true"] h1.app-title { font-size: 1.2rem; }
+body[data-compact="true"] .controls-panel { max-height: 50vh; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "controls"
+      "pattern"
+      "curve";
+    padding: 8px; gap: 8px;
+  }
+  h1.app-title { font-size: 1.2rem; }
+  .controls-panel { max-height: 50vh; }
+}
+
+/* ===== Accessibility ===== */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+*:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ===== Grayscale palette override ===== */
+html[data-palette="grayscale"] .marker.bright {
+  background: #666; border-color: #666;
+}
+html[data-palette="grayscale"] .marker.dark {
+  border-color: #999;
+}
+</style>
+</head>
+<body data-compact="false">
+
+<div class="app-container">
+  <h1 class="app-title">杨氏双缝干涉仿真</h1>
+
+  <!-- ===== CONTROLS PANEL ===== -->
+  <section class="controls-panel" aria-label="参数调控">
+    <div class="panel-heading">CONTROLS 参数调控</div>
+
+    <!-- wavelength -->
+    <div class="param-group">
+      <label class="param-label" for="wavelength">
+        <span class="param-name">wavelength 波长</span>
+        <output id="wavelength-output" class="param-value-output">550 nm</output>
+      </label>
+      <input type="range" id="wavelength" min="380" max="750" step="1" value="550"
+             aria-describedby="wavelength-output">
+      <div class="markers-container" id="wavelength-markers" aria-hidden="true"></div>
+    </div>
+
+    <!-- slitSeparation -->
+    <div class="param-group">
+      <label class="param-label" for="slitSeparation">
+        <span class="param-name">slitSeparation 缝间距</span>
+        <output id="slitSeparation-output" class="param-value-output">5000 nm</output>
+      </label>
+      <input type="range" id="slitSeparation" min="1000" max="10000" step="1" value="5000"
+             aria-describedby="slitSeparation-output">
+      <div class="markers-container" id="slitSeparation-markers" aria-hidden="true"></div>
+    </div>
+
+    <!-- slitWidth -->
+    <div class="param-group">
+      <label class="param-label" for="slitWidth">
+        <span class="param-name">slitWidth 缝宽</span>
+        <output id="slitWidth-output" class="param-value-output">1000 nm</output>
+      </label>
+      <input type="range" id="slitWidth" min="200" max="3000" step="1" value="1000"
+             aria-describedby="slitWidth-output">
+    </div>
+
+    <!-- screenDistance -->
+    <div class="param-group">
+      <label class="param-label" for="screenDistance">
+        <span class="param-name">screenDistance 显示屏距</span>
+        <output id="screenDistance-output" class="param-value-output">50</output>
+      </label>
+      <input type="range" id="screenDistance" min="1" max="100" step="1" value="50"
+             aria-describedby="screenDistance-output">
+    </div>
+
+    <!-- zoom -->
+    <div class="param-group">
+      <label class="param-label" for="zoom">
+        <span class="param-name">zoom 缩放</span>
+        <output id="zoom-output" class="param-value-output">1×</output>
+      </label>
+      <input type="range" id="zoom" min="1" max="5" step="0.1" value="1"
+             aria-describedby="zoom-output">
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons-row">
+      <button class="btn" id="reset-button" type="button">重置</button>
+      <button class="btn" id="theme-button" type="button">切换主题</button>
+      <button class="btn" id="palette-button" type="button">切换调色板</button>
+      <button class="btn" id="principle-button" type="button">原理说明</button>
+    </div>
+  </section>
+
+  <!-- ===== PATTERN PANEL ===== -->
+  <section class="pattern-panel" aria-label="干涉条纹图样">
+    <div class="canvas-heading">PATTERN 干涉条纹图样</div>
+    <div class="canvas-wrapper" id="pattern-wrapper">
+      <canvas id="interferenceCanvas" aria-label="双缝干涉条纹显示区域" role="img"></canvas>
+      <div class="same-x-indicator" id="pattern-indicator" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== CURVE PANEL ===== -->
+  <section class="curve-panel" aria-label="归一化光强">
+    <div class="canvas-heading">CURVE 归一化光强</div>
+    <div class="canvas-wrapper" id="curve-wrapper">
+      <canvas id="intensityCanvas" tabindex="0"
+              aria-label="归一化光强曲线，使用方向键或Home键移动指示器"
+              role="img"></canvas>
+      <div class="same-x-indicator" id="curve-indicator" aria-hidden="true"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== TOOLTIP ===== -->
+<div id="intensity-tooltip" class="hidden" role="status" aria-live="polite">
+  <span class="tip-eta">η = 0.0000</span>
+  <span class="tip-intensity">I_N = 0.0%</span>
+</div>
+
+<!-- ===== PRINCIPLE MODAL ===== -->
+<div class="modal-backdrop" id="principle-modal" role="dialog" aria-modal="true"
+     aria-labelledby="modal-title">
+  <div class="modal-dialog" id="modal-inner">
+    <button class="modal-close-btn" id="modal-close-button" type="button"
+            aria-label="关闭">&times;</button>
+    <h2 class="modal-title" id="modal-title">杨氏双缝干涉原理</h2>
+    <div class="modal-body">
+      <p>杨氏双缝实验是光的波动性的经典证明。当单色光通过两个平行狭缝时，从两缝出射的光波在屏幕上发生干涉，形成明暗相间的条纹。</p>
+
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-label="双缝干涉几何示意图"
+           style="max-width:400px;width:100%;height:auto;">
+        <!-- Source -->
+        <line x1="30" y1="110" x2="120" y2="110" stroke="#666" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <text x="15" y="105" font-size="12" fill="#666">光源</text>
+        <!-- Barrier with slits -->
+        <rect x="120" y="20" width="6" height="180" fill="#888"/>
+        <rect x="120" y="70" width="6" height="12" fill="#fff"/>
+        <rect x="120" y="138" width="6" height="12" fill="#fff"/>
+        <text x="105" y="78" font-size="10" fill="#666">S₁</text>
+        <text x="105" y="148" font-size="10" fill="#666">S₂</text>
+        <!-- Waves from slits -->
+        <path d="M126,76 Q200,40 280,76" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".5"/>
+        <path d="M126,76 Q200,60 280,76" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".5"/>
+        <path d="M126,144 Q200,180 280,144" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".5"/>
+        <path d="M126,144 Q200,160 280,144" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".5"/>
+        <!-- Screen -->
+        <rect x="280" y="20" width="6" height="180" fill="#aaa"/>
+        <text x="295" y="110" font-size="12" fill="#666">屏幕</text>
+        <!-- Distance labels -->
+        <line x1="126" y1="195" x2="280" y2="195" stroke="#666" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="190" y="210" font-size="11" fill="#666" text-anchor="middle">D（屏距）</text>
+        <line x1="123" y1="76" x2="123" y2="144" stroke="#d32f2f" stroke-width="1"/>
+        <text x="100" y="115" font-size="10" fill="#d32f2f" text-anchor="middle">d</text>
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0,0 8,3 0,6" fill="#666"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <p><strong>关键公式：</strong></p>
+      <div class="formula">
+        I_N(η) = sinc²(π·a·η/λ) · cos²(π·d·η/λ)<br>
+        其中 sinc(t) = sin(t)/t，sinc(0) = 1<br>
+        η = (u − u₀) / (4·D_sim·Z)
+      </div>
+      <p>λ 为波长，a 为缝宽，d 为缝间距，D_sim 为显示屏距，Z 为缩放因子。归一化光强 I_N 取值范围 [0, 1]。</p>
+      <p>干涉条纹的亮纹位置由 d·η/λ = m（整数）决定，暗纹位置由 d·η/λ = m + ½ 决定。由于单缝衍射包络的影响，高级次亮纹强度逐渐降低。</p>
+    </div>
+  </div>
+</div>
+
+<script id="phy-sim-script">
+(function () {
+  'use strict';
+
+  /* ===== Constants ===== */
+  var DEFAULTS = {
+    wavelength: 550,
+    slitSeparation: 5000,
+    slitWidth: 1000,
+    screenDistance: 50,
+    zoom: 1
+  };
+  var LIMITS = {
+    wavelength: [380, 750],
+    slitSeparation: [1000, 10000],
+    slitWidth: [200, 3000],
+    screenDistance: [1, 100],
+    zoom: [1, 5]
+  };
+  var PARAM_KEYS = ['wavelength', 'slitSeparation', 'slitWidth', 'screenDistance', 'zoom'];
+
+  /* ===== State ===== */
+  var currentParams = {
+    wavelength: DEFAULTS.wavelength,
+    slitSeparation: DEFAULTS.slitSeparation,
+    slitWidth: DEFAULTS.slitWidth,
+    screenDistance: DEFAULTS.screenDistance,
+    zoom: DEFAULTS.zoom
+  };
+  var readyResolve = null;
+  var readyPromise = new Promise(function (resolve) { readyResolve = resolve; });
+
+  /* ===== Normalization ===== */
+  function normalizeValue(key, val) {
+    if (!isFinite(val)) return DEFAULTS[key];
+    var lo = LIMITS[key][0], hi = LIMITS[key][1];
+    var clamped = Math.max(lo, Math.min(hi, val));
+    if (key === 'slitWidth') {
+      clamped = Math.min(clamped, currentParams.slitSeparation || DEFAULTS.slitSeparation);
+    }
+    return clamped;
+  }
+
+  function normalizeParams(partial) {
+    var merged = {};
+    for (var i = 0; i < PARAM_KEYS.length; i++) {
+      var k = PARAM_KEYS[i];
+      if (partial && partial[k] !== undefined) {
+        merged[k] = normalizeValue(k, partial[k]);
+      } else {
+        merged[k] = currentParams[k];
+      }
+    }
+    // Re-clamp slitWidth against final slitSeparation
+    merged.slitWidth = Math.min(merged.slitWidth, merged.slitSeparation);
+    return merged;
+  }
+
+  /* ===== DOM References ===== */
+  var els = {};
+  function cacheEls() {
+    for (var i = 0; i < PARAM_KEYS.length; i++) {
+      var k = PARAM_KEYS[i];
+      els[k] = document.getElementById(k);
+      els[k + '-output'] = document.getElementById(k + '-output');
+    }
+    els.interferenceCanvas = document.getElementById('interferenceCanvas');
+    els.intensityCanvas = document.getElementById('intensityCanvas');
+    els.patternWrapper = document.getElementById('pattern-wrapper');
+    els.curveWrapper = document.getElementById('curve-wrapper');
+    els.patternIndicator = document.getElementById('pattern-indicator');
+    els.curveIndicator = document.getElementById('curve-indicator');
+    els.tooltip = document.getElementById('intensity-tooltip');
+    els.tipEta = els.tooltip.querySelector('.tip-eta');
+    els.tipIntensity = els.tooltip.querySelector('.tip-intensity');
+    els.resetBtn = document.getElementById('reset-button');
+    els.themeBtn = document.getElementById('theme-button');
+    els.paletteBtn = document.getElementById('palette-button');
+    els.principleBtn = document.getElementById('principle-button');
+    els.modal = document.getElementById('principle-modal');
+    els.modalInner = document.getElementById('modal-inner');
+    els.modalClose = document.getElementById('modal-close-button');
+    els.wlMarkers = document.getElementById('wavelength-markers');
+    els.ssMarkers = document.getElementById('slitSeparation-markers');
+  }
+
+  /* ===== Update Outputs ===== */
+  function updateOutputs(params) {
+    els['wavelength-output'].textContent = params.wavelength + ' nm';
+    els['slitSeparation-output'].textContent = params.slitSeparation + ' nm';
+    els['slitWidth-output'].textContent = params.slitWidth + ' nm';
+    els['screenDistance-output'].textContent = params.screenDistance;
+    els['zoom-output'].textContent = params.zoom.toFixed(1) + '×';
+  }
+
+  function syncSliders(params) {
+    for (var i = 0; i < PARAM_KEYS.length; i++) {
+      var k = PARAM_KEYS[i];
+      if (els[k]) els[k].value = params[k];
+    }
+  }
+
+  /* ===== URL Sync ===== */
+  function readURLParams() {
+    try {
+      var url = new URL(window.location.href);
+      var p = {};
+      for (var i = 0; i < PARAM_KEYS.length; i++) {
+        var v = parseFloat(url.searchParams.get(PARAM_KEYS[i]));
+        if (isFinite(v)) p[PARAM_KEYS[i]] = v;
+      }
+      var theme = url.searchParams.get('theme');
+      if (theme === 'auto' || theme === 'light' || theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      var palette = url.searchParams.get('palette');
+      if (palette === 'color' || palette === 'grayscale') {
+        document.documentElement.setAttribute('data-palette', palette);
+      }
+      var compact = url.searchParams.get('compact');
+      if (compact === '0' || compact === '1') {
+        document.body.setAttribute('data-compact', compact === '1' ? 'true' : 'false');
+      }
+      return p;
+    } catch (e) { return {}; }
+  }
+
+  function writeURLParams(params) {
+    try {
+      var url = new URL(window.location.href);
+      for (var i = 0; i < PARAM_KEYS.length; i++) {
+        url.searchParams.set(PARAM_KEYS[i], String(params[PARAM_KEYS[i]]));
+      }
+      url.searchParams.set('theme', document.documentElement.getAttribute('data-theme'));
+      url.searchParams.set('palette', document.documentElement.getAttribute('data-palette'));
+      url.searchParams.set('compact', document.body.getAttribute('data-compact') === 'true' ? '1' : '0');
+      window.history.replaceState(null, '', url.toString());
+    } catch (e) {}
+  }
+
+  /* ===== Canvas Sizing ===== */
+  function sizeCanvas(canvas, wrapper) {
+    var dpr = window.devicePixelRatio || 1;
+    var rect = wrapper.getBoundingClientRect();
+    var w = rect.width;
+    var h = rect.height;
+    if (w <= 0 || h <= 0) return false;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    canvas.style.width = w + 'px';
+    canvas.style.height = h + 'px';
+    return true;
+  }
+
+  /* ===== Intensity Calculation ===== */
+  function sinc(t) {
+    if (Math.abs(t) < 1e-12) return 1;
+    return Math.sin(t) / t;
+  }
+
+  function intensityAtEta(eta, params) {
+    params = params || currentParams;
+    var lambda = params.wavelength;
+    var a = params.slitWidth;
+    var d = params.slitSeparation;
+    var arg_sinc = Math.PI * a * eta / lambda;
+    var arg_cos = Math.PI * d * eta / lambda;
+    var s = sinc(arg_sinc);
+    var c = Math.cos(arg_cos);
+    return s * s * c * c;
+  }
+
+  /* ===== Draw Pattern ===== */
+  function drawPattern() {
+    var canvas = els.interferenceCanvas;
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width;
+    var h = canvas.height;
+    if (w <= 0 || h <= 0) return;
+
+    var params = currentParams;
+    var lambda = params.wavelength;
+    var a = params.slitWidth;
+    var d = params.slitSeparation;
+    var Dsim = params.screenDistance;
+    var Z = params.zoom;
+
+    var isGrayscale = document.documentElement.getAttribute('data-palette') === 'grayscale';
+
+    // Map CSS x to eta: eta = (x_css - w_css/2) / (4 * Dsim * Z)
+    var w_css = w / (window.devicePixelRatio || 1);
+    var half_css = w_css / 2;
+
+    var imageData = ctx.createImageData(w, h);
+    var data = imageData.data;
+
+    for (var px = 0; px < w; px++) {
+      var x_css = px / (window.devicePixelRatio || 1);
+      var eta = (x_css - half_css) / (4 * Dsim * Z);
+      var I = intensityAtEta(eta, params);
+
+      var r, g, b;
+      if (isGrayscale) {
+        // Gamma-corrected grayscale
+        var gamma = 0.35 + 1.2 * I; // range ~0.35 to 1.55
+        var brightness = Math.pow(I, 1 / gamma);
+        var v = Math.round(brightness * 255);
+        r = g = b = v;
+      } else {
+        // Color: use wavelength-based hue, modulated by intensity
+        var hue = ((lambda - 380) / (750 - 380)) * 270; // 380->0(violet), 750->270(red-ish)
+        var sat = 80 + 20 * I;
+        var lightness = Math.round((1 - I) * 10 + I * 90);
+        var rgb = hslToRgb(hue / 360, sat / 100, lightness / 100);
+        r = rgb[0]; g = rgb[1]; b = rgb[2];
+      }
+
+      for (var py = 0; py < h; py++) {
+        var idx = (py * w + px) * 4;
+        data[idx] = r;
+        data[idx + 1] = g;
+        data[idx + 2] = b;
+        data[idx + 3] = 255;
+      }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+  }
+
+  function hslToRgb(h, s, l) {
+    var r, g, b;
+    if (s === 0) {
+      r = g = b = l;
+    } else {
+      var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      var p = 2 * l - q;
+      r = hue2rgb(p, q, h + 1/3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1/3);
+    }
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+  }
+
+  function hue2rgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+    return p;
+  }
+
+  /* ===== Draw Curve ===== */
+  function drawCurve() {
+    var canvas = els.intensityCanvas;
+    var ctx = canvas.getContext('2d');
+    var w = canvas.width;
+    var h = canvas.height;
+    if (w <= 0 || h <= 0) return;
+
+    var params = currentParams;
+    var Dsim = params.screenDistance;
+    var Z = params.zoom;
+    var w_css = w / (window.devicePixelRatio || 1);
+    var half_css = w_css / 2;
+
+    var margin_top = 20 * (window.devicePixelRatio || 1);
+    var margin_bottom = 20 * (window.devicePixelRatio || 1);
+    var plot_h = h - margin_top - margin_bottom;
+
+    // Clear
+    ctx.clearRect(0, 0, w, h);
+
+    // Background
+    var bgColor = getComputedStyle(document.body).getPropertyValue('--canvas-bg').trim() || '#fafafa';
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, w, h);
+
+    // Axes
+    var axisColor = getComputedStyle(document.body).getPropertyValue('--text-secondary').trim() || '#888';
+    ctx.strokeStyle = axisColor;
+    ctx.lineWidth = 1;
+    // Horizontal axis at bottom of plot area
+    ctx.beginPath();
+    ctx.moveTo(0, h - margin_bottom);
+    ctx.lineTo(w, h - margin_bottom);
+    ctx.stroke();
+    // Vertical center line
+    ctx.beginPath();
+    ctx.moveTo(w / 2, margin_top);
+    ctx.lineTo(w / 2, h - margin_bottom);
+    ctx.stroke();
+
+    // Plot curve using moveTo/lineTo
+    var curveColor = getComputedStyle(document.body).getPropertyValue('--text').trim() || '#222';
+    ctx.strokeStyle = curveColor;
+    ctx.lineWidth = 2 * (window.devicePixelRatio || 1);
+    ctx.beginPath();
+
+    var first = true;
+    for (var px = 0; px < w; px++) {
+      var x_css = px / (window.devicePixelRatio || 1);
+      var eta = (x_css - half_css) / (4 * Dsim * Z);
+      var I = intensityAtEta(eta, params);
+      var y = h - margin_bottom - I * plot_h;
+      if (first) {
+        ctx.moveTo(px, y);
+        first = false;
+      } else {
+        ctx.lineTo(px, y);
+      }
+    }
+    ctx.stroke();
+  }
+
+  /* ===== Critical Markers ===== */
+  function getCriticalMarkers(params) {
+    params = params || currentParams;
+    var lambda = params.wavelength;
+    var d = params.slitSeparation;
+    var eta_ref = 0.11;
+
+    var result = {
+      wavelength: [],
+      slitSeparation: []
+    };
+
+    // Bright fringes: d * eta_ref / lambda_val = positive integer m
+    // => lambda_val = d * eta_ref / m, for m = 1, 2, 3, ...
+    // Check within [380, 750]
+    for (var m = 1; m <= 100; m++) {
+      var lam_bright = d * eta_ref / m;
+      if (lam_bright >= 380 && lam_bright <= 750) {
+        result.wavelength.push({ kind: 'bright', order: m, value: lam_bright });
+      }
+      if (lam_bright < 380) break;
+    }
+
+    // Dark fringes: d * eta_ref / lambda_val = n + 0.5, n >= 0
+    // => lambda_val = d * eta_ref / (n + 0.5)
+    for (var n = 0; n <= 200; n++) {
+      var lam_dark = d * eta_ref / (n + 0.5);
+      if (lam_dark >= 380 && lam_dark <= 750) {
+        result.wavelength.push({ kind: 'dark', order: n, value: lam_dark });
+      }
+      if (lam_dark < 380) break;
+    }
+
+    // For slitSeparation markers:
+    // Bright: d_val * eta_ref / lambda = m => d_val = m * lambda / eta_ref
+    for (var m2 = 1; m2 <= 100; m2++) {
+      var d_bright = m2 * lambda / eta_ref;
+      if (d_bright >= 1000 && d_bright <= 10000) {
+        result.slitSeparation.push({ kind: 'bright', order: m2, value: d_bright });
+      }
+      if (d_bright > 10000) break;
+    }
+
+    // Dark: d_val * eta_ref / lambda = n + 0.5 => d_val = (n+0.5) * lambda / eta_ref
+    for (var n2 = 0; n2 <= 200; n2++) {
+      var d_dark = (n2 + 0.5) * lambda / eta_ref;
+      if (d_dark >= 1000 && d_dark <= 10000) {
+        result.slitSeparation.push({ kind: 'dark', order: n2, value: d_dark });
+      }
+      if (d_dark > 10000) break;
+    }
+
+    return result;
+  }
+
+  function renderMarkers() {
+    var markers = getCriticalMarkers();
+
+    // Wavelength markers
+    renderMarkerSet(els.wlMarkers, markers.wavelength, LIMITS.wavelength[0], LIMITS.wavelength[1]);
+    // Slit separation markers
+    renderMarkerSet(els.ssMarkers, markers.slitSeparation, LIMITS.slitSeparation[0], LIMITS.slitSeparation[1]);
+  }
+
+  function renderMarkerSet(container, items, minVal, maxVal) {
+    container.innerHTML = '';
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      var pct = ((item.value - minVal) / (maxVal - minVal)) * 100;
+      var el = document.createElement('span');
+      el.className = 'marker ' + item.kind;
+      el.setAttribute('data-kind', item.kind);
+      el.setAttribute('data-order', item.order);
+      el.setAttribute('data-value', item.value.toFixed(2));
+      el.style.left = pct + '%';
+      el.title = (item.kind === 'bright' ? '亮纹' : '暗纹') + ' m=' + item.order + ' λ=' + item.value.toFixed(1) + 'nm';
+      container.appendChild(el);
+    }
+  }
+
+  /* ===== Tooltip & Indicator ===== */
+  var tooltipVisible = false;
+  var currentHoverEta = 0;
+  var currentHoverI = 0;
+
+  function showTooltip(eta, I, clientX, clientY) {
+    currentHoverEta = eta;
+    currentHoverI = I;
+    els.tipEta.textContent = 'η = ' + eta.toFixed(4);
+    els.tipIntensity.textContent = 'I_N = ' + (I * 100).toFixed(1) + '%';
+    els.tooltip.classList.remove('hidden');
+    tooltipVisible = true;
+
+    // Position tooltip near cursor but keep in viewport
+    var tw = els.tooltip.offsetWidth;
+    var th = els.tooltip.offsetHeight;
+    var tx = clientX + 12;
+    var ty = clientY - th - 8;
+    if (tx + tw > window.innerWidth - 8) tx = clientX - tw - 12;
+    if (ty < 8) ty = clientY + 16;
+    els.tooltip.style.left = tx + 'px';
+    els.tooltip.style.top = ty + 'px';
+
+    updateIndicators(eta);
+  }
+
+  function hideTooltip() {
+    els.tooltip.classList.add('hidden');
+    tooltipVisible = false;
+    els.patternIndicator.classList.remove('visible');
+    els.curveIndicator.classList.remove('visible');
+  }
+
+  function updateIndicators(eta) {
+    var params = currentParams;
+    var Dsim = params.screenDistance;
+    var Z = params.zoom;
+
+    // Convert eta back to CSS x offset from center
+    var x_offset_css = eta * 4 * Dsim * Z;
+
+    // Pattern canvas
+    var pw = els.patternWrapper.getBoundingClientRect().width;
+    var px_pos = pw / 2 + x_offset_css;
+    els.patternIndicator.style.left = px_pos + 'px';
+    els.patternIndicator.classList.add('visible');
+
+    // Curve canvas
+    var cw = els.curveWrapper.getBoundingClientRect().width;
+    var cx_pos = cw / 2 + x_offset_css;
+    els.curveIndicator.style.left = cx_pos + 'px';
+    els.curveIndicator.classList.add('visible');
+    // Match heights
+    els.patternIndicator.style.height = els.patternWrapper.offsetHeight + 'px';
+    els.curveIndicator.style.height = els.curveWrapper.offsetHeight + 'px';
+  }
+
+  function setIndicatorFromEta(eta) {
+    var I = intensityAtEta(eta);
+    showTooltip(eta, I, 0, 0);
+    // Keep tooltip positioned reasonably
+    var rect = els.curveWrapper.getBoundingClientRect();
+    var Dsim = currentParams.screenDistance;
+    var Z = currentParams.zoom;
+    var x_offset_css = eta * 4 * Dsim * Z;
+    var cx = rect.left + rect.width / 2 + x_offset_css;
+    var cy = rect.top + 20;
+    els.tooltip.style.left = (cx + 12) + 'px';
+    els.tooltip.style.top = cy + 'px';
+  }
+
+  /* ===== Event Handlers ===== */
+  function onSliderInput(e) {
+    var key = e.target.id;
+    var raw = parseFloat(e.target.value);
+    var updated = {};
+    updated[key] = raw;
+    var normalized = normalizeParams(updated);
+    currentParams = normalized;
+    updateOutputs(normalized);
+    syncSliders(normalized);
+    renderMarkers();
+    renderAll();
+    writeURLParams(normalized);
+  }
+
+  function onCurveMouseMove(e) {
+    var rect = els.curveWrapper.getBoundingClientRect();
+    var x_css = e.clientX - rect.left;
+    var w_css = rect.width;
+    var half_css = w_css / 2;
+    var eta = (x_css - half_css) / (4 * currentParams.screenDistance * currentParams.zoom);
+    var I = intensityAtEta(eta);
+    showTooltip(eta, I, e.clientX, e.clientY);
+  }
+
+  function onCurveMouseLeave() {
+    hideTooltip();
+  }
+
+  function onCurveKeyDown(e) {
+    var Dsim = currentParams.screenDistance;
+    var Z = currentParams.zoom;
+    var w_css = els.curveWrapper.getBoundingClientRect().width;
+    var step_eta = 1 / (4 * Dsim * Z) * 0.02; // small step
+
+    switch (e.key) {
+      case 'Home':
+        e.preventDefault();
+        setIndicatorFromEta(0);
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        setIndicatorFromEta(currentHoverEta - step_eta);
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        setIndicatorFromEta(currentHoverEta + step_eta);
+        break;
+      case 'End':
+        e.preventDefault();
+        setIndicatorFromEta(w_css / 2 / (4 * Dsim * Z));
+        break;
+    }
+  }
+
+  function onReset() {
+    currentParams = {
+      wavelength: DEFAULTS.wavelength,
+      slitSeparation: DEFAULTS.slitSeparation,
+      slitWidth: DEFAULTS.slitWidth,
+      screenDistance: DEFAULTS.screenDistance,
+      zoom: DEFAULTS.zoom
+    };
+    updateOutputs(currentParams);
+    syncSliders(currentParams);
+    renderMarkers();
+    renderAll();
+    writeURLParams(currentParams);
+  }
+
+  function onThemeToggle() {
+    var current = document.documentElement.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    renderAll();
+    writeURLParams(currentParams);
+  }
+
+  function onPaletteToggle() {
+    var current = document.documentElement.getAttribute('data-palette');
+    var next = current === 'grayscale' ? 'color' : 'grayscale';
+    document.documentElement.setAttribute('data-palette', next);
+    renderAll();
+    writeURLParams(currentParams);
+  }
+
+  function openModal() {
+    els.modal.classList.add('open');
+    els.modalClose.focus();
+    trapFocus(els.modalInner);
+  }
+
+  function closeModal() {
+    els.modal.classList.remove('open');
+    releaseFocusTrap();
+    els.principleBtn.focus();
+  }
+
+  var lastFocusedBeforeModal = null;
+  function trapFocus(dialogEl) {
+    lastFocusedBeforeModal = document.activeElement;
+    dialogEl.addEventListener('keydown', onModalKeydown);
+  }
+  function releaseFocusTrap() {
+    els.modalInner.removeEventListener('keydown', onModalKeydown);
+  }
+  function onModalKeydown(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeModal();
+      return;
+    }
+    if (e.key === 'Tab') {
+      var focusable = els.modalInner.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+  }
+
+  /* ===== Render All ===== */
+  function renderAll() {
+    sizeCanvas(els.interferenceCanvas, els.patternWrapper);
+    sizeCanvas(els.intensityCanvas, els.curveWrapper);
+    drawPattern();
+    drawCurve();
+  }
+
+  /* ===== Public API ===== */
+  window.PhySim = {
+    version: '0.9.1',
+    defaults: Object.assign({}, DEFAULTS),
+    limits: Object.assign({}, LIMITS),
+    ready: readyPromise,
+    getParams: function () {
+      return Object.assign({}, currentParams);
+    },
+    setParams: function (partial) {
+      currentParams = normalizeParams(partial || {});
+      updateOutputs(currentParams);
+      syncSliders(currentParams);
+      renderMarkers();
+      renderAll();
+      writeURLParams(currentParams);
+    },
+    intensityAtEta: function (eta, params) {
+      return intensityAtEta(eta, params);
+    },
+    getCriticalMarkers: function (params) {
+      return getCriticalMarkers(params);
+    },
+    render: function () {
+      renderAll();
+    }
+  };
+
+  /* ===== Init ===== */
+  function init() {
+    cacheEls();
+
+    // Read URL params and merge with defaults
+    var urlParams = readURLParams();
+    currentParams = normalizeParams(urlParams);
+
+    // Set sliders and outputs
+    syncSliders(currentParams);
+    updateOutputs(currentParams);
+
+    // Bind events
+    for (var i = 0; i < PARAM_KEYS.length; i++) {
+      var k = PARAM_KEYS[i];
+      if (els[k]) {
+        els[k].addEventListener('input', onSliderInput);
+      }
+    }
+
+    els.intensityCanvas.addEventListener('mousemove', onCurveMouseMove);
+    els.intensityCanvas.addEventListener('mouseleave', onCurveMouseLeave);
+    els.intensityCanvas.addEventListener('keydown', onCurveKeyDown);
+
+    els.resetBtn.addEventListener('click', onReset);
+    els.themeBtn.addEventListener('click', onThemeToggle);
+    els.paletteBtn.addEventListener('click', onPaletteToggle);
+    els.principleBtn.addEventListener('click', openModal);
+    els.modalClose.addEventListener('click', closeModal);
+    els.modal.addEventListener('click', function (e) {
+      if (e.target === els.modal) closeModal();
+    });
+
+    // Resize handler
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        renderAll();
+      }, 50);
+    });
+
+    // Initial render
+    renderMarkers();
+    renderAll();
+
+    // Resolve ready promise after first frame
+    requestAnimationFrame(function () {
+      if (readyResolve) readyResolve(true);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
+</body>
+</html>

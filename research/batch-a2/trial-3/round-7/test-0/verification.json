@@ -1,0 +1,7500 @@
+{
+  "schemaVersion": 2,
+  "appSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+  "round": 7,
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "browserFallback": "Browser plugin not available",
+  "checks": [
+    {
+      "name": "strict offline safety",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: offline HTML and credential scan",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 1096,
+        "widthB": 1096,
+        "leftA": 318,
+        "leftB": 318,
+        "dpr": 1,
+        "ratioA": 1,
+        "ratioB": 1
+      }
+    },
+    {
+      "name": "core: DPR 1: backing resolution",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: normalized center",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "core: a <= d normalized through API",
+      "passed": true,
+      "detail": {
+        "wavelength": 550,
+        "slitSeparation": 1000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      }
+    },
+    {
+      "name": "core: range input updates model",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: URL clamp and invalid defaults",
+      "passed": true,
+      "detail": {
+        "wavelength": 750,
+        "slitSeparation": 1000,
+        "slitWidth": 1000,
+        "screenDistance": 1,
+        "zoom": 5
+      }
+    },
+    {
+      "name": "core: curve hover percentage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: hover hides on leave",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: keyboard curve probe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: independent dense physical matrix",
+      "passed": true,
+      "detail": {
+        "rows": 54,
+        "samplesPerRow": 2001
+      }
+    },
+    {
+      "name": "core: wavelength 380: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: wavelength 430: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: wavelength 500: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: wavelength 550: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: wavelength 620: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: wavelength 690: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: wavelength 750: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: separation 2000: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: separation 3400: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: separation 5000: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: separation 6000: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: separation 7600: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: separation 10000: actual peak against full formula",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: second-order peak below center",
+      "passed": true,
+      "detail": {
+        "eta": 0.21677249536569904,
+        "intensity": 0.5777871858847251
+      }
+    },
+    {
+      "name": "core: equal widths between adjacent interference dark fringes",
+      "passed": true,
+      "detail": {
+        "central": 0.11,
+        "secondOrder": 0.11
+      }
+    },
+    {
+      "name": "core: display scale does not alter physics",
+      "passed": true,
+      "detail": [
+        0.18423448447151056,
+        0.18423448447151056,
+        0.18423448447151056
+      ]
+    },
+    {
+      "name": "core: fixed reference bright-to-dark transition",
+      "passed": true,
+      "detail": {
+        "bright": 0.91189065278104,
+        "dark": 9.312770086965963e-31,
+        "markers": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "core: critical wavelength range",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: principle diagram dialog opens",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: Escape returns focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: theme and grayscale controls",
+      "passed": true,
+      "detail": {
+        "theme": "dark",
+        "palette": "grayscale"
+      }
+    },
+    {
+      "name": "core: mobile no horizontal overflow",
+      "passed": true,
+      "detail": 0
+    },
+    {
+      "name": "core: file:// works with network disabled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: offline interaction",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: console and page health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 2: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 1096,
+        "widthB": 1096,
+        "leftA": 318,
+        "leftB": 318,
+        "dpr": 2,
+        "ratioA": 2,
+        "ratioB": 2
+      }
+    },
+    {
+      "name": "core: DPR 2: backing resolution",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 2: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 2: console and page health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 3: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 1096,
+        "widthB": 1096,
+        "leftA": 318,
+        "leftB": 318,
+        "dpr": 3,
+        "ratioA": 3,
+        "ratioB": 3
+      }
+    },
+    {
+      "name": "core: DPR 3: backing resolution",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 3: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 3: console and page health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/http/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 1
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "name": "desktop/http/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "desktop/http/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014986770546685083,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/http/DPR1: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/http/DPR1: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 398,
+          "height": 398
+        },
+        "intensityCanvas": {
+          "changedRows": 398,
+          "height": 398
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR1: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/http/DPR1: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR1: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR1: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/http/DPR1: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR1: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wavelength/380: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.07497437742773597,
+          "intensity": 0.8767387656364835,
+          "searchedInterval": [
+            0.038,
+            0.11399999999999999
+          ]
+        },
+        "expected": {
+          "eta": 0.07497437741454388,
+          "intensity": 0.8767387656364832
+        }
+      }
+    },
+    {
+      "name": "wavelength/430: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.08483942710424303,
+          "intensity": 0.8767387656364833,
+          "searchedInterval": [
+            0.043,
+            0.129
+          ]
+        },
+        "expected": {
+          "eta": 0.08483942737540959,
+          "intensity": 0.8767387656364832
+        }
+      }
+    },
+    {
+      "name": "wavelength/500: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.0986504966254512,
+          "intensity": 0.8767387656364835,
+          "searchedInterval": [
+            0.05,
+            0.15000000000000002
+          ]
+        },
+        "expected": {
+          "eta": 0.09865049663013153,
+          "intensity": 0.8767387656364832
+        }
+      }
+    },
+    {
+      "name": "wavelength/550: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.10851554626167616,
+          "intensity": 0.8767387656364835,
+          "searchedInterval": [
+            0.055,
+            0.165
+          ]
+        },
+        "expected": {
+          "eta": 0.10851554602507804,
+          "intensity": 0.8767387656364831
+        }
+      }
+    },
+    {
+      "name": "wavelength/620: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.12232661571793742,
+          "intensity": 0.8767387656364835,
+          "searchedInterval": [
+            0.062,
+            0.186
+          ]
+        },
+        "expected": {
+          "eta": 0.12232661583545626,
+          "intensity": 0.8767387656364831
+        }
+      }
+    },
+    {
+      "name": "wavelength/690: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.13613768525343584,
+          "intensity": 0.8767387656364833,
+          "searchedInterval": [
+            0.069,
+            0.20700000000000002
+          ]
+        },
+        "expected": {
+          "eta": 0.13613768523891784,
+          "intensity": 0.8767387656364832
+        }
+      }
+    },
+    {
+      "name": "wavelength/750: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.14797574497346316,
+          "intensity": 0.8767387656364836,
+          "searchedInterval": [
+            0.075,
+            0.22499999999999998
+          ]
+        },
+        "expected": {
+          "eta": 0.14797574465956514,
+          "intensity": 0.8767387656364832
+        }
+      }
+    },
+    {
+      "name": "separation/2000: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.25110755768304216,
+          "intensity": 0.4424124390355924,
+          "searchedInterval": [
+            0.1375,
+            0.41250000000000003
+          ]
+        },
+        "expected": {
+          "eta": 0.2511075585857059,
+          "intensity": 0.44241243903559235
+        }
+      }
+    },
+    {
+      "name": "separation/3400: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.15698879009157485,
+          "intensity": 0.7525978353853081,
+          "searchedInterval": [
+            0.08088235294117647,
+            0.24264705882352944
+          ]
+        },
+        "expected": {
+          "eta": 0.15698878987084047,
+          "intensity": 0.7525978353853084
+        }
+      }
+    },
+    {
+      "name": "separation/5000: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.10851554626167616,
+          "intensity": 0.8767387656364835,
+          "searchedInterval": [
+            0.055,
+            0.165
+          ]
+        },
+        "expected": {
+          "eta": 0.10851554602507804,
+          "intensity": 0.8767387656364831
+        }
+      }
+    },
+    {
+      "name": "separation/6000: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.09081059395609045,
+          "intensity": 0.9126839627531547,
+          "searchedInterval": [
+            0.04583333333333333,
+            0.13749999999999998
+          ]
+        },
+        "expected": {
+          "eta": 0.09081059379324552,
+          "intensity": 0.9126839627531544
+        }
+      }
+    },
+    {
+      "name": "separation/7600: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.07194850054832702,
+          "intensity": 0.9446401774259144,
+          "searchedInterval": [
+            0.03618421052631579,
+            0.10855263157894737
+          ]
+        },
+        "expected": {
+          "eta": 0.07194850042883388,
+          "intensity": 0.9446401774259147
+        }
+      }
+    },
+    {
+      "name": "separation/10000: blind actual peak",
+      "passed": true,
+      "detail": {
+        "observed": {
+          "eta": 0.05481608088254273,
+          "intensity": 0.9676383647741506,
+          "searchedInterval": [
+            0.0275,
+            0.0825
+          ]
+        },
+        "expected": {
+          "eta": 0.054816080814251766,
+          "intensity": 0.9676383647741507
+        }
+      }
+    },
+    {
+      "name": "wavelength increases real fringe spacing",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ideal spacing times d is constant",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "observed second peak below center",
+      "passed": true,
+      "detail": {
+        "eta": 0.21677249511509772,
+        "intensity": 0.577787185884725,
+        "searchedInterval": [
+          0.165,
+          0.275
+        ]
+      }
+    },
+    {
+      "name": "measured adjacent-dark widths agree",
+      "passed": true,
+      "detail": {
+        "central": 0.10999999999999989,
+        "second": 0.1100000000000001,
+        "boundaries": [
+          -0.054999999999999945,
+          0.054999999999999945,
+          0.16499999999999992,
+          0.275
+        ]
+      }
+    },
+    {
+      "name": "Dsim/Z preserve physics and actually rescale drawing",
+      "passed": true,
+      "detail": [
+        {
+          "screenDistance": 10,
+          "zoom": 1,
+          "intensity": 0.18423448447151056,
+          "maxRasterError": 7.845145042086445e-17,
+          "secondPeakCssOffset": 8.67089980460391
+        },
+        {
+          "screenDistance": 50,
+          "zoom": 3,
+          "intensity": 0.18423448447151056,
+          "maxRasterError": 2.220446049250313e-16,
+          "secondPeakCssOffset": 130.06349706905863
+        },
+        {
+          "screenDistance": 100,
+          "zoom": 5,
+          "intensity": 0.18423448447151056,
+          "maxRasterError": 4.440892098500626e-16,
+          "secondPeakCssOffset": 433.5449902301954
+        }
+      ]
+    },
+    {
+      "name": "desktop/http/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/http/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 1
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "name": "desktop/file/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "desktop/file/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014986770546685083,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/file/DPR1: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/file/DPR1: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 398,
+          "height": 398
+        },
+        "intensityCanvas": {
+          "changedRows": 398,
+          "height": 398
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR1: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/file/DPR1: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR1: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR1: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/file/DPR1: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 1
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "name": "desktop/file-offline/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014986770546685083,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 398,
+          "height": 398
+        },
+        "intensityCanvas": {
+          "changedRows": 398,
+          "height": 398
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/file-offline/DPR1: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/http/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 1
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "name": "mobile/http/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "mobile/http/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/http/DPR1: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/http/DPR1: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 187,
+          "height": 187
+        },
+        "intensityCanvas": {
+          "changedRows": 187,
+          "height": 187
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR1: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/http/DPR1: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR1: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR1: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(226, 226, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/http/DPR1: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/http/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 1
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "name": "mobile/file/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "mobile/file/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/file/DPR1: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/file/DPR1: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 187,
+          "height": 187
+        },
+        "intensityCanvas": {
+          "changedRows": 187,
+          "height": 187
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR1: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/file/DPR1: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR1: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR1: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/file/DPR1: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file-offline/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 1
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 1
+        }
+      ]
+    },
+    {
+      "name": "mobile/file-offline/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR1: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR1: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 187,
+          "height": 187
+        },
+        "intensityCanvas": {
+          "changedRows": 187,
+          "height": 187
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR1: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR1: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR1: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR1: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/file-offline/DPR1: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file-offline/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/http/DPR2: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 2
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 2
+        }
+      ]
+    },
+    {
+      "name": "desktop/http/DPR2: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "desktop/http/DPR2: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014266439150390334,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/http/DPR2: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/http/DPR2: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 796,
+          "height": 796
+        },
+        "intensityCanvas": {
+          "changedRows": 796,
+          "height": 796
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR2: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/http/DPR2: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR2: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR2: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/http/DPR2: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR2: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/http/DPR2: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file/DPR2: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 2
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 2
+        }
+      ]
+    },
+    {
+      "name": "desktop/file/DPR2: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "desktop/file/DPR2: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014266439150390334,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/file/DPR2: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/file/DPR2: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 796,
+          "height": 796
+        },
+        "intensityCanvas": {
+          "changedRows": 796,
+          "height": 796
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR2: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/file/DPR2: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR2: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR2: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/file/DPR2: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR2: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file/DPR2: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR2: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 2
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 2
+        }
+      ]
+    },
+    {
+      "name": "desktop/file-offline/DPR2: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR2: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014266439150390334,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR2: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR2: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 796,
+          "height": 796
+        },
+        "intensityCanvas": {
+          "changedRows": 796,
+          "height": 796
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR2: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR2: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR2: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR2: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/file-offline/DPR2: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR2: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR2: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/http/DPR2: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 2
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 2
+        }
+      ]
+    },
+    {
+      "name": "mobile/http/DPR2: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 1.6653345369377348e-16
+      }
+    },
+    {
+      "name": "mobile/http/DPR2: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/http/DPR2: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/http/DPR2: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 373,
+          "height": 373
+        },
+        "intensityCanvas": {
+          "changedRows": 373,
+          "height": 373
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR2: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/http/DPR2: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR2: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR2: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/http/DPR2: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR2: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/http/DPR2: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file/DPR2: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 2
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 2
+        }
+      ]
+    },
+    {
+      "name": "mobile/file/DPR2: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 1.6653345369377348e-16
+      }
+    },
+    {
+      "name": "mobile/file/DPR2: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/file/DPR2: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/file/DPR2: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 373,
+          "height": 373
+        },
+        "intensityCanvas": {
+          "changedRows": 373,
+          "height": 373
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR2: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/file/DPR2: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR2: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR2: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/file/DPR2: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR2: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file/DPR2: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file-offline/DPR2: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 2
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 2
+        }
+      ]
+    },
+    {
+      "name": "mobile/file-offline/DPR2: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 1.6653345369377348e-16
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR2: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR2: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR2: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 373,
+          "height": 373
+        },
+        "intensityCanvas": {
+          "changedRows": 373,
+          "height": 373
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR2: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR2: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR2: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR2: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/file-offline/DPR2: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR2: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file-offline/DPR2: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/http/DPR3: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 3
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 3
+        }
+      ]
+    },
+    {
+      "name": "desktop/http/DPR3: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.3592239273284576e-16
+      }
+    },
+    {
+      "name": "desktop/http/DPR3: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014085770437668902,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/http/DPR3: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/http/DPR3: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 1194,
+          "height": 1194
+        },
+        "intensityCanvas": {
+          "changedRows": 1194,
+          "height": 1194
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR3: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/http/DPR3: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR3: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/http/DPR3: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(245, 245, 246)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(229, 229, 231)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/http/DPR3: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/http/DPR3: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/http/DPR3: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file/DPR3: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 3
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 3
+        }
+      ]
+    },
+    {
+      "name": "desktop/file/DPR3: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.3592239273284576e-16
+      }
+    },
+    {
+      "name": "desktop/file/DPR3: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014085770437668902,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/file/DPR3: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/file/DPR3: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 1194,
+          "height": 1194
+        },
+        "intensityCanvas": {
+          "changedRows": 1194,
+          "height": 1194
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR3: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/file/DPR3: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR3: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/file/DPR3: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(245, 245, 246)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/file/DPR3: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file/DPR3: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file/DPR3: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR3: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 3
+        },
+        {
+          "left": 318,
+          "width": 1096,
+          "ratio": 3
+        }
+      ]
+    },
+    {
+      "name": "desktop/file-offline/DPR3: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.3592239273284576e-16
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR3: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014085770437668902,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR3: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR3: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 1194,
+          "height": 1194
+        },
+        "intensityCanvas": {
+          "changedRows": 1194,
+          "height": 1194
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR3: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR3: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR3: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR3: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(245, 245, 246)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(229, 229, 231)"
+        }
+      ]
+    },
+    {
+      "name": "desktop/file-offline/DPR3: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR3: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR3: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/http/DPR3: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 3
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 3
+        }
+      ]
+    },
+    {
+      "name": "mobile/http/DPR3: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 3.157196726277789e-16
+      }
+    },
+    {
+      "name": "mobile/http/DPR3: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/http/DPR3: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/http/DPR3: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 560,
+          "height": 560
+        },
+        "intensityCanvas": {
+          "changedRows": 560,
+          "height": 560
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR3: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/http/DPR3: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR3: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/http/DPR3: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/http/DPR3: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/http/DPR3: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/http/DPR3: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file/DPR3: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 3
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 3
+        }
+      ]
+    },
+    {
+      "name": "mobile/file/DPR3: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 3.157196726277789e-16
+      }
+    },
+    {
+      "name": "mobile/file/DPR3: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/file/DPR3: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/file/DPR3: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 560,
+          "height": 560
+        },
+        "intensityCanvas": {
+          "changedRows": 560,
+          "height": 560
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR3: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/file/DPR3: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR3: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/file/DPR3: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/file/DPR3: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file/DPR3: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file/DPR3: no external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file-offline/DPR3: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: both Canvas backing and horizontal alignment",
+      "passed": true,
+      "detail": [
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 3
+        },
+        {
+          "left": 26,
+          "width": 338,
+          "ratio": 3
+        }
+      ]
+    },
+    {
+      "name": "mobile/file-offline/DPR3: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 677,
+        "maxIntensityError": 3.157196726277789e-16
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR3: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014038265424648108,
+        "gamma": 0.7600000000000003
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR3: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR3: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 560,
+          "height": 560
+        },
+        "intensityCanvas": {
+          "changedRows": 560,
+          "height": 560
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR3: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR3: complete wavelength/separation marker sets",
+      "passed": true,
+      "detail": {
+        "actual": {
+          "wavelength": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        },
+        "expected": {
+          "wavelength": [
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 440
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 660
+            }
+          ],
+          "slitSeparation": [
+            {
+              "kind": "dark",
+              "order": 0.5,
+              "value": 3000
+            },
+            {
+              "kind": "bright",
+              "order": 1,
+              "value": 6000
+            },
+            {
+              "kind": "dark",
+              "order": 1.5,
+              "value": 9000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR3: markers visibly distinguish bright/dark",
+      "passed": true,
+      "detail": {
+        "wavelength": {
+          "count": 2,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        },
+        "slitSeparation": {
+          "count": 3,
+          "solid": "rgb(255, 102, 0)",
+          "hollow": "rgba(0, 0, 0, 0)",
+          "border": "2px"
+        }
+      }
+    },
+    {
+      "name": "mobile/file-offline/DPR3: initial dialog focus",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: Tab/Shift+Tab focus closed loop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: Escape focus return",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: close button closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: backdrop closes dialog",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: both themes actually render",
+      "passed": true,
+      "detail": [
+        {
+          "theme": "light",
+          "background": "rgb(255, 255, 255)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(246, 246, 247)"
+        },
+        {
+          "theme": "light",
+          "background": "rgb(225, 225, 228)"
+        },
+        {
+          "theme": "dark",
+          "background": "rgb(244, 244, 245)"
+        }
+      ]
+    },
+    {
+      "name": "mobile/file-offline/DPR3: palette really changes Canvas colors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: offline controls and API",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "mobile/file-offline/DPR3: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "mobile/file-offline/DPR3: no external requests",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "desktop-http-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "http",
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 100,
+        "zoom": 5
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "c289f77d58bb355a1a9ef4ed1dfd5948ded53de19234a684dce8f714c2fd3c79"
+    },
+    {
+      "file": "desktop-file-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "file",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "f013b4c88782bef0ad8e3da9c3988526dd1142d609976926dc7f04be8d3da909"
+    },
+    {
+      "file": "desktop-file-offline-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "f013b4c88782bef0ad8e3da9c3988526dd1142d609976926dc7f04be8d3da909"
+    },
+    {
+      "file": "mobile-http-dpr1.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 1,
+      "mode": "http",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "ebcd0ecd6a4fc4b629edc5e4ef9e5713610ce364d1ff0e620189ea43a1f83ef4"
+    },
+    {
+      "file": "mobile-file-dpr1.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 1,
+      "mode": "file",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "ebcd0ecd6a4fc4b629edc5e4ef9e5713610ce364d1ff0e620189ea43a1f83ef4"
+    },
+    {
+      "file": "mobile-file-offline-dpr1.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 1,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "ebcd0ecd6a4fc4b629edc5e4ef9e5713610ce364d1ff0e620189ea43a1f83ef4"
+    },
+    {
+      "file": "desktop-http-dpr2.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 2,
+      "mode": "http",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "5ebed2b369949fa50e43dc579e2428140347cba148cd046a236cbca28ddb1040"
+    },
+    {
+      "file": "desktop-file-dpr2.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 2,
+      "mode": "file",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "5ebed2b369949fa50e43dc579e2428140347cba148cd046a236cbca28ddb1040"
+    },
+    {
+      "file": "desktop-file-offline-dpr2.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 2,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "5ebed2b369949fa50e43dc579e2428140347cba148cd046a236cbca28ddb1040"
+    },
+    {
+      "file": "mobile-http-dpr2.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 2,
+      "mode": "http",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "8f122d25d009282ccd58c5e469378b4dbce7da99cbc767879bb7bfdd87c7003c"
+    },
+    {
+      "file": "mobile-file-dpr2.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 2,
+      "mode": "file",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "8f122d25d009282ccd58c5e469378b4dbce7da99cbc767879bb7bfdd87c7003c"
+    },
+    {
+      "file": "mobile-file-offline-dpr2.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 2,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "8f122d25d009282ccd58c5e469378b4dbce7da99cbc767879bb7bfdd87c7003c"
+    },
+    {
+      "file": "desktop-http-dpr3.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 3,
+      "mode": "http",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "4a5299afd2e9fec6808748aeb6d97441f79f926ec5aa229faed48ac88ade8900"
+    },
+    {
+      "file": "desktop-file-dpr3.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 3,
+      "mode": "file",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "4a5299afd2e9fec6808748aeb6d97441f79f926ec5aa229faed48ac88ade8900"
+    },
+    {
+      "file": "desktop-file-offline-dpr3.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 3,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "4a5299afd2e9fec6808748aeb6d97441f79f926ec5aa229faed48ac88ade8900"
+    },
+    {
+      "file": "mobile-http-dpr3.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 3,
+      "mode": "http",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "dcd1c1c78644b84b92c5be9d056347022809d88052ce16fffd06bf2079c8894a"
+    },
+    {
+      "file": "mobile-file-dpr3.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 3,
+      "mode": "file",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "dcd1c1c78644b84b92c5be9d056347022809d88052ce16fffd06bf2079c8894a"
+    },
+    {
+      "file": "mobile-file-offline-dpr3.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 3,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 6000,
+        "slitWidth": 3000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "theme": "light",
+      "palette": "color",
+      "programSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "sha256": "dcd1c1c78644b84b92c5be9d056347022809d88052ce16fffd06bf2079c8894a"
+    }
+  ],
+  "observations": [
+    {
+      "scan": "wavelength",
+      "value": 380,
+      "params": {
+        "wavelength": 380,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.076,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.07497437742773597,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.038,
+          0.11399999999999999
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.07497437741454388,
+        "intensity": 0.8767387656364832
+      },
+      "residualEta": -0.0010256225722640316
+    },
+    {
+      "scan": "wavelength",
+      "value": 430,
+      "params": {
+        "wavelength": 430,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.086,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.08483942710424303,
+        "intensity": 0.8767387656364833,
+        "searchedInterval": [
+          0.043,
+          0.129
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.08483942737540959,
+        "intensity": 0.8767387656364832
+      },
+      "residualEta": -0.0011605728957569672
+    },
+    {
+      "scan": "wavelength",
+      "value": 500,
+      "params": {
+        "wavelength": 500,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.1,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.0986504966254512,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.05,
+          0.15000000000000002
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.09865049663013153,
+        "intensity": 0.8767387656364832
+      },
+      "residualEta": -0.0013495033745488105
+    },
+    {
+      "scan": "wavelength",
+      "value": 550,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.11,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.10851554602507804,
+        "intensity": 0.8767387656364831
+      },
+      "residualEta": -0.0014844537383238432
+    },
+    {
+      "scan": "wavelength",
+      "value": 620,
+      "params": {
+        "wavelength": 620,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.124,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.12232661571793742,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.062,
+          0.186
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.12232661583545626,
+        "intensity": 0.8767387656364831
+      },
+      "residualEta": -0.0016733842820625816
+    },
+    {
+      "scan": "wavelength",
+      "value": 690,
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.138,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.13613768525343584,
+        "intensity": 0.8767387656364833,
+        "searchedInterval": [
+          0.069,
+          0.20700000000000002
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.13613768523891784,
+        "intensity": 0.8767387656364832
+      },
+      "residualEta": -0.0018623147465641754
+    },
+    {
+      "scan": "wavelength",
+      "value": 750,
+      "params": {
+        "wavelength": 750,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.15,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.14797574497346316,
+        "intensity": 0.8767387656364836,
+        "searchedInterval": [
+          0.075,
+          0.22499999999999998
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.14797574465956514,
+        "intensity": 0.8767387656364832
+      },
+      "residualEta": -0.002024255026536831
+    },
+    {
+      "scan": "separation",
+      "value": 1000,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 1000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.55,
+      "missingIdealOrder": true,
+      "observedPeak": null,
+      "fullFormulaPrediction": null,
+      "residualEta": null
+    },
+    {
+      "scan": "separation",
+      "value": 2000,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 2000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.275,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.25110755768304216,
+        "intensity": 0.4424124390355924,
+        "searchedInterval": [
+          0.1375,
+          0.41250000000000003
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.2511075585857059,
+        "intensity": 0.44241243903559235
+      },
+      "residualEta": -0.023892442316957863
+    },
+    {
+      "scan": "separation",
+      "value": 3400,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 3400,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.16176470588235295,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.15698879009157485,
+        "intensity": 0.7525978353853081,
+        "searchedInterval": [
+          0.08088235294117647,
+          0.24264705882352944
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.15698878987084047,
+        "intensity": 0.7525978353853084
+      },
+      "residualEta": -0.004775915790778101
+    },
+    {
+      "scan": "separation",
+      "value": 5000,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.11,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.10851554602507804,
+        "intensity": 0.8767387656364831
+      },
+      "residualEta": -0.0014844537383238432
+    },
+    {
+      "scan": "separation",
+      "value": 6000,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 6000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.09166666666666666,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.09081059395609045,
+        "intensity": 0.9126839627531547,
+        "searchedInterval": [
+          0.04583333333333333,
+          0.13749999999999998
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.09081059379324552,
+        "intensity": 0.9126839627531544
+      },
+      "residualEta": -0.0008560727105762084
+    },
+    {
+      "scan": "separation",
+      "value": 7600,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 7600,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.07236842105263158,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.07194850054832702,
+        "intensity": 0.9446401774259144,
+        "searchedInterval": [
+          0.03618421052631579,
+          0.10855263157894737
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.07194850042883388,
+        "intensity": 0.9446401774259147
+      },
+      "residualEta": -0.0004199205043045606
+    },
+    {
+      "scan": "separation",
+      "value": 10000,
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 10000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "idealEta": 0.055,
+      "missingIdealOrder": false,
+      "observedPeak": {
+        "eta": 0.05481608088254273,
+        "intensity": 0.9676383647741506,
+        "searchedInterval": [
+          0.0275,
+          0.0825
+        ]
+      },
+      "fullFormulaPrediction": {
+        "eta": 0.054816080814251766,
+        "intensity": 0.9676383647741507
+      },
+      "residualEta": -0.00018391911745727074
+    }
+  ],
+  "untestedBrowsers": [
+    "Firefox",
+    "WebKit"
+  ],
+  "core": {
+    "schemaVersion": 1,
+    "round": 7,
+    "appSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+    "runtime": {
+      "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+      "browserStore": "C:/ProgramData/ms-playwright",
+      "version": "1.63.0-alpha-2026-08-31",
+      "chromiumRevision": "1243",
+      "browserVersion": "153.0.8010.12"
+    },
+    "checks": [
+      {
+        "name": "offline HTML and credential scan",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: title/content",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #wavelength",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitSeparation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitWidth",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #screenDistance",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #zoom",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #interferenceCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensityCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensity-tooltip",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: canvas alignment",
+        "passed": true,
+        "detail": {
+          "widthA": 1096,
+          "widthB": 1096,
+          "leftA": 318,
+          "leftB": 318,
+          "dpr": 1,
+          "ratioA": 1,
+          "ratioB": 1
+        }
+      },
+      {
+        "name": "DPR 1: backing resolution",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "normalized center",
+        "passed": true,
+        "detail": 1
+      },
+      {
+        "name": "a <= d normalized through API",
+        "passed": true,
+        "detail": {
+          "wavelength": 550,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        }
+      },
+      {
+        "name": "range input updates model",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "URL clamp and invalid defaults",
+        "passed": true,
+        "detail": {
+          "wavelength": 750,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 1,
+          "zoom": 5
+        }
+      },
+      {
+        "name": "curve hover percentage",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "hover hides on leave",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "keyboard curve probe",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "independent dense physical matrix",
+        "passed": true,
+        "detail": {
+          "rows": 54,
+          "samplesPerRow": 2001
+        }
+      },
+      {
+        "name": "wavelength 380: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "wavelength 430: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "wavelength 500: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "wavelength 550: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "wavelength 620: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "wavelength 690: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "wavelength 750: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "separation 2000: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "separation 3400: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "separation 5000: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "separation 6000: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "separation 7600: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "separation 10000: actual peak against full formula",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "second-order peak below center",
+        "passed": true,
+        "detail": {
+          "eta": 0.21677249536569904,
+          "intensity": 0.5777871858847251
+        }
+      },
+      {
+        "name": "equal widths between adjacent interference dark fringes",
+        "passed": true,
+        "detail": {
+          "central": 0.11,
+          "secondOrder": 0.11
+        }
+      },
+      {
+        "name": "display scale does not alter physics",
+        "passed": true,
+        "detail": [
+          0.18423448447151056,
+          0.18423448447151056,
+          0.18423448447151056
+        ]
+      },
+      {
+        "name": "fixed reference bright-to-dark transition",
+        "passed": true,
+        "detail": {
+          "bright": 0.91189065278104,
+          "dark": 9.312770086965963e-31,
+          "markers": {
+            "wavelength": [
+              {
+                "kind": "bright",
+                "order": 1,
+                "value": 660
+              },
+              {
+                "kind": "dark",
+                "order": 1.5,
+                "value": 440
+              }
+            ],
+            "slitSeparation": [
+              {
+                "kind": "bright",
+                "order": 1,
+                "value": 6000
+              },
+              {
+                "kind": "dark",
+                "order": 0.5,
+                "value": 3000
+              },
+              {
+                "kind": "dark",
+                "order": 1.5,
+                "value": 9000
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "critical wavelength range",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "principle diagram dialog opens",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "Escape returns focus",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "theme and grayscale controls",
+        "passed": true,
+        "detail": {
+          "theme": "dark",
+          "palette": "grayscale"
+        }
+      },
+      {
+        "name": "mobile no horizontal overflow",
+        "passed": true,
+        "detail": 0
+      },
+      {
+        "name": "file:// works with network disabled",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "offline interaction",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: zero external requests",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: console and page health",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 2: title/content",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #wavelength",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #slitSeparation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #slitWidth",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #screenDistance",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #zoom",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #interferenceCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #intensityCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: #intensity-tooltip",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: canvas alignment",
+        "passed": true,
+        "detail": {
+          "widthA": 1096,
+          "widthB": 1096,
+          "leftA": 318,
+          "leftB": 318,
+          "dpr": 2,
+          "ratioA": 2,
+          "ratioB": 2
+        }
+      },
+      {
+        "name": "DPR 2: backing resolution",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 2: zero external requests",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 2: console and page health",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 3: title/content",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #wavelength",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #slitSeparation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #slitWidth",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #screenDistance",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #zoom",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #interferenceCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #intensityCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: #intensity-tooltip",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: canvas alignment",
+        "passed": true,
+        "detail": {
+          "widthA": 1096,
+          "widthB": 1096,
+          "leftA": 318,
+          "leftB": 318,
+          "dpr": 3,
+          "ratioA": 3,
+          "ratioB": 3
+        }
+      },
+      {
+        "name": "DPR 3: backing resolution",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 3: zero external requests",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 3: console and page health",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "numericalRows": [
+      {
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          1.5195743635847468e-33,
+          1.5195743635847466e-33
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.039148727169493e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.4510643961409606e-34,
+          3.490115548910062e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.627660990352392e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 1.1102230246251565e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.664518512054131e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 1.1102230246251565e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.45106439614098e-34,
+          3.696313469579642e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.718663155120622e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          1.5195743635847468e-33,
+          1.5195743635847466e-33
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.039148727169493e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.4510643961409764e-34,
+          7.469655168442427e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.627660990352392e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 1.1102230246251565e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.664518512054131e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.45106439614098e-34,
+          2.5494436685206023e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.718663155120622e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          1.5195743635847468e-33,
+          1.5195743635847466e-33
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.039148727169493e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.4510643961409606e-34,
+          3.4901155489100616e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 4.440892098500626e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          2.502092265579645e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.664518512054131e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.4510643961409489e-34,
+          3.696313469579642e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 4.440892098500626e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          2.5648588287240893e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          1.5195743635847468e-33,
+          1.5195743635847466e-33
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.039148727169493e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.4510643961409606e-34,
+          3.4901155489100616e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 1.1102230246251565e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.627660990352392e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          7.842917880459969e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.45106439614098e-34,
+          3.696313469579642e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 4.440892098500626e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.718663155120622e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 4.440892098500626e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.25224088994078e-32,
+          3.25224088994078e-32
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          6.504481779881558e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.1056137008879384e-33,
+          7.469655168442427e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.627660990352392e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.664518512054131e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.105613700887913e-33,
+          2.5494436685206023e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 4.440892098500626e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.718663155120622e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.25224088994078e-32,
+          3.25224088994078e-32
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          6.504481779881558e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.105613700887972e-33,
+          7.469655168442424e-32,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.627660990352392e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.664518512054131e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.105613700887913e-33,
+          3.696313469579642e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.718663155120622e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          1.5195743635847468e-33,
+          1.5195743635847466e-33
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.039148727169493e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 4.440892098500626e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.4510643961409606e-34,
+          3.4901155489100616e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.627660990352392e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 1.1102230246251565e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.664518512054131e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.4510643961409489e-34,
+          3.696313469579642e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.718663155120622e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 200,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          3.744468041164996e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 3000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 2.220446049250313e-16,
+        "symmetry": 0,
+        "zeros": [
+          8.130602224851929e-33,
+          2.7627064807624012e-33,
+          0
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          1.5195743635847466e-33,
+          1.5195743635847468e-33,
+          1.5195743635847466e-33
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 3000,
+          "slitWidth": 3000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 3.3306690738754696e-16,
+        "symmetry": 0,
+        "zeros": [
+          3.25224088994078e-32,
+          3.25224088994078e-32,
+          3.25224088994078e-32
+        ],
+        "passed": true
+      },
+      {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 10000,
+          "slitWidth": 3000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "sampleCount": 2001,
+        "maxError": 1.6653345369377348e-16,
+        "symmetry": 0,
+        "zeros": [
+          8.130602224851994e-33,
+          3.479949793932845e-33,
+          0
+        ],
+        "passed": true
+      }
+    ],
+    "observations": [
+      {
+        "scan": "wavelength",
+        "value": 380,
+        "params": {
+          "wavelength": 380,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.076,
+        "predictedSpacingCssPx": 15.2,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.07497437741454388,
+          "intensity": 0.8767387656364832
+        },
+        "observedPeak": {
+          "eta": 0.07497437741454388,
+          "intensity": 0.8767387656364831
+        },
+        "peakShiftFromIdealEta": -0.001025622585456118,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "wavelength",
+        "value": 430,
+        "params": {
+          "wavelength": 430,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.086,
+        "predictedSpacingCssPx": 17.2,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.08483942737540959,
+          "intensity": 0.8767387656364832
+        },
+        "observedPeak": {
+          "eta": 0.08483942737540959,
+          "intensity": 0.8767387656364833
+        },
+        "peakShiftFromIdealEta": -0.0011605726245904058,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "wavelength",
+        "value": 500,
+        "params": {
+          "wavelength": 500,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.1,
+        "predictedSpacingCssPx": 20,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.09865049663013153,
+          "intensity": 0.8767387656364832
+        },
+        "observedPeak": {
+          "eta": 0.09865049663013153,
+          "intensity": 0.8767387656364832
+        },
+        "peakShiftFromIdealEta": -0.001349503369868471,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "wavelength",
+        "value": 550,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.11,
+        "predictedSpacingCssPx": 22,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.10851554602507804,
+          "intensity": 0.8767387656364831
+        },
+        "observedPeak": {
+          "eta": 0.10851554602507804,
+          "intensity": 0.876738765636483
+        },
+        "peakShiftFromIdealEta": -0.0014844539749219593,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "wavelength",
+        "value": 620,
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.124,
+        "predictedSpacingCssPx": 24.8,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.12232661583545626,
+          "intensity": 0.8767387656364831
+        },
+        "observedPeak": {
+          "eta": 0.12232661583545626,
+          "intensity": 0.8767387656364831
+        },
+        "peakShiftFromIdealEta": -0.0016733841645437397,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "wavelength",
+        "value": 690,
+        "params": {
+          "wavelength": 690,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.138,
+        "predictedSpacingCssPx": 27.6,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.13613768523891784,
+          "intensity": 0.8767387656364832
+        },
+        "observedPeak": {
+          "eta": 0.13613768523891784,
+          "intensity": 0.8767387656364832
+        },
+        "peakShiftFromIdealEta": -0.0018623147610821733,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "wavelength",
+        "value": 750,
+        "params": {
+          "wavelength": 750,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.15,
+        "predictedSpacingCssPx": 30,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.14797574465956514,
+          "intensity": 0.8767387656364832
+        },
+        "observedPeak": {
+          "eta": 0.14797574465956514,
+          "intensity": 0.8767387656364831
+        },
+        "peakShiftFromIdealEta": -0.0020242553404348496,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "separation",
+        "value": 1000,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.55,
+        "predictedSpacingCssPx": 110.00000000000001,
+        "missingIdealOrder": true,
+        "fullFormulaPeak": null,
+        "observedPeak": null,
+        "peakShiftFromIdealEta": null,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "separation",
+        "value": 2000,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 2000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.275,
+        "predictedSpacingCssPx": 55.00000000000001,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.2511075585857059,
+          "intensity": 0.44241243903559235
+        },
+        "observedPeak": {
+          "eta": 0.2511075585857059,
+          "intensity": 0.4424124390355924
+        },
+        "peakShiftFromIdealEta": -0.02389244141429414,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "separation",
+        "value": 3400,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 3400,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.16176470588235295,
+        "predictedSpacingCssPx": 32.35294117647059,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.15698878987084047,
+          "intensity": 0.7525978353853084
+        },
+        "observedPeak": {
+          "eta": 0.15698878987084047,
+          "intensity": 0.7525978353853083
+        },
+        "peakShiftFromIdealEta": -0.004775916011512477,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "separation",
+        "value": 5000,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.11,
+        "predictedSpacingCssPx": 22,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.10851554602507804,
+          "intensity": 0.8767387656364831
+        },
+        "observedPeak": {
+          "eta": 0.10851554602507804,
+          "intensity": 0.876738765636483
+        },
+        "peakShiftFromIdealEta": -0.0014844539749219593,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "separation",
+        "value": 6000,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 6000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.09166666666666666,
+        "predictedSpacingCssPx": 18.333333333333332,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.09081059379324552,
+          "intensity": 0.9126839627531544
+        },
+        "observedPeak": {
+          "eta": 0.09081059379324552,
+          "intensity": 0.9126839627531543
+        },
+        "peakShiftFromIdealEta": -0.0008560728734211404,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "separation",
+        "value": 7600,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.07236842105263158,
+        "predictedSpacingCssPx": 14.473684210526317,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.07194850042883388,
+          "intensity": 0.9446401774259147
+        },
+        "observedPeak": {
+          "eta": 0.07194850042883388,
+          "intensity": 0.9446401774259149
+        },
+        "peakShiftFromIdealEta": -0.00041992062379769823,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      },
+      {
+        "scan": "separation",
+        "value": 10000,
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 10000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "idealInterferenceEta": 0.055,
+        "predictedSpacingCssPx": 11,
+        "missingIdealOrder": false,
+        "fullFormulaPeak": {
+          "eta": 0.054816080814251766,
+          "intensity": 0.9676383647741507
+        },
+        "observedPeak": {
+          "eta": 0.054816080814251766,
+          "intensity": 0.9676383647741506
+        },
+        "peakShiftFromIdealEta": -0.0001839191857482339,
+        "measurementUnit": "eta; display positions are CSS pixels, not physical distance"
+      }
+    ],
+    "screenshots": [
+      {
+        "file": "mobile-dpr1.png",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "mode": "http",
+        "sha256": "d5ffb7146b9503c0ee0363cd572fac13d661a81bfaa9f21e6f14484986b5cb24"
+      },
+      {
+        "file": "desktop-dpr1.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mode": "rendered",
+        "sha256": "213b1e63ae1417eae8b0ab599f583906e04ac5ac8a0a5969bdcf45ba883c5d40"
+      },
+      {
+        "file": "desktop-dpr2.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 2,
+        "mode": "rendered",
+        "sha256": "273806d5c0a0c681d252c2a73d659a4b63bc39a61b62f00425c7edffc732b035"
+      },
+      {
+        "file": "desktop-dpr3.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 3,
+        "mode": "rendered",
+        "sha256": "d98dbd3f6f8c9b2290ef4d7b935bde680ff2e9bb062b2c9415105aa4703b5f93"
+      }
+    ],
+    "untestedBrowsers": [
+      "Firefox",
+      "WebKit"
+    ],
+    "passed": true
+  },
+  "highOrder": {
+    "peak": {
+      "eta": 0.21677249511509772,
+      "intensity": 0.577787185884725,
+      "searchedInterval": [
+        0.165,
+        0.275
+      ]
+    },
+    "widths": {
+      "central": 0.10999999999999989,
+      "second": 0.1100000000000001,
+      "boundaries": [
+        -0.054999999999999945,
+        0.054999999999999945,
+        0.16499999999999992,
+        0.275
+      ]
+    },
+    "scaleEvidence": [
+      {
+        "screenDistance": 10,
+        "zoom": 1,
+        "intensity": 0.18423448447151056,
+        "maxRasterError": 7.845145042086445e-17,
+        "secondPeakCssOffset": 8.67089980460391
+      },
+      {
+        "screenDistance": 50,
+        "zoom": 3,
+        "intensity": 0.18423448447151056,
+        "maxRasterError": 2.220446049250313e-16,
+        "secondPeakCssOffset": 130.06349706905863
+      },
+      {
+        "screenDistance": 100,
+        "zoom": 5,
+        "intensity": 0.18423448447151056,
+        "maxRasterError": 4.440892098500626e-16,
+        "secondPeakCssOffset": 433.5449902301954
+      }
+    ]
+  },
+  "passed": true
+}

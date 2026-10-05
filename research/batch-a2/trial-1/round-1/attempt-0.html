@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="color">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨氏双缝干涉仿真</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+    
+    <style id="phy-sim-style">
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --panel-bg: #f9f9f9;
+            --border-color: #cccccc;
+            --accent-color: #007bff;
+            --modal-backdrop: rgba(0, 0, 0, 0.5);
+            --canvas-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --panel-bg: #2d2d2d;
+            --border-color: #444444;
+            --accent-color: #4da3ff;
+            --modal-backdrop: rgba(0, 0, 0, 0.8);
+            --canvas-bg: #000000;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        body[data-compact="true"] { font-size: 13px; }
+        body[data-compact="true"] .panel-controls { padding: 0.5rem; gap: 0.8rem; }
+        body[data-compact="true"] .visual-box { padding: 0.5rem; }
+
+        header {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        h1 { font-size: 1.2rem; font-weight: bold; }
+
+        .toolbar button {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .toolbar button:hover { background-color: var(--border-color); }
+
+        main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .panel-controls {
+            width: 300px;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .panel-visuals {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 0;
+        }
+
+        .visual-box {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .visual-box.pattern { flex: 1; min-height: 140px; }
+        .visual-box.curve { flex: 1; min-height: 140px; }
+
+        .box-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .control-group { display: flex; flex-direction: column; gap: 0.3rem; }
+        
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        input[type=range] {
+            width: 100%;
+            cursor: pointer;
+            accent-color: var(--accent-color);
+        }
+
+        .markers-container {
+            display: flex;
+            height: 12px;
+            position: relative;
+            margin-top: 2px;
+        }
+
+        .marker {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            top: 2px;
+            transform: translateX(-50%);
+            border-radius: 50%;
+        }
+
+        .marker.bright, .marker[data-kind="bright"] { background-color: var(--accent-color); }
+        .marker.dark, .marker[data-kind="dark"] { border: 2px solid var(--accent-color); background: transparent; }
+
+        .canvas-wrapper {
+            flex: 1;
+            position: relative;
+            width: 100%;
+            background-color: var(--canvas-bg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #intensity-tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            pointer-events: none;
+            z-index: 10;
+            white-space: pre;
+            display: none;
+            transform: translate(-50%, -130%);
+        }
+
+        #principle-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--modal-backdrop);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 16px;
+        }
+
+        #principle-modal.open { display: flex; }
+
+        .modal-inner {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        #modal-close-button {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--text-color);
+            line-height: 1;
+        }
+
+        .modal-svg {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            main { flex-direction: column; overflow-y: auto; }
+            .panel-controls { width: 100%; height: auto; flex: none; }
+            .panel-visuals { min-height: 500px; flex: none; }
+            .visual-box.pattern { min-height: 120px; }
+            .visual-box.curve { min-height: 120px; }
+        }
+    </style>
+</head>
+<body data-compact="false">
+
+    <header>
+        <h1>杨氏双缝干涉仿真</h1>
+        <div class="toolbar">
+            <button id="reset-button">重置</button>
+            <button id="theme-button">主题</button>
+            <button id="palette-button">调色板</button>
+            <button id="principle-button">原理</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="panel-controls" aria-label="参数调控">
+            <div class="box-title">参数调控</div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="wavelength">波长 λ</label>
+                    <output id="wavelength-output">550 nm</output>
+                </div>
+                <input type="range" id="wavelength" min="380" max="750" value="550" step="1">
+                <div id="wavelength-markers" class="markers-container"></div>
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitSeparation">缝间距 d</label>
+                    <output id="slitSeparation-output">5000 nm</output>
+                </div>
+                <input type="range" id="slitSeparation" min="1000" max="10000" value="5000" step="10">
+                <div id="slitSeparation-markers" class="markers-container"></div>
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitWidth">缝宽 a</label>
+                    <output id="slitWidth-output">1000 nm</output>
+                </div>
+                <input type="range" id="slitWidth" min="200" max="3000" value="1000" step="10">
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="screenDistance">显示距 D</label>
+                    <output id="screenDistance-output">50</output>
+                </div>
+                <input type="range" id="screenDistance" min="1" max="100" value="50" step="1">
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="zoom">缩放 Z</label>
+                    <output id="zoom-output">×1.0</output>
+                </div>
+                <input type="range" id="zoom" min="1" max="5" value="1" step="0.1">
+            </div>
+        </section>
+
+        <section class="panel-visuals">
+            <div class="visual-box pattern">
+                <div class="box-title">干涉条纹图样</div>
+                <div class="canvas-wrapper">
+                    <canvas id="interferenceCanvas"></canvas>
+                </div>
+            </div>
+
+            <div class="visual-box curve">
+                <div class="box-title">归一化光强</div>
+                <div class="canvas-wrapper">
+                    <canvas id="intensityCanvas" tabindex="0"></canvas>
+                    <div id="intensity-tooltip" role="tooltip" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="principle-modal">
+        <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button id="modal-close-button" aria-label="关闭">&times;</button>
+            <h2 id="modal-title">杨氏双缝干涉原理</h2>
+            <p style="margin:0.8rem 0;">光通过两个狭缝后发生衍射和干涉，在远处屏幕上形成明暗相间的条纹。光强分布为单缝衍射包络与双缝干涉因子的乘积。</p>
+            
+            <svg class="modal-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="100" r="5" fill="currentColor" />
+                <text x="35" y="90" font-size="12" fill="currentColor">S</text>
+                <line x1="150" y1="20" x2="150" y2="85" stroke="currentColor" stroke-width="2" />
+                <line x1="150" y1="115" x2="150" y2="180" stroke="currentColor" stroke-width="2" />
+                <text x="155" y="105" font-size="11" fill="currentColor">d</text>
+                <line x1="350" y1="20" x2="350" y2="180" stroke="currentColor" stroke-width="2" />
+                <text x="355" y="100" font-size="11" fill="currentColor">屏</text>
+                <path d="M 50 100 L 150 88 L 350 60" stroke="currentColor" stroke-dasharray="4" fill="none" opacity="0.6"/>
+                <path d="M 50 100 L 150 112 L 350 60" stroke="currentColor" stroke-dasharray="4" fill="none" opacity="0.6"/>
+                <text x="220" y="150" font-size="11" fill="currentColor">D (屏距)</text>
+                <text x="100" y="190" font-size="10" fill="currentColor">I(η) = sinc²(πaη/λ)·cos²(πdη/λ)</text>
+            </svg>
+            
+            <p style="margin-top:0.5rem;font-size:0.9rem;">其中 η 为屏幕上的角坐标参数，a 为缝宽，d 为缝间距，λ 为波长。</p>
+        </div>
+    </div>
+
+    <script id="phy-sim-script">
+    (function() {
+        'use strict';
+
+        var VERSION = '0.9.1';
+        var ETA_REF = 0.11;
+
+        var DEFAULTS = { wavelength: 550, slitSeparation: 5000, slitWidth: 1000, screenDistance: 50, zoom: 1 };
+        var LIMITS = {
+            wavelength: [380, 750],
+            slitSeparation: [1000, 10000],
+            slitWidth: [200, 3000],
+            screenDistance: [1, 100],
+            zoom: [1, 5]
+        };
+        var KEYS = ['wavelength', 'slitSeparation', 'slitWidth', 'screenDistance', 'zoom'];
+
+        var params = { wavelength: 550, slitSeparation: 5000, slitWidth: 1000, screenDistance: 50, zoom: 1 };
+        var theme = 'light';
+        var palette = 'color';
+        var compact = false;
+        var hoverX = -1;
+        var readyResolve = null;
+        var readyPromise = new Promise(function(r) { readyResolve = r; });
+        var firstFrameDone = false;
+
+        function clamp(v, lo, hi) { return v < lo ? lo : (v > hi ? hi : v); }
+
+        function normalizeParams(p) {
+            var out = {};
+            for (var i = 0; i < KEYS.length; i++) {
+                var k = KEYS[i];
+                var v = (p && typeof p[k] === 'number' && isFinite(p[k])) ? p[k] : DEFAULTS[k];
+                out[k] = clamp(v, LIMITS[k][0], LIMITS[k][1]);
+            }
+            out.slitWidth = Math.min(out.slitWidth, out.slitSeparation);
+            return out;
+        }
+
+        function sinc(t) {
+            if (Math.abs(t) < 1e-12) return 1;
+            return Math.sin(t) / t;
+        }
+
+        function intensityAtEta(eta, p) {
+            p = p || params;
+            var lambda = p.wavelength;
+            var a = p.slitWidth;
+            var d = p.slitSeparation;
+            var t1 = Math.PI * a * eta / lambda;
+            var t2 = Math.PI * d * eta / lambda;
+            var s = sinc(t1);
+            return s * s * Math.cos(t2) * Math.cos(t2);
+        }
+
+        function etaFromX(x, cssWidth, p) {
+            p = p || params;
+            return (x - cssWidth / 2) / (4 * p.screenDistance * p.zoom);
+        }
+
+        function wavelengthToRGB(wl) {
+            var r = 0, g = 0, b = 0;
+            if (wl >= 380 && wl < 440) { r = -(wl - 440) / 60; b = 1; }
+            else if (wl >= 440 && wl < 490) { g = (wl - 440) / 50; b = 1; }
+            else if (wl >= 490 && wl < 510) { g = 1; b = -(wl - 510) / 20; }
+            else if (wl >= 510 && wl < 580) { r = (wl - 510) / 70; g = 1; }
+            else if (wl >= 580 && wl < 645) { r = 1; g = -(wl - 645) / 65; }
+            else if (wl >= 645 && wl <= 750) { r = 1; }
+            var f = 1;
+            if (wl >= 380 && wl < 420) f = 0.3 + 0.7 * (wl - 380) / 40;
+            else if (wl > 700 && wl <= 750) f = 0.3 + 0.7 * (750 - wl) / 50;
+            return [Math.round(255 * r * f), Math.round(255 * g * f), Math.round(255 * b * f)];
+        }
+
+        function getCanvasCSSWidth(canvas) {
+            return canvas.parentElement.clientWidth;
+        }
+
+        function setupCanvas(canvas) {
+            var dpr = window.devicePixelRatio || 1;
+            var w = canvas.parentElement.clientWidth;
+            var h = canvas.parentElement.clientHeight;
+            canvas.width = Math.round(w * dpr);
+            canvas.height = Math.round(h * dpr);
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            return { w: w, h: h, dpr: dpr };
+        }
+
+        function renderPattern() {
+            var canvas = document.getElementById('interferenceCanvas');
+            if (!canvas) return;
+            var info = setupCanvas(canvas);
+            var ctx = canvas.getContext('2d');
+            var w = info.w, h = info.h, dpr = info.dpr;
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.clearRect(0, 0, w, h);
+
+            var isDark = (theme === 'dark');
+            var rgb = wavelengthToRGB(params.wavelength);
+            var gamma = 0.45;
+
+            for (var x = 0; x < w; x++) {
+                var eta = etaFromX(x, w, params);
+                var I = intensityAtEta(eta, params);
+                var brightness;
+
+                if (palette === 'grayscale') {
+                    brightness = Math.pow(Math.max(0, I), gamma);
+                    var v = Math.round(brightness * 255);
+                    ctx.fillStyle = 'rgb(' + v + ',' + v + ',' + v + ')';
+                } else {
+                    brightness = Math.pow(Math.max(0, I), gamma);
+                    var cr = Math.round(rgb[0] * brightness);
+                    var cg = Math.round(rgb[1] * brightness);
+                    var cb = Math.round(rgb[2] * brightness);
+                    if (isDark) {
+                        ctx.fillStyle = 'rgb(' + cr + ',' + cg + ',' + cb + ')';
+                    } else {
+                        ctx.fillStyle = 'rgb(' + cr + ',' + cg + ',' + cb + ')';
+                    }
+                }
+                ctx.fillRect(x, 0, 1, h);
+            }
+
+            if (hoverX >= 0 && hoverX < w) {
+                ctx.strokeStyle = 'rgba(255,255,0,0.8)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(hoverX + 0.5, 0);
+                ctx.lineTo(hoverX + 0.5, h);
+                ctx.stroke();
+            }
+        }
+
+        function renderCurve() {
+            var canvas = document.getElementById('intensityCanvas');
+            if (!canvas) return;
+            var info = setupCanvas(canvas);
+            var ctx = canvas.getContext('2d');
+            var w = info.w, h = info.h, dpr = info.dpr;
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            var bgColor = (theme === 'dark') ? '#1a1a2e' : '#fefefe';
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, w, h);
+
+            var marginTop = 10;
+            var marginBottom = 10;
+            var plotH = h - marginTop - marginBottom;
+
+            // Grid lines
+            ctx.strokeStyle = (theme === 'dark') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)';
+            ctx.lineWidth = 0.5;
+            for (var gy = 0; gy <= 4; gy++) {
+                var yy = marginTop + plotH * (1 - gy / 4);
+                ctx.beginPath();
+                ctx.moveTo(0, yy);
+                ctx.lineTo(w, yy);
+                ctx.stroke();
+            }
+
+            // Draw curve
+            var lineColor = (theme === 'dark') ? '#4da3ff' : '#0055cc';
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+
+            var steps = Math.max(w * 2, 400);
+            for (var i = 0; i <= steps; i++) {
+                var x = (i / steps) * w;
+                var eta = etaFromX(x, w, params);
+                var I = intensityAtEta(eta, params);
+                var y = marginTop + plotH * (1 - I);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Hover indicator
+            if (hoverX >= 0 && hoverX < w) {
+                ctx.strokeStyle = 'rgba(255,200,0,0.9)';
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([4, 3]);
+                ctx.beginPath();
+                ctx.moveTo(hoverX + 0.5, 0);
+                ctx.lineTo(hoverX + 0.5, h);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                var hEta = etaFromX(hoverX, w, params);
+                var hI = intensityAtEta(hEta, params);
+                var dotY = marginTop + plotH * (1 - hI);
+                ctx.fillStyle = '#ff4444';
+                ctx.beginPath();
+                ctx.arc(hoverX, dotY, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function render() {
+            renderPattern();
+            renderCurve();
+            updateMarkers();
+        }
+
+        function updateOutputs() {
+            var el;
+            el = document.getElementById('wavelength-output');
+            if (el) el.textContent = params.wavelength + ' nm';
+            el = document.getElementById('slitSeparation-output');
+            if (el) el.textContent = params.slitSeparation + ' nm';
+            el = document.getElementById('slitWidth-output');
+            if (el) el.textContent = params.slitWidth + ' nm';
+            el = document.getElementById('screenDistance-output');
+            if (el) el.textContent = params.screenDistance + '';
+            el = document.getElementById('zoom-output');
+            if (el) el.textContent = '×' + params.zoom.toFixed(1);
+        }
+
+        function syncInputs() {
+            for (var i = 0; i < KEYS.length; i++) {
+                var k = KEYS[i];
+                var inp = document.getElementById(k);
+                if (inp) inp.value = params[k];
+            }
+            updateOutputs();
+        }
+
+        function getCriticalMarkers(p) {
+            p = p || params;
+            var lambda = p.wavelength;
+            var d = p.slitSeparation;
+            var result = { wavelength: [], slitSeparation: [] };
+
+            // Wavelength markers: given current d, find lambda values
+            // Bright: d * ETA_REF / lambda = m (positive integer) => lambda = d*ETA_REF/m
+            for (var m = 1; m <= 50; m++) {
+                var lam = d * ETA_REF / m;
+                if (lam >= LIMITS.wavelength[0] && lam <= LIMITS.wavelength[1]) {
+                    result.wavelength.push({ kind: 'bright', order: m, value: lam });
+                }
+                if (lam < LIMITS.wavelength[0]) break;
+            }
+            // Dark: d * ETA_REF / lambda = m + 0.5 => lambda = d*ETA_REF/(m+0.5)
+            for (var m2 = 0; m2 <= 50; m2++) {
+                var lam2 = d * ETA_REF / (m2 + 0.5);
+                if (lam2 >= LIMITS.wavelength[0] && lam2 <= LIMITS.wavelength[1]) {
+                    result.wavelength.push({ kind: 'dark', order: m2 + 0.5, value: lam2 });
+                }
+                if (lam2 < LIMITS.wavelength[0]) break;
+            }
+
+            // SlitSeparation markers: given current lambda, find d values
+            // Bright: d * ETA_REF / lambda = m => d = m*lambda/ETA_REF
+            for (var m3 = 1; m3 <= 50; m3++) {
+                var dv = m3 * lambda / ETA_REF;
+                if (dv >= LIMITS.slitSeparation[0] && dv <= LIMITS.slitSeparation[1]) {
+                    result.slitSeparation.push({ kind: 'bright', order: m3, value: dv });
+                }
+                if (dv > LIMITS.slitSeparation[1]) break;
+            }
+            // Dark: d * ETA_REF / lambda = m+0.5 => d = (m+0.5)*lambda/ETA_REF
+            for (var m4 = 0; m4 <= 50; m4++) {
+                var dv2 = (m4 + 0.5) * lambda / ETA_REF;
+                if (dv2 >= LIMITS.slitSeparation[0] && dv2 <= LIMITS.slitSeparation[1]) {
+                    result.slitSeparation.push({ kind: 'dark', order: m4 + 0.5, value: dv2 });
+                }
+                if (dv2 > LIMITS.slitSeparation[1]) break;
+            }
+
+            return result;
+        }
+
+        function updateMarkers() {
+            var markers = getCriticalMarkers(params);
+            renderMarkerContainer('wavelength-markers', markers.wavelength, LIMITS.wavelength);
+            renderMarkerContainer('slitSeparation-markers', markers.slitSeparation, LIMITS.slitSeparation);
+        }
+
+        function renderMarkerContainer(id, items, limits) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            el.innerHTML = '';
+            var min = limits[0], max = limits[1];
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                var pct = (item.value - min) / (max - min) * 100;
+                var span = document.createElement('span');
+                span.className = 'marker ' + item.kind;
+                span.setAttribute('data-kind', item.kind);
+                span.style.left = pct + '%';
+                span.title = item.kind + ' m=' + item.order + ' v=' + item.value.toFixed(1);
+                el.appendChild(span);
+            }
+        }
+
+        function applyTheme(t) {
+            theme = (t === 'dark') ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+
+        function applyPalette(p) {
+            palette = (p === 'grayscale') ? 'grayscale' : 'color';
+            document.documentElement.setAttribute('data-palette', palette);
+        }
+
+        function applyCompact(c) {
+            compact = !!c;
+            document.body.setAttribute('data-compact', compact ? 'true' : 'false');
+        }
+
+        function readURL() {
+            try {
+                var sp = new URLSearchParams(window.location.search);
+                var p = {};
+                for (var i = 0; i < KEYS.length; i++) {
+                    var k = KEYS[i];
+                    if (sp.has(k)) {
+                        var v = parseFloat(sp.get(k));
+                        if (isFinite(v)) p[k] = v;
+                    }
+                }
+                var norm = normalizeParams(p);
+                for (var j = 0; j < KEYS.length; j++) {
+                    if (p.hasOwnProperty(KEYS[j])) params[KEYS[j]] = norm[KEYS[j]];
+                }
+                if (sp.has('theme')) {
+                    var t = sp.get('theme');
+                    if (t === 'auto') t = (window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches) ? 'dark' : 'light';
+                    applyTheme(t);
+                }
+                if (sp.has('palette')) applyPalette(sp.get('palette'));
+                if (sp.has('compact')) applyCompact(sp.get('compact') === '1');
+            } catch (e) {}
+        }
+
+        function showTooltip(x) {
+            var canvas = document.getElementById('intensityCanvas');
+            var tooltip = document.getElementById('intensity-tooltip');
+            if (!canvas || !tooltip) return;
+            var w = canvas.parentElement.clientWidth;
+            if (x < 0 || x >= w) { hideTooltip(); return; }
+            var eta = etaFromX(x, w, params);
+            var I = intensityAtEta(eta, params);
+            tooltip.textContent = 'η=' + eta.toFixed(5) + '  I=' + (I * 100).toFixed(1) + '%';
+            tooltip.style.display = 'block';
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = '10px';
+            tooltip.setAttribute('aria-hidden', 'false');
+        }
+
+        function hideTooltip() {
+            var tooltip = document.getElementById('intensity-tooltip');
+            if (tooltip) {
+                tooltip.style.display = 'none';
+                tooltip.setAttribute('aria-hidden', 'true');
+            }
+        }
+
+        function setHover(x) {
+            hoverX = x;
+            renderPattern();
+            renderCurve();
+            if (x >= 0) showTooltip(x);
+            else hideTooltip();
+        }
+
+        // Modal
+        var modalOpen = false;
+        var lastFocused = null;
+
+        function openModal() {
+            var modal = document.getElementById('principle-modal');
+            if (!modal) return;
+            lastFocused = document.activeElement;
+            modal.classList.add('open');
+            modalOpen = true;
+            var closeBtn = document.getElementById('modal-close-button');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeModal() {
+            var modal = document.getElementById('principle-modal');
+            if (!modal) return;
+            modal.classList.remove('open');
+            modalOpen = false;
+            if (lastFocused && lastFocused.focus) lastFocused.focus();
+        }
+
+        function trapTab(e) {
+            if (!modalOpen) return;
+            var modal = document.getElementById('principle-modal');
+            var inner = modal.querySelector('.modal-inner');
+            var focusable = inner.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusable.length === 0) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+                } else {
+                    if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+                }
+            }
+        }
+
+        function init() {
+            readURL();
+            syncInputs();
+
+            // Input listeners
+            for (var i = 0; i < KEYS.length; i++) {
+                (function(k) {
+                    var inp = document.getElementById(k);
+                    if (inp) {
+                        inp.addEventListener('input', function() {
+                            var v = parseFloat(inp.value);
+                            if (!isFinite(v)) v = DEFAULTS[k];
+                            params[k] = clamp(v, LIMITS[k][0], LIMITS[k][1]);
+                            if (k === 'slitSeparation' || k === 'slitWidth') {
+                                params.slitWidth = Math.min(params.slitWidth, params.slitSeparation);
+                                var swInp = document.getElementById('slitWidth');
+                                if (swInp) swInp.value = params.slitWidth;
+                            }
+                            updateOutputs();
+                            render();
+                        });
+                    }
+                })(KEYS[i]);
+            }
+
+            // Buttons
+            document.getElementById('reset-button').addEventListener('click', function() {
+                params = normalizeParams({});
+                syncInputs();
+                render();
+            });
+
+            document.getElementById('theme-button').addEventListener('click', function() {
+                applyTheme(theme === 'dark' ? 'light' : 'dark');
+                render();
+            });
+
+            document.getElementById('palette-button').addEventListener('click', function() {
+                applyPalette(palette === 'color' ? 'grayscale' : 'color');
+                render();
+            });
+
+            document.getElementById('principle-button').addEventListener('click', openModal);
+            document.getElementById('modal-close-button').addEventListener('click', closeModal);
+
+            var modal = document.getElementById('principle-modal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOpen) { closeModal(); return; }
+                trapTab(e);
+            });
+
+            // Canvas hover
+            var intensityCanvas = document.getElementById('intensityCanvas');
+            intensityCanvas.addEventListener('pointermove', function(e) {
+                var rect = intensityCanvas.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                setHover(Math.round(x));
+            });
+            intensityCanvas.addEventListener('pointerleave', function() {
+                setHover(-1);
+            });
+
+            // Keyboard on intensity canvas
+            intensityCanvas.addEventListener('keydown', function(e) {
+                var w = intensityCanvas.parentElement.clientWidth;
+                var cx = (hoverX >= 0) ? hoverX : Math.round(w / 2);
+                if (e.key === 'Home') { cx = 0; e.preventDefault(); }
+                else if (e.key === 'End') { cx = w - 1; e.preventDefault(); }
+                else if (e.key === 'ArrowLeft') { cx = Math.max(0, cx - 2); e.preventDefault(); }
+                else if (e.key === 'ArrowRight') { cx = Math.min(w - 1, cx + 2); e.preventDefault(); }
+                else return;
+                setHover(cx);
+            });
+
+            intensityCanvas.addEventListener('focus', function() {
+                var w = intensityCanvas.parentElement.clientWidth;
+                if (hoverX < 0) setHover(Math.round(w / 2));
+            });
+
+            intensityCanvas.addEventListener('blur', function() {
+                setHover(-1);
+            });
+
+            // Resize
+            var resizeTimer = null;
+            window.addEventListener('resize', function() {
+                if (resizeTimer) clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() { render(); }, 50);
+            });
+
+            // First render
+            render();
+            firstFrameDone = true;
+            if (readyResolve) readyResolve(true);
+        }
+
+        // Public API
+        window.PhySim = {
+            version: VERSION,
+            defaults: JSON.parse(JSON.stringify(DEFAULTS)),
+            limits: JSON.parse(JSON.stringify(LIMITS)),
+            ready: readyPromise,
+            getParams: function() {
+                return { wavelength: params.wavelength, slitSeparation: params.slitSeparation, slitWidth: params.slitWidth, screenDistance: params.screenDistance, zoom: params.zoom };
+            },
+            setParams: function(partial) {
+                if (!partial || typeof partial !== 'object') return;
+                var merged = {};
+                for (var i = 0; i < KEYS.length; i++) {
+                    var k = KEYS[i];
+                    merged[k] = partial.hasOwnProperty(k) ? partial[k] : params[k];
+                }
+                params = normalizeParams(merged);
+                syncInputs();
+                render();
+            },
+            intensityAtEta: function(eta, p) {
+                return intensityAtEta(eta, p || params);
+            },
+            getCriticalMarkers: function(p) {
+                return getCriticalMarkers(p || params);
+            },
+            render: function() {
+                render();
+            }
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+</body>
+</html>

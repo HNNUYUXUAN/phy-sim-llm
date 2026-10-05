@@ -1,0 +1,850 @@
+{
+  "purpose": "Final deployment compliance measurements of already-frozen requirements",
+  "appSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "checks": [
+    {
+      "name": "1440/DPR1: delivered API version",
+      "passed": true,
+      "detail": "0.9.1"
+    },
+    {
+      "name": "1440/DPR1: reset wavelength",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR1: slider wavelength",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "620 nm"
+      }
+    },
+    {
+      "name": "1440/DPR1: reset slitSeparation",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR1: slider slitSeparation",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "7600 nm"
+      }
+    },
+    {
+      "name": "1440/DPR1: reset slitWidth",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR1: slider slitWidth",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 2000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "2000 nm"
+      }
+    },
+    {
+      "name": "1440/DPR1: reset screenDistance",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR1: slider screenDistance",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 80,
+          "zoom": 1
+        },
+        "label": "80"
+      }
+    },
+    {
+      "name": "1440/DPR1: reset zoom",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR1: slider zoom",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 4
+        },
+        "label": "×4.0"
+      }
+    },
+    {
+      "name": "1440/DPR1: drawn first peak position within 2 CSS pixels",
+      "passed": true,
+      "detail": {
+        "drawnX": 613,
+        "expectedX": 613.1093277570058,
+        "cssPixelError": 0.10932775700575803,
+        "physicalEta": 0.10851554626167616
+      }
+    },
+    {
+      "name": "1440/DPR1: hover eta and intensity rounding",
+      "passed": true,
+      "detail": {
+        "text": "η=0.10850 I_N=87.7%",
+        "etaError": 0.000015546261676158135,
+        "expectedEta": 0.10851554626167616,
+        "expectedIntensity": 0.8767387656364836
+      }
+    },
+    {
+      "name": "1440/DPR1: health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "390/DPR1: delivered API version",
+      "passed": true,
+      "detail": "0.9.1"
+    },
+    {
+      "name": "390/DPR1: reset wavelength",
+      "passed": true
+    },
+    {
+      "name": "390/DPR1: slider wavelength",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "620 nm"
+      }
+    },
+    {
+      "name": "390/DPR1: reset slitSeparation",
+      "passed": true
+    },
+    {
+      "name": "390/DPR1: slider slitSeparation",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "7600 nm"
+      }
+    },
+    {
+      "name": "390/DPR1: reset slitWidth",
+      "passed": true
+    },
+    {
+      "name": "390/DPR1: slider slitWidth",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 2000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "2000 nm"
+      }
+    },
+    {
+      "name": "390/DPR1: reset screenDistance",
+      "passed": true
+    },
+    {
+      "name": "390/DPR1: slider screenDistance",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 80,
+          "zoom": 1
+        },
+        "label": "80"
+      }
+    },
+    {
+      "name": "390/DPR1: reset zoom",
+      "passed": true
+    },
+    {
+      "name": "390/DPR1: slider zoom",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 4
+        },
+        "label": "×4.0"
+      }
+    },
+    {
+      "name": "390/DPR1: drawn first peak position within 2 CSS pixels",
+      "passed": true,
+      "detail": {
+        "drawnX": 234,
+        "expectedX": 234.1093277570057,
+        "cssPixelError": 0.10932775700570119,
+        "physicalEta": 0.10851554626167616
+      }
+    },
+    {
+      "name": "390/DPR1: hover eta and intensity rounding",
+      "passed": true,
+      "detail": {
+        "text": "η=0.10850 I_N=87.7%",
+        "etaError": 0.000015546261676158135,
+        "expectedEta": 0.10851554626167616,
+        "expectedIntensity": 0.8767387656364836
+      }
+    },
+    {
+      "name": "390/DPR1: health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1440/DPR2: delivered API version",
+      "passed": true,
+      "detail": "0.9.1"
+    },
+    {
+      "name": "1440/DPR2: reset wavelength",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR2: slider wavelength",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "620 nm"
+      }
+    },
+    {
+      "name": "1440/DPR2: reset slitSeparation",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR2: slider slitSeparation",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "7600 nm"
+      }
+    },
+    {
+      "name": "1440/DPR2: reset slitWidth",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR2: slider slitWidth",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 2000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "2000 nm"
+      }
+    },
+    {
+      "name": "1440/DPR2: reset screenDistance",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR2: slider screenDistance",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 80,
+          "zoom": 1
+        },
+        "label": "80"
+      }
+    },
+    {
+      "name": "1440/DPR2: reset zoom",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR2: slider zoom",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 4
+        },
+        "label": "×4.0"
+      }
+    },
+    {
+      "name": "1440/DPR2: drawn first peak position within 2 CSS pixels",
+      "passed": true,
+      "detail": {
+        "drawnX": 613,
+        "expectedX": 613.1093277570058,
+        "cssPixelError": 0.10932775700575803,
+        "physicalEta": 0.10851554626167616
+      }
+    },
+    {
+      "name": "1440/DPR2: hover eta and intensity rounding",
+      "passed": true,
+      "detail": {
+        "text": "η=0.10850 I_N=87.7%",
+        "etaError": 0.000015546261676158135,
+        "expectedEta": 0.10851554626167616,
+        "expectedIntensity": 0.8767387656364836
+      }
+    },
+    {
+      "name": "1440/DPR2: health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "390/DPR2: delivered API version",
+      "passed": true,
+      "detail": "0.9.1"
+    },
+    {
+      "name": "390/DPR2: reset wavelength",
+      "passed": true
+    },
+    {
+      "name": "390/DPR2: slider wavelength",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "620 nm"
+      }
+    },
+    {
+      "name": "390/DPR2: reset slitSeparation",
+      "passed": true
+    },
+    {
+      "name": "390/DPR2: slider slitSeparation",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "7600 nm"
+      }
+    },
+    {
+      "name": "390/DPR2: reset slitWidth",
+      "passed": true
+    },
+    {
+      "name": "390/DPR2: slider slitWidth",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 2000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "2000 nm"
+      }
+    },
+    {
+      "name": "390/DPR2: reset screenDistance",
+      "passed": true
+    },
+    {
+      "name": "390/DPR2: slider screenDistance",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 80,
+          "zoom": 1
+        },
+        "label": "80"
+      }
+    },
+    {
+      "name": "390/DPR2: reset zoom",
+      "passed": true
+    },
+    {
+      "name": "390/DPR2: slider zoom",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 4
+        },
+        "label": "×4.0"
+      }
+    },
+    {
+      "name": "390/DPR2: drawn first peak position within 2 CSS pixels",
+      "passed": true,
+      "detail": {
+        "drawnX": 234,
+        "expectedX": 234.1093277570057,
+        "cssPixelError": 0.10932775700570119,
+        "physicalEta": 0.10851554626167616
+      }
+    },
+    {
+      "name": "390/DPR2: hover eta and intensity rounding",
+      "passed": true,
+      "detail": {
+        "text": "η=0.10850 I_N=87.7%",
+        "etaError": 0.000015546261676158135,
+        "expectedEta": 0.10851554626167616,
+        "expectedIntensity": 0.8767387656364836
+      }
+    },
+    {
+      "name": "390/DPR2: health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1440/DPR3: delivered API version",
+      "passed": true,
+      "detail": "0.9.1"
+    },
+    {
+      "name": "1440/DPR3: reset wavelength",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR3: slider wavelength",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "620 nm"
+      }
+    },
+    {
+      "name": "1440/DPR3: reset slitSeparation",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR3: slider slitSeparation",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "7600 nm"
+      }
+    },
+    {
+      "name": "1440/DPR3: reset slitWidth",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR3: slider slitWidth",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 2000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "2000 nm"
+      }
+    },
+    {
+      "name": "1440/DPR3: reset screenDistance",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR3: slider screenDistance",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 80,
+          "zoom": 1
+        },
+        "label": "80"
+      }
+    },
+    {
+      "name": "1440/DPR3: reset zoom",
+      "passed": true
+    },
+    {
+      "name": "1440/DPR3: slider zoom",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 4
+        },
+        "label": "×4.0"
+      }
+    },
+    {
+      "name": "1440/DPR3: drawn first peak position within 2 CSS pixels",
+      "passed": true,
+      "detail": {
+        "drawnX": 613,
+        "expectedX": 613.1093277570058,
+        "cssPixelError": 0.10932775700575803,
+        "physicalEta": 0.10851554626167616
+      }
+    },
+    {
+      "name": "1440/DPR3: hover eta and intensity rounding",
+      "passed": true,
+      "detail": {
+        "text": "η=0.10850 I_N=87.7%",
+        "etaError": 0.000015546261676158135,
+        "expectedEta": 0.10851554626167616,
+        "expectedIntensity": 0.8767387656364836
+      }
+    },
+    {
+      "name": "1440/DPR3: health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "390/DPR3: delivered API version",
+      "passed": true,
+      "detail": "0.9.1"
+    },
+    {
+      "name": "390/DPR3: reset wavelength",
+      "passed": true
+    },
+    {
+      "name": "390/DPR3: slider wavelength",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 620,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "620 nm"
+      }
+    },
+    {
+      "name": "390/DPR3: reset slitSeparation",
+      "passed": true
+    },
+    {
+      "name": "390/DPR3: slider slitSeparation",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 7600,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "7600 nm"
+      }
+    },
+    {
+      "name": "390/DPR3: reset slitWidth",
+      "passed": true
+    },
+    {
+      "name": "390/DPR3: slider slitWidth",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 2000,
+          "screenDistance": 50,
+          "zoom": 1
+        },
+        "label": "2000 nm"
+      }
+    },
+    {
+      "name": "390/DPR3: reset screenDistance",
+      "passed": true
+    },
+    {
+      "name": "390/DPR3: slider screenDistance",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 80,
+          "zoom": 1
+        },
+        "label": "80"
+      }
+    },
+    {
+      "name": "390/DPR3: reset zoom",
+      "passed": true
+    },
+    {
+      "name": "390/DPR3: slider zoom",
+      "passed": true,
+      "detail": {
+        "params": {
+          "wavelength": 550,
+          "slitSeparation": 5000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 4
+        },
+        "label": "×4.0"
+      }
+    },
+    {
+      "name": "390/DPR3: drawn first peak position within 2 CSS pixels",
+      "passed": true,
+      "detail": {
+        "drawnX": 234,
+        "expectedX": 234.1093277570057,
+        "cssPixelError": 0.10932775700570119,
+        "physicalEta": 0.10851554626167616
+      }
+    },
+    {
+      "name": "390/DPR3: hover eta and intensity rounding",
+      "passed": true,
+      "detail": {
+        "text": "η=0.10850 I_N=87.7%",
+        "etaError": 0.000015546261676158135,
+        "expectedEta": 0.10851554626167616,
+        "expectedIntensity": 0.8767387656364836
+      }
+    },
+    {
+      "name": "390/DPR3: health",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "measurements": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "peak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "targetCssX": 613.1093277570058,
+      "actualCssX": 613,
+      "pixelError": 0.10932775700575803,
+      "hoverText": "η=0.10850 I_N=87.7%"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 1,
+      "peak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "targetCssX": 234.1093277570057,
+      "actualCssX": 234,
+      "pixelError": 0.10932775700570119,
+      "hoverText": "η=0.10850 I_N=87.7%"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 2,
+      "peak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "targetCssX": 613.1093277570058,
+      "actualCssX": 613,
+      "pixelError": 0.10932775700575803,
+      "hoverText": "η=0.10850 I_N=87.7%"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 2,
+      "peak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "targetCssX": 234.1093277570057,
+      "actualCssX": 234,
+      "pixelError": 0.10932775700570119,
+      "hoverText": "η=0.10850 I_N=87.7%"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 3,
+      "peak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "targetCssX": 613.1093277570058,
+      "actualCssX": 613,
+      "pixelError": 0.10932775700575803,
+      "hoverText": "η=0.10850 I_N=87.7%"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dpr": 3,
+      "peak": {
+        "eta": 0.10851554626167616,
+        "intensity": 0.8767387656364835,
+        "searchedInterval": [
+          0.055,
+          0.165
+        ]
+      },
+      "targetCssX": 234.1093277570057,
+      "actualCssX": 234,
+      "pixelError": 0.10932775700570119,
+      "hoverText": "η=0.10850 I_N=87.7%"
+    }
+  ],
+  "passed": true
+}

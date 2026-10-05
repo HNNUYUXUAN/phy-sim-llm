@@ -1,0 +1,285 @@
+{
+  "trial": 2,
+  "status": "passed",
+  "manualProgramEdits": 0,
+  "modelRepairs": 1,
+  "stages": [
+    {
+      "round": 0,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r0-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-1231b1b3-77eb-9909-9efb-f890f6b580d7",
+          "finishReason": "stop",
+          "responseHash": "ee154a180e415e1a7910d4cfd02298df9eb5917201297569c4c1ee37e1723e32",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r0-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 1,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r1-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-917aa58f-3b33-96ee-8db9-f38761d1e01d",
+          "finishReason": "stop",
+          "responseHash": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r1-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "1addbba2dd0f949f0ce9d2bcdaa8f0d68a2560ef514e239e4b25c7264ed162f3",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 2,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r2-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-9050f576-70ba-9413-a96b-bd7f116040a0",
+          "finishReason": "stop",
+          "responseHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r2-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 3,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r3-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-05ac4647-4d46-9288-8f5d-506bfb1ec593",
+          "finishReason": "stop",
+          "responseHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r3-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "c82702554b181763317742faa2f9a644b8949663d429a2b5c7654f971e090e02",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 4,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r4-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-9ae64407-a4ea-96ac-9e64-a9f3c5614296",
+          "finishReason": "stop",
+          "responseHash": "005f9f0bbd12b89cfe0654f461b8ad6c8958434f4d2e937c9c3d315f76441751",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "005f9f0bbd12b89cfe0654f461b8ad6c8958434f4d2e937c9c3d315f76441751",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r4-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "005f9f0bbd12b89cfe0654f461b8ad6c8958434f4d2e937c9c3d315f76441751",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 5,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r5-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-1b152525-95d0-9775-bddc-3239586a680c",
+          "finishReason": "stop",
+          "responseHash": "8e3b9da31143614d4e477fa3ba2fed89a0437536ff7759e79c0b6a27c336d0c5",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "8e3b9da31143614d4e477fa3ba2fed89a0437536ff7759e79c0b6a27c336d0c5",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r5-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "8e3b9da31143614d4e477fa3ba2fed89a0437536ff7759e79c0b6a27c336d0c5",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 6,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a0-generate",
+          "status": "tested",
+          "requestId": "chatcmpl-36524785-966a-931a-84e9-ef3159365bf1",
+          "finishReason": "stop",
+          "responseHash": "ecaee741000a6c60e1d668bf7c1231f411e1ee8e609899db5a67efbaf6eb606c",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "ecaee741000a6c60e1d668bf7c1231f411e1ee8e609899db5a67efbaf6eb606c",
+          "safetyIssues": [],
+          "testPassed": false,
+          "failures": [
+            {
+              "name": "desktop/file-offline/DPR1: initial dialog focus",
+              "passed": false,
+              "detail": null
+            }
+          ],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a0-review",
+          "review": {
+            "passed": false,
+            "issues": [
+              "A large modal window ('杨氏双缝干涉原理') is open and obscures the majority of the main simulation area (interference pattern) and the bottom intensity graph.",
+              "The tooltip 'η = 0.0000 I_N = 100.0%' overlaps with the legend box in the bottom right corner.",
+              "The text inside the open modal has very low contrast (dark grey text on dark grey background), making it difficult to read."
+            ]
+          }
+        },
+        {
+          "attempt": 1,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a1-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-27b262c1-4b2a-9555-816d-34ff7125f06f",
+          "finishReason": "stop",
+          "responseHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+          "snapshot": "attempt-1.html",
+          "htmlHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a1-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 1,
+      "safeSnapshot": "attempt-1.html",
+      "safeHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 7,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r7-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-8cc0b549-d7d3-9551-b96b-3086e7fbe5b1",
+          "finishReason": "stop",
+          "responseHash": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r7-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+      "passed": true,
+      "terminal": false
+    }
+  ],
+  "finalSha256": "a382f1e35edc18da32322e75fe775c3c4c455bf620ba820d25b30ab944a06864",
+  "finalSnapshot": "final.html",
+  "gatesPassed": 553,
+  "gatesTotal": 553,
+  "reason": null,
+  "primaryAcceptance": "passed",
+  "deploymentAudit": {
+    "passed": true,
+    "checks": 84,
+    "freeze": {
+      "purpose": "Deployment checks implement frozen control/API/Canvas requirements; generation requirements and primary verifier remain unchanged",
+      "sha256": "ab3d64f38c500dcd11290842f04623b2ac386b558bd98154ba11b6637ad340c6",
+      "peakPixelTolerance": 2,
+      "hoverEtaRoundingTolerance": 0.00055,
+      "manualProgramEdits": 0
+    }
+  }
+}

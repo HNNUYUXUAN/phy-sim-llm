@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="color">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杨氏双缝干涉仿真</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<style id="phy-sim-style">
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.5;min-height:100vh;transition:background-color .3s,color .3s}
+html[data-theme="light"] body{--bg:#f5f5f5;--surface:#ffffff;--border:#cccccc;--text:#222222;--text-secondary:#555555;--accent:#1a73e8;--canvas-bg:#fafafa;--modal-backdrop:rgba(0,0,0,.45);--tooltip-bg:rgba(30,30,30,.92);--tooltip-text:#ffffff;--marker-bright-fill:#1a73e8;--marker-dark-stroke:#d32f2f;--slider-track:#ddd;--slider-thumb:#1a73e8;--btn-bg:#e8e8e8;--btn-hover:#d0d0d0;background:var(--bg);color:var(--text)}
+html[data-theme="dark"] body{--bg:#121212;--surface:#1e1e1e;--border:#444444;--text:#e0e0e0;--text-secondary:#aaaaaa;--accent:#64b5f6;--canvas-bg:#2a2a2a;--modal-backdrop:rgba(0,0,0,.7);--tooltip-bg:rgba(240,240,240,.92);--tooltip-text:#111111;--marker-bright-fill:#64b5f6;--marker-dark-stroke:#ef5350;--slider-track:#555;--slider-thumb:#64b5f6;--btn-bg:#333;--btn-hover:#444;background:var(--bg);color:var(--text)}
+.app-container{max-width:1440px;margin:0 auto;padding:16px;display:grid;gap:16px;grid-template-columns:320px 1fr;grid-template-rows:auto 1fr 1fr;grid-template-areas:"title title" "controls pattern" "controls curve"}
+h1.app-title{grid-area:title;font-size:1.5rem;font-weight:700;text-align:center;padding:8px 0 4px;letter-spacing:.02em}
+.controls-panel{grid-area:controls;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}
+.panel-heading{font-size:1.05rem;font-weight:600;border-bottom:2px solid var(--accent);padding-bottom:6px;margin-bottom:2px}
+.param-group{display:flex;flex-direction:column;gap:4px}
+.param-label{display:flex;justify-content:space-between;align-items:baseline;font-size:.88rem;color:var(--text-secondary)}
+.param-label .param-name{font-weight:500}
+.param-value-output{font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums;min-width:60px;text-align:right}
+input[type="range"]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:var(--slider-track);outline:none;cursor:pointer}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--slider-thumb);border:2px solid var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);cursor:grab}
+input[type="range"]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--slider-thumb);border:2px solid var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);cursor:grab}
+input[type="range"]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.markers-container{position:relative;height:14px;margin-top:2px}
+.marker{position:absolute;top:2px;width:10px;height:10px;transform:translateX(-50%);border-radius:50%}
+.marker.bright,.marker[data-kind="bright"]{background:var(--marker-bright-fill);border:1.5px solid var(--marker-bright-fill)}
+.marker.dark,.marker[data-kind="dark"]{background:transparent;border:1.5px solid var(--marker-dark-stroke)}
+.pattern-panel,.curve-panel{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pattern-panel{grid-area:pattern}
+.curve-panel{grid-area:curve}
+.canvas-heading{font-size:.95rem;font-weight:600;color:var(--text-secondary)}
+.canvas-wrapper{position:relative;flex:1;min-height:120px;background:var(--canvas-bg);border-radius:4px;overflow:hidden}
+.canvas-wrapper canvas{display:block;width:100%;height:100%}
+#intensity-tooltip{position:fixed;z-index:100;background:var(--tooltip-bg);color:var(--tooltip-text);padding:6px 10px;border-radius:6px;font-size:.82rem;pointer-events:none;white-space:nowrap;font-variant-numeric:tabular-nums;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:opacity .15s}
+#intensity-tooltip.hidden{opacity:0;visibility:hidden}
+.buttons-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+.btn{padding:6px 14px;border:1px solid var(--border);border-radius:6px;background:var(--btn-bg);color:var(--text);font-size:.82rem;cursor:pointer;transition:background .15s,border-color .15s;white-space:nowrap}
+.btn:hover{background:var(--btn-hover)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.modal-backdrop{position:fixed;inset:0;z-index:200;background:var(--modal-backdrop);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.modal-backdrop.open{opacity:1;visibility:visible}
+.modal-dialog{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.modal-close-btn{position:absolute;top:12px;right:12px;width:32px;height:32px;border:1px solid var(--border);border-radius:50%;background:var(--btn-bg);color:var(--text);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
+.modal-close-btn:hover{background:var(--btn-hover)}
+.modal-close-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.modal-title{font-size:1.15rem;font-weight:700;margin-bottom:12px}
+.modal-body{font-size:.92rem;line-height:1.7;color:var(--text-secondary)}
+.modal-body svg{display:block;margin:16px auto;max-width:100%}
+.modal-body p{margin-bottom:8px}
+.modal-body .formula{font-family:"Courier New",Courier,monospace;background:var(--canvas-bg);padding:8px 12px;border-radius:4px;margin:8px 0;font-size:.85rem;word-break:break-all}
+.modal-body .note-box{background:var(--canvas-bg);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 4px 4px 0;margin:10px 0;font-size:.88rem}
+body[data-compact="true"] .app-container{grid-template-columns:1fr;grid-template-areas:"title" "controls" "pattern" "curve";padding:8px;gap:8px}
+body[data-compact="true"] h1.app-title{font-size:1.2rem}
+body[data-compact="true"] .controls-panel{max-height:50vh}
+@media(max-width:768px){.app-container{grid-template-columns:1fr;grid-template-areas:"title" "controls" "pattern" "curve";padding:8px;gap:8px}h1.app-title{font-size:1.2rem}.controls-panel{max-height:50vh}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+*:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+html[data-palette="grayscale"] .marker.bright,html[data-palette="grayscale"] .marker[data-kind="bright"]{background:#666;border-color:#666}
+html[data-palette="grayscale"] .marker.dark,html[data-palette="grayscale"] .marker[data-kind="dark"]{border-color:#999}
+</style>
+</head>
+<body data-compact="false">
+
+<div class="app-container">
+  <h1 class="app-title">杨氏双缝干涉仿真</h1>
+
+  <section class="controls-panel" aria-label="参数调控">
+    <div class="panel-heading">参数调控</div>
+
+    <div class="param-group">
+      <label class="param-label" for="wavelength">
+        <span class="param-name">波长 λ</span>
+        <output id="wavelength-output" class="param-value-output">550 nm</output>
+      </label>
+      <input type="range" id="wavelength" min="380" max="750" step="1" value="550" aria-describedby="wavelength-output">
+      <div class="markers-container" id="wavelength-markers" aria-hidden="true"></div>
+    </div>
+
+    <div class="param-group">
+      <label class="param-label" for="slitSeparation">
+        <span class="param-name">缝间距 d</span>
+        <output id="slitSeparation-output" class="param-value-output">5000 nm</output>
+      </label>
+      <input type="range" id="slitSeparation" min="1000" max="10000" step="1" value="5000" aria-describedby="slitSeparation-output">
+      <div class="markers-container" id="slitSeparation-markers" aria-hidden="true"></div>
+    </div>
+
+    <div class="param-group">
+      <label class="param-label" for="slitWidth">
+        <span class="param-name">缝宽 a</span>
+        <output id="slitWidth-output" class="param-value-output">1000 nm</output>
+      </label>
+      <input type="range" id="slitWidth" min="200" max="3000" step="1" value="1000" aria-describedby="slitWidth-output">
+    </div>
+
+    <div class="param-group">
+      <label class="param-label" for="screenDistance">
+        <span class="param-name">显示屏距 D<sub>sim</sub></span>
+        <output id="screenDistance-output" class="param-value-output">50</output>
+      </label>
+      <input type="range" id="screenDistance" min="1" max="100" step="1" value="50" aria-describedby="screenDistance-output">
+    </div>
+
+    <div class="param-group">
+      <label class="param-label" for="zoom">
+        <span class="param-name">缩放 Z</span>
+        <output id="zoom-output" class="param-value-output">1.0×</output>
+      </label>
+      <input type="range" id="zoom" min="1" max="5" step="0.1" value="1" aria-describedby="zoom-output">
+    </div>
+
+    <div class="buttons-row">
+      <button class="btn" id="reset-button" type="button">重置</button>
+      <button class="btn" id="theme-button" type="button">切换主题</button>
+      <button class="btn" id="palette-button" type="button">切换调色板</button>
+      <button class="btn" id="principle-button" type="button">原理说明</button>
+    </div>
+  </section>
+
+  <section class="pattern-panel" aria-label="干涉条纹图样">
+    <div class="canvas-heading">干涉条纹图样</div>
+    <div class="canvas-wrapper" id="pattern-wrapper">
+      <canvas id="interferenceCanvas" aria-label="双缝干涉条纹显示区域" role="img"></canvas>
+    </div>
+  </section>
+
+  <section class="curve-panel" aria-label="归一化光强">
+    <div class="canvas-heading">归一化光强</div>
+    <div class="canvas-wrapper" id="curve-wrapper">
+      <canvas id="intensityCanvas" tabindex="0" aria-label="归一化光强曲线，使用方向键或Home键移动指示器" role="img"></canvas>
+    </div>
+  </section>
+</div>
+
+<div id="intensity-tooltip" class="hidden" role="status" aria-live="polite">
+  <span class="tip-eta">η = 0.0000</span>
+  <span class="tip-intensity">I_N = 0.0%</span>
+</div>
+
+<div class="modal-backdrop" id="principle-modal">
+  <div class="modal-dialog" id="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close-btn" id="modal-close-button" type="button" aria-label="关闭">&times;</button>
+    <h2 class="modal-title" id="modal-title">杨氏双缝干涉原理</h2>
+    <div class="modal-body">
+      <p>杨氏双缝实验是光的波动性的经典证明。当单色光通过两个平行狭缝时，从两缝出射的光波在屏幕上发生干涉，形成明暗相间的条纹，同时受到单缝衍射包络的调制。</p>
+
+      <svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="双缝干涉几何示意图，标注物理距离D与显示参数Dsim的区别" style="max-width:520px;width:100%;height:auto;">
+        <defs>
+          <marker id="arrowR" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#666"/></marker>
+          <marker id="arrowB" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#1a73e8"/></marker>
+        </defs>
+        <!-- Light source -->
+        <circle cx="30" cy="130" r="8" fill="#ffcc00" stroke="#cc9900" stroke-width="1.5"/>
+        <text x="18" y="155" font-size="11" fill="#666">光源</text>
+        <line x1="38" y1="130" x2="100" y2="130" stroke="#666" stroke-width="1.2" marker-end="url(#arrowR)"/>
+
+        <!-- Slit barrier -->
+        <rect x="105" y="30" width="8" height="80" fill="#777" rx="1"/>
+        <rect x="105" y="120" width="8" height="20" fill="#fff" stroke="#999" stroke-width="0.5"/>
+        <rect x="105" y="150" width="8" height="80" fill="#777" rx="1"/>
+        <text x="88" y="127" font-size="10" fill="#333" font-weight="bold">S₁</text>
+        <text x="88" y="165" font-size="10" fill="#333" font-weight="bold">S₂</text>
+
+        <!-- d annotation -->
+        <line x1="100" y1="130" x2="100" y2="160" stroke="#d32f2f" stroke-width="1.5"/>
+        <line x1="96" y1="130" x2="104" y2="130" stroke="#d32f2f" stroke-width="1"/>
+        <line x1="96" y1="160" x2="104" y2="160" stroke="#d32f2f" stroke-width="1"/>
+        <text x="82" y="149" font-size="11" fill="#d32f2f" font-weight="bold">d</text>
+
+        <!-- Wavefronts from slits -->
+        <path d="M113,130 Q200,80 340,100" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".6"/>
+        <path d="M113,130 Q200,110 340,120" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".6"/>
+        <path d="M113,160 Q200,200 340,180" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".6"/>
+        <path d="M113,160 Q200,175 340,165" fill="none" stroke="#1a73e8" stroke-width="1" opacity=".6"/>
+
+        <!-- Screen -->
+        <rect x="345" y="30" width="8" height="220" fill="#aaa" rx="1"/>
+        <text x="360" y="140" font-size="11" fill="#666">观察屏</text>
+
+        <!-- Fringe pattern on screen -->
+        <rect x="347" y="100" width="4" height="6" fill="#ffdd44" opacity=".9"/>
+        <rect x="347" y="115" width="4" height="4" fill="#ffdd44" opacity=".6"/>
+        <rect x="347" y="127" width="4" height="6" fill="#ffdd44" opacity=".9"/>
+        <rect x="347" y="140" width="4" height="4" fill="#ffdd44" opacity=".6"/>
+        <rect x="347" y="152" width="4" height="6" fill="#ffdd44" opacity=".9"/>
+        <rect x="347" y="167" width="4" height="4" fill="#ffdd44" opacity=".6"/>
+        <rect x="347" y="178" width="4" height="6" fill="#ffdd44" opacity=".9"/>
+
+        <!-- Physical D annotation -->
+        <line x1="113" y1="240" x2="345" y2="240" stroke="#333" stroke-width="1.5" marker-end="url(#arrowR)"/>
+        <line x1="113" y1="235" x2="113" y2="245" stroke="#333" stroke-width="1"/>
+        <line x1="345" y1="235" x2="345" y2="245" stroke="#333" stroke-width="1"/>
+        <text x="200" y="258" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">D（物理屏距）</text>
+
+        <!-- Dsim annotation -->
+        <line x1="380" y1="60" x2="480" y2="60" stroke="#1a73e8" stroke-width="1.2" stroke-dasharray="5,3"/>
+        <text x="385" y="50" font-size="10" fill="#1a73e8">D_sim（显示参数）</text>
+        <text x="385" y="75" font-size="9" fill="#888">仅影响坐标映射</text>
+
+        <!-- Eta axis on screen -->
+        <line x1="355" y1="130" x2="355" y2="90" stroke="#666" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <text x="358" y="88" font-size="9" fill="#666">η↑</text>
+
+        <!-- Legend box -->
+        <rect x="390" y="140" width="120" height="80" fill="none" stroke="#ccc" stroke-width="0.8" rx="4"/>
+        <text x="398" y="158" font-size="10" fill="#333" font-weight="bold">图例说明</text>
+        <line x1="398" y1="170" x2="420" y2="170" stroke="#333" stroke-width="1.5"/>
+        <text x="425" y="174" font-size="9" fill="#555">D = 物理几何距离</text>
+        <line x1="398" y1="188" x2="420" y2="188" stroke="#1a73e8" stroke-width="1.2" stroke-dasharray="4,2"/>
+        <text x="425" y="192" font-size="9" fill="#555">D_sim = 显示缩放</text>
+        <text x="398" y="210" font-size="9" fill="#888">D_sim 不改变物理光强</text>
+      </svg>
+
+      <div class="note-box">
+        <strong>物理 D 与显示 D<sub>sim</sub> 的区别：</strong><br>
+        物理距离 D 是实验中光源到屏幕的真实几何距离，决定光程差和干涉条纹的物理分布。而 D<sub>sim</sub> 是本仿真中的<em>显示参数</em>，仅用于将物理量 η 映射到屏幕像素坐标（η = (u−u₀)/(4·D<sub>sim</sub>·Z)），不改变光强公式的物理结果和条纹级次。
+      </div>
+
+      <p><strong>关键公式：</strong></p>
+      <div class="formula">I_N(η) = sinc²(π·a·η/λ) · cos²(π·d·η/λ)<br>其中 sinc(t) = sin(t)/t，sinc(0) = 1<br>η = (u − u₀) / (4·D_sim·Z)</div>
+
+      <p>λ 为波长，a 为缝宽，d 为缝间距。归一化光强 I<sub>N</sub> 取值范围 [0, 1]。D<sub>sim</sub> 与 Z 只改变显示坐标到物理坐标 η 的换算比例，不改变物理光强分布与条纹级次。</p>
+
+      <p>理想干涉亮纹位置由 d·η/λ = m（整数）给出，暗纹由 d·η/λ = m + ½ 给出。但由于单缝衍射包络 sinc² 的调制，完整公式的实际峰值位置会略偏离理想级次位置，且当衍射极小恰好落在干涉极大处时出现"缺级"现象，高级次亮纹强度逐渐降低。</p>
+
+      <p>中央明纹与二级明纹的宽度（由暗纹位置定义）相等，但二级峰值强度低于中央峰值，这是衍射包络调制的结果。</p>
+    </div>
+  </div>
+</div>
+
+<script id="phy-sim-script">
+(function(){
+'use strict';
+
+var DEFAULTS={wavelength:550,slitSeparation:5000,slitWidth:1000,screenDistance:50,zoom:1};
+var LIMITS={wavelength:[380,750],slitSeparation:[1000,10000],slitWidth:[200,3000],screenDistance:[1,100],zoom:[1,5]};
+var PARAM_KEYS=['wavelength','slitSeparation','slitWidth','screenDistance','zoom'];
+var ETA_REF=0.11;
+
+var currentParams={wavelength:550,slitSeparation:5000,slitWidth:1000,screenDistance:50,zoom:1};
+var readyResolve=null;
+var readyPromise=new Promise(function(r){readyResolve=r;});
+var firstFrameDone=false;
+var indicatorEta=null;
+var patternRowCanvas=null;
+
+function clampVal(v,lo,hi){return v<lo?lo:(v>hi?hi:v);}
+
+function normalizeParams(partial){
+  var merged={};
+  var i,k,v;
+  for(i=0;i<PARAM_KEYS.length;i++){
+    k=PARAM_KEYS[i];
+    if(partial&&partial.hasOwnProperty(k)&&partial[k]!==undefined&&partial[k]!==null){
+      v=Number(partial[k]);
+      if(!isFinite(v))v=DEFAULTS[k];
+      else v=clampVal(v,LIMITS[k][0],LIMITS[k][1]);
+    }else{
+      v=currentParams[k];
+    }
+    merged[k]=v;
+  }
+  merged.slitWidth=Math.min(merged.slitWidth,merged.slitSeparation);
+  return merged;
+}
+
+function sinc(t){
+  if(Math.abs(t)<1e-12)return 1;
+  return Math.sin(t)/t;
+}
+
+function intensityAtEta(eta,params){
+  var p=params||currentParams;
+  var lambda=p.wavelength,a=p.slitWidth,d=p.slitSeparation;
+  var argS=Math.PI*a*eta/lambda;
+  var argC=Math.PI*d*eta/lambda;
+  var s=sinc(argS);
+  var c=Math.cos(argC);
+  var I=s*s*c*c;
+  if(I<0)I=0;
+  if(I>1)I=1;
+  return I;
+}
+
+var els={};
+function cacheEls(){
+  var i,k;
+  for(i=0;i<PARAM_KEYS.length;i++){
+    k=PARAM_KEYS[i];
+    els[k]=document.getElementById(k);
+    els[k+'-output']=document.getElementById(k+'-output');
+  }
+  els.interferenceCanvas=document.getElementById('interferenceCanvas');
+  els.intensityCanvas=document.getElementById('intensityCanvas');
+  els.patternWrapper=document.getElementById('pattern-wrapper');
+  els.curveWrapper=document.getElementById('curve-wrapper');
+  els.tooltip=document.getElementById('intensity-tooltip');
+  els.tipEta=els.tooltip.querySelector('.tip-eta');
+  els.tipIntensity=els.tooltip.querySelector('.tip-intensity');
+  els.resetBtn=document.getElementById('reset-button');
+  els.themeBtn=document.getElementById('theme-button');
+  els.paletteBtn=document.getElementById('palette-button');
+  els.principleBtn=document.getElementById('principle-button');
+  els.modal=document.getElementById('principle-modal');
+  els.modalInner=document.getElementById('modal-inner');
+  els.modalClose=document.getElementById('modal-close-button');
+  els.wlMarkers=document.getElementById('wavelength-markers');
+  els.ssMarkers=document.getElementById('slitSeparation-markers');
+}
+
+function updateOutputs(p){
+  els['wavelength-output'].textContent=Math.round(p.wavelength)+' nm';
+  els['slitSeparation-output'].textContent=Math.round(p.slitSeparation)+' nm';
+  els['slitWidth-output'].textContent=Math.round(p.slitWidth)+' nm';
+  els['screenDistance-output'].textContent=String(Math.round(p.screenDistance));
+  els['zoom-output'].textContent=p.zoom.toFixed(1)+'×';
+}
+
+function syncSliders(p){
+  var i,k;
+  for(i=0;i<PARAM_KEYS.length;i++){
+    k=PARAM_KEYS[i];
+    if(els[k])els[k].value=String(p[k]);
+  }
+}
+
+function readURLParams(){
+  try{
+    var search=window.location.search||'';
+    var params=new URLSearchParams(search);
+    var p={};
+    var i,k,v;
+    for(i=0;i<PARAM_KEYS.length;i++){
+      k=PARAM_KEYS[i];
+      v=params.get(k);
+      if(v!==null){
+        v=parseFloat(v);
+        if(isFinite(v))p[k]=v;
+      }
+    }
+    var theme=params.get('theme');
+    if(theme==='light'||theme==='dark'){
+      document.documentElement.setAttribute('data-theme',theme);
+    }else if(theme==='auto'){
+      var prefersDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
+      document.documentElement.setAttribute('data-theme',prefersDark?'dark':'light');
+    }
+    var palette=params.get('palette');
+    if(palette==='color'||palette==='grayscale'){
+      document.documentElement.setAttribute('data-palette',palette);
+    }
+    var compact=params.get('compact');
+    if(compact==='1')document.body.setAttribute('data-compact','true');
+    else if(compact==='0')document.body.setAttribute('data-compact','false');
+    return p;
+  }catch(e){return{};}
+}
+
+function writeURLParams(p){
+  try{
+    var search=window.location.search||'';
+    var params=new URLSearchParams(search);
+    var i;
+    for(i=0;i<PARAM_KEYS.length;i++){
+      params.set(PARAM_KEYS[i],String(p[PARAM_KEYS[i]]));
+    }
+    params.set('theme',document.documentElement.getAttribute('data-theme')||'light');
+    params.set('palette',document.documentElement.getAttribute('data-palette')||'color');
+    params.set('compact',document.body.getAttribute('data-compact')==='true'?'1':'0');
+    var newUrl=window.location.pathname+'?'+params.toString();
+    window.history.replaceState(null,'',newUrl);
+  }catch(e){}
+}
+
+function getDPR(){return window.devicePixelRatio||1;}
+
+function sizeCanvas(canvas,wrapper){
+  var dpr=getDPR();
+  var rect=wrapper.getBoundingClientRect();
+  var w=Math.round(rect.width);
+  var h=Math.round(rect.height);
+  if(w<=0||h<=0)return false;
+  var bw=Math.round(w*dpr);
+  var bh=Math.round(h*dpr);
+  if(canvas.width!==bw||canvas.height!==bh){
+    canvas.width=bw;
+    canvas.height=bh;
+  }
+  canvas.style.width=w+'px';
+  canvas.style.height=h+'px';
+  return true;
+}
+
+function wavelengthToRGB(lambda){
+  var r=0,g=0,b=0;
+  if(lambda>=380&&lambda<440){r=-(lambda-440)/60;b=1;}
+  else if(lambda>=440&&lambda<490){g=(lambda-440)/50;b=1;}
+  else if(lambda>=490&&lambda<510){g=1;b=-(lambda-510)/20;}
+  else if(lambda>=510&&lambda<580){r=(lambda-510)/70;g=1;}
+  else if(lambda>=580&&lambda<645){r=1;g=-(lambda-645)/65;}
+  else if(lambda>=645&&lambda<=750){r=1;}
+  var factor=1;
+  if(lambda>=380&&lambda<420)factor=0.3+0.7*(lambda-380)/40;
+  else if(lambda>700&&lambda<=750)factor=0.3+0.7*(750-lambda)/50;
+  return[Math.round(r*factor*255),Math.round(g*factor*255),Math.round(b*factor*255)];
+}
+
+function etaFromCssX(x_css,cssWidth,p){
+  var denom=4*p.screenDistance*p.zoom;
+  return (x_css-cssWidth/2)/denom;
+}
+function cssXFromEta(eta,cssWidth,p){
+  var denom=4*p.screenDistance*p.zoom;
+  return cssWidth/2+eta*denom;
+}
+
+function drawPattern(){
+  var canvas=els.interferenceCanvas;
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var w=canvas.width,h=canvas.height;
+  if(w<=0||h<=0)return;
+  var dpr=getDPR();
+  var p=currentParams;
+  var w_css=w/dpr;
+  var isGray=document.documentElement.getAttribute('data-palette')==='grayscale';
+  var baseRGB=isGray?null:wavelengthToRGB(p.wavelength);
+
+  if(!patternRowCanvas){
+    patternRowCanvas=document.createElement('canvas');
+  }
+  if(patternRowCanvas.width!==w||patternRowCanvas.height!==1){
+    patternRowCanvas.width=w;
+    patternRowCanvas.height=1;
+  }
+  var rowCtx=patternRowCanvas.getContext('2d');
+  var row=rowCtx.createImageData(w,1);
+  var data=row.data;
+  var px,eta,I,r,g,b,idx,gamma,val;
+
+  for(px=0;px<w;px++){
+    eta=etaFromCssX(px/dpr,w_css,p);
+    I=intensityAtEta(eta,p);
+
+    if(isGray){
+      gamma=0.35+1.2*I;
+      val=Math.pow(I,1/gamma);
+      r=g=b=Math.round(val*255);
+    }else{
+      r=Math.round(baseRGB[0]*I);
+      g=Math.round(baseRGB[1]*I);
+      b=Math.round(baseRGB[2]*I);
+    }
+    idx=px*4;
+    data[idx]=r;data[idx+1]=g;data[idx+2]=b;data[idx+3]=255;
+  }
+  rowCtx.putImageData(row,0,0);
+  ctx.imageSmoothingEnabled=false;
+  ctx.clearRect(0,0,w,h);
+  ctx.drawImage(patternRowCanvas,0,0,w,1,0,0,w,h);
+}
+
+function drawPatternIndicator(){
+  if(indicatorEta===null)return;
+  var canvas=els.interferenceCanvas;
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var w=canvas.width,h=canvas.height;
+  var dpr=getDPR();
+  var p=currentParams;
+  var w_css=w/dpr;
+  var ix=Math.round(cssXFromEta(indicatorEta,w_css,p)*dpr);
+  if(ix>=0&&ix<=w){
+    var cs=getComputedStyle(document.body);
+    var accentColor=cs.getPropertyValue('--accent').trim()||'#1a73e8';
+    ctx.strokeStyle=accentColor;
+    ctx.lineWidth=Math.max(1,dpr);
+    ctx.setLineDash([4*dpr,3*dpr]);
+    ctx.beginPath();
+    ctx.moveTo(ix,0);
+    ctx.lineTo(ix,h);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+}
+
+function drawCurve(){
+  var canvas=els.intensityCanvas;
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var w=canvas.width,h=canvas.height;
+  if(w<=0||h<=0)return;
+  var dpr=getDPR();
+  var p=currentParams;
+  var w_css=w/dpr;
+
+  var mTop=Math.round(16*dpr);
+  var mBot=Math.round(16*dpr);
+  var plotH=h-mTop-mBot;
+  if(plotH<10)plotH=10;
+
+  ctx.clearRect(0,0,w,h);
+
+  var cs=getComputedStyle(document.body);
+  var bgColor=cs.getPropertyValue('--canvas-bg').trim()||'#fafafa';
+  var secColor=cs.getPropertyValue('--text-secondary').trim()||'#888';
+  var accentColor=cs.getPropertyValue('--accent').trim()||'#1a73e8';
+
+  ctx.fillStyle=bgColor;
+  ctx.fillRect(0,0,w,h);
+
+  ctx.strokeStyle=secColor;
+  ctx.lineWidth=1;
+  ctx.beginPath();
+  ctx.moveTo(0,h-mBot);
+  ctx.lineTo(w,h-mBot);
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(Math.round(w/2),mTop);
+  ctx.lineTo(Math.round(w/2),h-mBot);
+  ctx.stroke();
+
+  ctx.strokeStyle=accentColor;
+  ctx.lineWidth=Math.max(1.5,1.5*dpr);
+  ctx.beginPath();
+  var first=true;
+  var px,eta,I,y;
+  for(px=0;px<=w;px++){
+    eta=etaFromCssX(px/dpr,w_css,p);
+    I=intensityAtEta(eta,p);
+    y=h-mBot-I*plotH;
+    if(first){ctx.moveTo(px,y);first=false;}
+    else{ctx.lineTo(px,y);}
+  }
+  ctx.stroke();
+
+  if(indicatorEta!==null){
+    var ix=Math.round(cssXFromEta(indicatorEta,w_css,p)*dpr);
+    if(ix>=0&&ix<=w){
+      ctx.strokeStyle=accentColor;
+      ctx.lineWidth=Math.max(1,dpr);
+      ctx.setLineDash([4*dpr,3*dpr]);
+      ctx.beginPath();
+      ctx.moveTo(ix,mTop);
+      ctx.lineTo(ix,h-mBot);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      var iy=h-mBot-intensityAtEta(indicatorEta,p)*plotH;
+      ctx.fillStyle=accentColor;
+      ctx.beginPath();
+      ctx.arc(ix,iy,4*dpr,0,Math.PI*2);
+      ctx.fill();
+    }
+  }
+}
+
+function getCriticalMarkers(params){
+  var p=params||currentParams;
+  var lambda=p.wavelength,d=p.slitSeparation;
+  var result={wavelength:[],slitSeparation:[]};
+  var m,n,val;
+
+  for(m=1;m<=500;m++){
+    val=d*ETA_REF/m;
+    if(val<LIMITS.wavelength[0])break;
+    if(val<=LIMITS.wavelength[1]){
+      result.wavelength.push({kind:'bright',order:m,value:Math.round(val*1e6)/1e6});
+    }
+  }
+  for(n=0;n<=500;n++){
+    val=d*ETA_REF/(n+0.5);
+    if(val<LIMITS.wavelength[0])break;
+    if(val<=LIMITS.wavelength[1]){
+      result.wavelength.push({kind:'dark',order:n+0.5,value:Math.round(val*1e6)/1e6});
+    }
+  }
+
+  for(m=1;m<=500;m++){
+    val=m*lambda/ETA_REF;
+    if(val>LIMITS.slitSeparation[1])break;
+    if(val>=LIMITS.slitSeparation[0]){
+      result.slitSeparation.push({kind:'bright',order:m,value:Math.round(val*1e6)/1e6});
+    }
+  }
+  for(n=0;n<=500;n++){
+    val=(n+0.5)*lambda/ETA_REF;
+    if(val>LIMITS.slitSeparation[1])break;
+    if(val>=LIMITS.slitSeparation[0]){
+      result.slitSeparation.push({kind:'dark',order:n+0.5,value:Math.round(val*1e6)/1e6});
+    }
+  }
+
+  result.wavelength.sort(function(a,b){return a.value-b.value;});
+  result.slitSeparation.sort(function(a,b){return a.value-b.value;});
+  return result;
+}
+
+function renderMarkers(){
+  var markers=getCriticalMarkers();
+  renderMarkerSet(els.wlMarkers,markers.wavelength,LIMITS.wavelength[0],LIMITS.wavelength[1]);
+  renderMarkerSet(els.ssMarkers,markers.slitSeparation,LIMITS.slitSeparation[0],LIMITS.slitSeparation[1]);
+}
+
+function renderMarkerSet(container,items,minVal,maxVal){
+  if(!container)return;
+  container.innerHTML='';
+  var range=maxVal-minVal;
+  if(range<=0)return;
+  var i,item,pct,el;
+  for(i=0;i<items.length;i++){
+    item=items[i];
+    pct=((item.value-minVal)/range)*100;
+    if(pct<0||pct>100)continue;
+    el=document.createElement('span');
+    el.className='marker '+item.kind;
+    el.setAttribute('data-kind',item.kind);
+    el.setAttribute('data-order',String(item.order));
+    el.setAttribute('data-value',String(item.value));
+    el.style.left=pct.toFixed(4)+'%';
+    el.title=(item.kind==='bright'?'亮纹':'暗纹')+' order='+item.order+' val='+item.value.toFixed(1);
+    container.appendChild(el);
+  }
+}
+
+function showTooltip(eta,I,cx,cy){
+  indicatorEta=eta;
+  els.tipEta.textContent='η = '+eta.toFixed(4);
+  els.tipIntensity.textContent='I_N = '+(I*100).toFixed(1)+'%';
+  els.tooltip.classList.remove('hidden');
+  var tw=els.tooltip.offsetWidth;
+  var th=els.tooltip.offsetHeight;
+  var tx=cx+12;
+  var ty=cy-th-8;
+  if(tx+tw>window.innerWidth-8)tx=cx-tw-12;
+  if(ty<8)ty=cy+16;
+  els.tooltip.style.left=tx+'px';
+  els.tooltip.style.top=ty+'px';
+  drawPattern();
+  drawPatternIndicator();
+  drawCurve();
+}
+
+function hideTooltip(){
+  els.tooltip.classList.add('hidden');
+  indicatorEta=null;
+  drawPattern();
+  drawCurve();
+}
+
+function setIndicatorFromEta(eta){
+  var I=intensityAtEta(eta);
+  var rect=els.curveWrapper.getBoundingClientRect();
+  var p=currentParams;
+  var x_css=cssXFromEta(eta,rect.width,p);
+  var cx=rect.left+x_css;
+  var cy=rect.top+20;
+  showTooltip(eta,I,cx,cy);
+}
+
+function onCurvePointerMove(e){
+  var rect=els.curveWrapper.getBoundingClientRect();
+  var x_css=e.clientX-rect.left;
+  var p=currentParams;
+  var eta=etaFromCssX(x_css,rect.width,p);
+  var I=intensityAtEta(eta);
+  showTooltip(eta,I,e.clientX,e.clientY);
+}
+
+function onCurvePointerLeave(){
+  hideTooltip();
+}
+
+function onCurveKeyDown(e){
+  var p=currentParams;
+  var denom=4*p.screenDistance*p.zoom;
+  var rect=els.curveWrapper.getBoundingClientRect();
+  var maxEta=(rect.width/2)/denom;
+  var step=1/denom;
+  var handled=true;
+  var cur,next;
+
+  if(e.key==='Home'){
+    setIndicatorFromEta(0);
+  }else if(e.key==='ArrowLeft'){
+    cur=indicatorEta!==null?indicatorEta:0;
+    next=cur-step;
+    if(next<-maxEta)next=-maxEta;
+    setIndicatorFromEta(next);
+  }else if(e.key==='ArrowRight'){
+    cur=indicatorEta!==null?indicatorEta:0;
+    next=cur+step;
+    if(next>maxEta)next=maxEta;
+    setIndicatorFromEta(next);
+  }else if(e.key==='End'){
+    setIndicatorFromEta(maxEta);
+  }else{
+    handled=false;
+  }
+  if(handled)e.preventDefault();
+}
+
+function onSliderInput(e){
+  var key=e.target.id;
+  if(PARAM_KEYS.indexOf(key)===-1)return;
+  var raw=parseFloat(e.target.value);
+  var partial={};
+  partial[key]=raw;
+  currentParams=normalizeParams(partial);
+  updateOutputs(currentParams);
+  syncSliders(currentParams);
+  renderMarkers();
+  renderAll();
+  writeURLParams(currentParams);
+}
+
+function onReset(){
+  currentParams={wavelength:DEFAULTS.wavelength,slitSeparation:DEFAULTS.slitSeparation,slitWidth:DEFAULTS.slitWidth,screenDistance:DEFAULTS.screenDistance,zoom:DEFAULTS.zoom};
+  updateOutputs(currentParams);
+  syncSliders(currentParams);
+  renderMarkers();
+  renderAll();
+  writeURLParams(currentParams);
+}
+
+function onThemeToggle(){
+  var cur=document.documentElement.getAttribute('data-theme');
+  var next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  renderAll();
+  writeURLParams(currentParams);
+}
+
+function onPaletteToggle(){
+  var cur=document.documentElement.getAttribute('data-palette');
+  var next=cur==='grayscale'?'color':'grayscale';
+  document.documentElement.setAttribute('data-palette',next);
+  renderAll();
+  writeURLParams(currentParams);
+}
+
+var lastFocusedBeforeModal=null;
+
+function openModal(){
+  lastFocusedBeforeModal=document.activeElement;
+  els.modal.classList.add('open');
+  els.modal.setAttribute('aria-hidden','false');
+  els.modalClose.focus();
+  document.addEventListener('keydown',onModalGlobalKey,true);
+}
+
+function closeModal(){
+  els.modal.classList.remove('open');
+  els.modal.setAttribute('aria-hidden','true');
+  document.removeEventListener('keydown',onModalGlobalKey,true);
+  if(lastFocusedBeforeModal&&lastFocusedBeforeModal.focus){
+    lastFocusedBeforeModal.focus();
+  }
+  lastFocusedBeforeModal=null;
+}
+
+function getModalFocusables(){
+  return els.modalInner.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])');
+}
+
+function onModalGlobalKey(e){
+  if(e.key==='Escape'){
+    e.preventDefault();
+    e.stopPropagation();
+    closeModal();
+    return;
+  }
+  if(e.key==='Tab'){
+    var focusable=getModalFocusables();
+    if(focusable.length===0){
+      e.preventDefault();
+      return;
+    }
+    var first=focusable[0];
+    var last=focusable[focusable.length-1];
+    var active=document.activeElement;
+    if(e.shiftKey){
+      if(active===first||!els.modalInner.contains(active)){
+        e.preventDefault();
+        last.focus();
+      }
+    }else{
+      if(active===last||!els.modalInner.contains(active)){
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
+}
+
+function renderAll(){
+  sizeCanvas(els.interferenceCanvas,els.patternWrapper);
+  sizeCanvas(els.intensityCanvas,els.curveWrapper);
+  drawPattern();
+  if(indicatorEta!==null)drawPatternIndicator();
+  drawCurve();
+}
+
+window.PhySim={
+  version:'0.9.1',
+  defaults:{wavelength:550,slitSeparation:5000,slitWidth:1000,screenDistance:50,zoom:1},
+  limits:{wavelength:[380,750],slitSeparation:[1000,10000],slitWidth:[200,3000],screenDistance:[1,100],zoom:[1,5]},
+  ready:readyPromise,
+  getParams:function(){
+    return{wavelength:currentParams.wavelength,slitSeparation:currentParams.slitSeparation,slitWidth:currentParams.slitWidth,screenDistance:currentParams.screenDistance,zoom:currentParams.zoom};
+  },
+  setParams:function(partial){
+    currentParams=normalizeParams(partial||{});
+    updateOutputs(currentParams);
+    syncSliders(currentParams);
+    renderMarkers();
+    renderAll();
+    writeURLParams(currentParams);
+  },
+  intensityAtEta:function(eta,params){
+    return intensityAtEta(eta,params);
+  },
+  getCriticalMarkers:function(params){
+    return getCriticalMarkers(params);
+  },
+  render:function(){
+    renderAll();
+  }
+};
+
+function init(){
+  cacheEls();
+  var urlParams=readURLParams();
+  currentParams=normalizeParams(urlParams);
+  syncSliders(currentParams);
+  updateOutputs(currentParams);
+
+  var i,k;
+  for(i=0;i<PARAM_KEYS.length;i++){
+    k=PARAM_KEYS[i];
+    if(els[k])els[k].addEventListener('input',onSliderInput);
+  }
+
+  els.intensityCanvas.addEventListener('pointermove',onCurvePointerMove);
+  els.intensityCanvas.addEventListener('pointerleave',onCurvePointerLeave);
+  els.intensityCanvas.addEventListener('keydown',onCurveKeyDown);
+
+  els.resetBtn.addEventListener('click',onReset);
+  els.themeBtn.addEventListener('click',onThemeToggle);
+  els.paletteBtn.addEventListener('click',onPaletteToggle);
+  els.principleBtn.addEventListener('click',openModal);
+  els.modalClose.addEventListener('click',closeModal);
+  els.modal.addEventListener('click',function(e){
+    if(e.target===els.modal)closeModal();
+  });
+
+  var resizeTimer=null;
+  window.addEventListener('resize',function(){
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(function(){renderAll();},60);
+  });
+
+  renderMarkers();
+  renderAll();
+
+  requestAnimationFrame(function(){
+    if(!firstFrameDone){
+      firstFrameDone=true;
+      if(readyResolve)readyResolve(true);
+    }
+  });
+}
+
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',init);
+}else{
+  init();
+}
+
+})();
+</script>
+</body>
+</html>

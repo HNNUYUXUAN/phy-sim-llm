@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "round": 1,
+  "appSha256": "4349922f9bb1aeed8c06bf8ecea72fe6e93f9979c424a102941980aa57cae693",
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "checks": [
+    {
+      "name": "offline HTML and credential scan",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "DPR 1: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 1096,
+        "widthB": 1096,
+        "leftA": 318,
+        "leftB": 318,
+        "dpr": 1,
+        "ratioA": 1,
+        "ratioB": 1
+      }
+    },
+    {
+      "name": "normalized center",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "DPR 1: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "DPR 1: console and page health",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "numericalRows": [],
+  "observations": [],
+  "screenshots": [
+    {
+      "file": "desktop-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "rendered",
+      "sha256": "2f206a685e8b73695e58549618ce5d71e563e478d130396af2ba94a8dad00ef1"
+    }
+  ],
+  "untestedBrowsers": [
+    "Firefox",
+    "WebKit"
+  ],
+  "passed": true
+}

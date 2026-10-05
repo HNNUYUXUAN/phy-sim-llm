@@ -1,0 +1,66 @@
+{
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "source": "New diagrams based on paper physical equations and current replication workflow; no publisher image reused",
+  "figures": [
+    {
+      "file": "figure-01-principle.png",
+      "svg": "figure-01-principle.svg",
+      "kind": "physical-geometry",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "sha256": "c73a1562162012fe0bfd71bcaf6c94f18395f61bd218b70ff8cb8aa20df850c7",
+      "svgSha256": "abef12827cb096784cf537432415c23d07e64eae3cafc08d9922bb4f473110cb",
+      "viewport": {
+        "width": 1200,
+        "height": 760
+      },
+      "dpr": 1,
+      "theme": "light",
+      "palette": "grayscale",
+      "params": null,
+      "mode": "new conceptual SVG drawing",
+      "errors": []
+    },
+    {
+      "file": "figure-02-development-flow.png",
+      "svg": "figure-02-development-flow.svg",
+      "kind": "development-process",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "sha256": "b4489633769e4689ee9c268f04ad8cca4c38663b99b093fe231ecb70da254d3e",
+      "svgSha256": "d35a21ac0a262597b5b6d7fe4ca1511fc771afdc8c0cee6026d24e651975fb65",
+      "viewport": {
+        "width": 1200,
+        "height": 760
+      },
+      "dpr": 1,
+      "theme": "light",
+      "palette": "grayscale",
+      "params": null,
+      "mode": "new conceptual SVG drawing",
+      "errors": []
+    },
+    {
+      "file": "figure-03b-module-relations.png",
+      "svg": "figure-03b-module-relations.svg",
+      "kind": "module-relations",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "sha256": "5cfef34241e1b616f89f3e6cfe63a390f1728283cbf84761ca3b9601824b1050",
+      "svgSha256": "351c903749f03a5b04a081042dcf8fc6b9d0a377f4c51c6f43c14b85811da964",
+      "viewport": {
+        "width": 1200,
+        "height": 760
+      },
+      "dpr": 1,
+      "theme": "light",
+      "palette": "grayscale",
+      "params": null,
+      "mode": "new conceptual SVG drawing",
+      "errors": []
+    }
+  ]
+}

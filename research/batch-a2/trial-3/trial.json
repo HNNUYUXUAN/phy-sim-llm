@@ -1,0 +1,257 @@
+{
+  "trial": 3,
+  "status": "passed",
+  "manualProgramEdits": 0,
+  "modelRepairs": 0,
+  "stages": [
+    {
+      "round": 0,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r0-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-3a70fee5-00af-9f8f-aab2-2ad1dc9810f3",
+          "finishReason": "stop",
+          "responseHash": "fe7b7f1b7cca7ff7b1d780ec1ee204b10e2901b32379771712898ab69ac09e15",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "98e1632576d420852cbdc27d0b4332d1f99b038bdff813ef1c5a3fd3eb8ac7c2",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r0-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "98e1632576d420852cbdc27d0b4332d1f99b038bdff813ef1c5a3fd3eb8ac7c2",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 1,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r1-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-a0c9886f-b45a-9cd7-9eb8-c02692b1a995",
+          "finishReason": "stop",
+          "responseHash": "4349922f9bb1aeed8c06bf8ecea72fe6e93f9979c424a102941980aa57cae693",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "4349922f9bb1aeed8c06bf8ecea72fe6e93f9979c424a102941980aa57cae693",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r1-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "4349922f9bb1aeed8c06bf8ecea72fe6e93f9979c424a102941980aa57cae693",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 2,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r2-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-e4881593-04c3-9d8e-a5c5-ec76fd9184d7",
+          "finishReason": "stop",
+          "responseHash": "9ff06351abfb71a734023bacb817388b1a5fbeda408f07e25fa75a1643d9e638",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "9ff06351abfb71a734023bacb817388b1a5fbeda408f07e25fa75a1643d9e638",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r2-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "9ff06351abfb71a734023bacb817388b1a5fbeda408f07e25fa75a1643d9e638",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 3,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r3-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-f068b782-b54a-94aa-82e7-aa4ec91f0d41",
+          "finishReason": "stop",
+          "responseHash": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r3-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 4,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r4-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-7430b8be-61db-90a7-bd05-c282901b00ec",
+          "finishReason": "stop",
+          "responseHash": "fb037a95398855c835832aa5b3c26372e4e5f5b95812cc4bec6a90f6ca25c798",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "fb037a95398855c835832aa5b3c26372e4e5f5b95812cc4bec6a90f6ca25c798",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r4-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "fb037a95398855c835832aa5b3c26372e4e5f5b95812cc4bec6a90f6ca25c798",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 5,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r5-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-cf907858-65d6-9f04-bb9b-ed6fdd4c9394",
+          "finishReason": "stop",
+          "responseHash": "469613a918297bb9931fa1b3429ca09c732813afb9f85877bd3d0aac346eb49a",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "469613a918297bb9931fa1b3429ca09c732813afb9f85877bd3d0aac346eb49a",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r5-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "469613a918297bb9931fa1b3429ca09c732813afb9f85877bd3d0aac346eb49a",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 6,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r6-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-5473991f-10ae-918f-8e80-4cfcc8ce6729",
+          "finishReason": "stop",
+          "responseHash": "92cc4a6072540c3e7257b15a98ed22156cfbf5155976ac67692a22ab0e73c15a",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "92cc4a6072540c3e7257b15a98ed22156cfbf5155976ac67692a22ab0e73c15a",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r6-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "92cc4a6072540c3e7257b15a98ed22156cfbf5155976ac67692a22ab0e73c15a",
+      "passed": true,
+      "terminal": false
+    },
+    {
+      "round": 7,
+      "status": "finished",
+      "attempts": [
+        {
+          "attempt": 0,
+          "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r7-a0-generate",
+          "status": "passed",
+          "requestId": "chatcmpl-8d6b31dc-71bc-9c55-9b44-233c5351e60b",
+          "finishReason": "stop",
+          "responseHash": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+          "snapshot": "attempt-0.html",
+          "htmlHash": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+          "safetyIssues": [],
+          "testPassed": true,
+          "failures": [],
+          "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t3-r7-a0-review",
+          "review": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      ],
+      "modelRepairs": 0,
+      "safeSnapshot": "attempt-0.html",
+      "safeHash": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+      "passed": true,
+      "terminal": false
+    }
+  ],
+  "finalSha256": "145990c2b4e8639d82c573ce489a19b5e5bdce44dc27be929cef7b5a8f1e5481",
+  "finalSnapshot": "final.html",
+  "gatesPassed": 553,
+  "gatesTotal": 553,
+  "reason": null,
+  "primaryAcceptance": "passed",
+  "deploymentAudit": {
+    "passed": true,
+    "checks": 84,
+    "freeze": {
+      "purpose": "Deployment checks implement frozen control/API/Canvas requirements; generation requirements and primary verifier remain unchanged",
+      "sha256": "ab3d64f38c500dcd11290842f04623b2ac386b558bd98154ba11b6637ad340c6",
+      "peakPixelTolerance": 2,
+      "hoverEtaRoundingTolerance": 0.00055,
+      "manualProgramEdits": 0
+    }
+  }
+}

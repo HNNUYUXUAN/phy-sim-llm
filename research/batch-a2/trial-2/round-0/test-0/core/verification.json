@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "round": 0,
+  "appSha256": "6f4bd22e3aa2709f319f282e7fbf9687abf8e23f8a72bd2dfbfbb3149592b587",
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "checks": [
+    {
+      "name": "offline HTML and credential scan",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "DPR 1: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 818.15625,
+        "widthB": 818.15625,
+        "leftA": 365,
+        "leftB": 365,
+        "dpr": 1,
+        "ratioA": 0.9998090218097093,
+        "ratioB": 0.9998090218097093
+      }
+    },
+    {
+      "name": "DPR 1: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "DPR 1: console and page health",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "numericalRows": [],
+  "observations": [],
+  "screenshots": [
+    {
+      "file": "desktop-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "rendered",
+      "sha256": "78d6b0327d6912be61085a794b25db8a75c48198106ce3641c5e81f6a35fce40"
+    }
+  ],
+  "untestedBrowsers": [
+    "Firefox",
+    "WebKit"
+  ],
+  "passed": true
+}

@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="color">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨氏双缝干涉仿真</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+    <style id="phy-sim-style">
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --panel-bg: #f5f5f5;
+            --border-color: #cccccc;
+            --accent-color: #007bff;
+            --canvas-bg: #ffffff;
+            --modal-backdrop: rgba(0,0,0,0.5);
+            --font-family: system-ui, -apple-system, sans-serif;
+            --marker-bright: #ff6600;
+            --marker-dark: #0066cc;
+        }
+        [data-theme="dark"] {
+            --bg-color: #1a1a2e;
+            --text-color: #e0e0e0;
+            --panel-bg: #16213e;
+            --border-color: #444;
+            --accent-color: #4da3ff;
+            --canvas-bg: #0a0a0a;
+            --modal-backdrop: rgba(0,0,0,0.8);
+            --marker-bright: #ffaa00;
+            --marker-dark: #66ccff;
+        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; height: 100%; }
+        body {
+            font-family: var(--font-family);
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 12px;
+            transition: background 0.3s, color 0.3s;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        h1 { margin: 0; font-size: 1.3rem; }
+        .toolbar { display: flex; gap: 4px; flex-wrap: wrap; }
+        .toolbar button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .toolbar button:hover { opacity: 0.8; }
+        .toolbar button:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 1px; }
+        main {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 12px;
+            flex: 1;
+            min-height: 0;
+        }
+        @media (max-width: 768px) {
+            main { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+            body { overflow: auto; }
+            h1 { font-size: 1.1rem; }
+        }
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .panel-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        .control-group { margin-bottom: 12px; }
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+            font-size: 0.82rem;
+        }
+        input[type=range] { width: 100%; accent-color: var(--accent-color); cursor: pointer; }
+        .markers-container {
+            position: relative;
+            height: 14px;
+            margin-top: 2px;
+        }
+        .markers-container .marker {
+            position: absolute;
+            top: 1px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+        .markers-container .marker.bright,
+        .markers-container .marker[data-kind="bright"] {
+            background: var(--marker-bright);
+            border: 2px solid var(--marker-bright);
+        }
+        .markers-container .marker.dark,
+        .markers-container .marker[data-kind="dark"] {
+            background: transparent;
+            border: 2px solid var(--marker-dark);
+        }
+        .canvas-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+            min-height: 0;
+        }
+        .canvas-box {
+            flex: 1;
+            position: relative;
+            min-height: 120px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--canvas-bg);
+        }
+        .canvas-box .panel-title {
+            position: absolute;
+            top: 4px;
+            left: 8px;
+            z-index: 2;
+            border: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+        canvas { display: block; width: 100%; height: 100%; }
+        #intensityCanvas:focus { outline: 2px solid var(--accent-color); outline-offset: -2px; }
+        #intensity-tooltip {
+            position: absolute;
+            background: rgba(0,0,0,0.85);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            z-index: 10;
+            white-space: nowrap;
+            display: none;
+        }
+        #principle-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--modal-backdrop);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 16px;
+        }
+        #principle-modal.open { display: flex; }
+        .modal-inner {
+            background: var(--bg-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            max-width: 640px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .modal-header h2 { margin: 0; font-size: 1.1rem; }
+        #modal-close-button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            line-height: 1;
+            padding: 4px 8px;
+        }
+        #modal-close-button:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        .svg-container {
+            width: 100%;
+            border: 1px dashed var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 12px;
+            padding: 8px;
+        }
+        .modal-inner p { font-size: 0.88rem; line-height: 1.6; margin: 8px 0; }
+        .modal-inner .note {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 8px;
+            margin-top: 10px;
+        }
+        body[data-compact="true"] .panel { padding: 8px; }
+        body[data-compact="true"] h1 { font-size: 1.1rem; }
+        body[data-compact="true"] .control-group { margin-bottom: 8px; }
+        body[data-compact="true"] .canvas-box { min-height: 90px; }
+    </style>
+</head>
+<body data-compact="false">
+    <header>
+        <h1>杨氏双缝干涉仿真</h1>
+        <div class="toolbar">
+            <button id="reset-button" title="重置参数">重置</button>
+            <button id="theme-button" title="切换主题">主题</button>
+            <button id="palette-button" title="切换配色">配色</button>
+            <button id="principle-button" title="原理说明">原理</button>
+        </div>
+    </header>
+    <main>
+        <section class="panel" aria-label="参数调控">
+            <div class="panel-title">参数调控</div>
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="wavelength">波长 λ</label>
+                    <output id="wavelength-output">550 nm</output>
+                </div>
+                <input type="range" id="wavelength" min="380" max="750" value="550" step="1">
+                <div class="markers-container" id="wavelength-markers"></div>
+            </div>
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitSeparation">缝间距 d</label>
+                    <output id="slitSeparation-output">5000 nm</output>
+                </div>
+                <input type="range" id="slitSeparation" min="1000" max="10000" value="5000" step="10">
+                <div class="markers-container" id="slitSeparation-markers"></div>
+            </div>
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitWidth">缝宽 a</label>
+                    <output id="slitWidth-output">1000 nm</output>
+                </div>
+                <input type="range" id="slitWidth" min="200" max="3000" value="1000" step="10">
+            </div>
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="screenDistance">屏距 Dsim</label>
+                    <output id="screenDistance-output">50</output>
+                </div>
+                <input type="range" id="screenDistance" min="1" max="100" value="50" step="1">
+            </div>
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="zoom">缩放 Z</label>
+                    <output id="zoom-output">×1.0</output>
+                </div>
+                <input type="range" id="zoom" min="1" max="5" value="1" step="0.1">
+            </div>
+        </section>
+        <section class="panel" aria-label="可视化区域">
+            <div class="canvas-wrapper">
+                <div class="canvas-box">
+                    <div class="panel-title">干涉条纹图样</div>
+                    <canvas id="interferenceCanvas"></canvas>
+                </div>
+                <div class="canvas-box">
+                    <div class="panel-title">归一化光强</div>
+                    <canvas id="intensityCanvas" tabindex="0" aria-label="归一化光强曲线，可用方向键探测"></canvas>
+                    <div id="intensity-tooltip" role="tooltip" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="principle-modal" aria-hidden="true">
+        <div class="modal-inner" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-header">
+                <h2 id="modal-title">杨氏双缝干涉原理</h2>
+                <button id="modal-close-button" aria-label="关闭对话框">×</button>
+            </div>
+            <div class="svg-container">
+                <svg viewBox="0 0 460 220" width="100%" height="200" aria-label="双缝干涉几何示意图" role="img">
+                    <circle cx="30" cy="110" r="5" fill="currentColor"/>
+                    <text x="18" y="98" font-size="13" fill="currentColor" font-weight="bold">S</text>
+                    <line x1="130" y1="15" x2="130" y2="85" stroke="currentColor" stroke-width="3"/>
+                    <line x1="130" y1="135" x2="130" y2="205" stroke="currentColor" stroke-width="3"/>
+                    <text x="118" y="100" font-size="11" fill="currentColor">S₁</text>
+                    <text x="118" y="128" font-size="11" fill="currentColor">S₂</text>
+                    <line x1="140" y1="90" x2="140" y2="130" stroke="currentColor" stroke-width="1" stroke-dasharray="3,2"/>
+                    <text x="145" y="114" font-size="12" fill="currentColor" font-style="italic">d</text>
+                    <line x1="380" y1="15" x2="380" y2="205" stroke="currentColor" stroke-width="4"/>
+                    <text x="388" y="110" font-size="12" fill="currentColor">观察屏</text>
+                    <line x1="130" y1="90" x2="380" y2="70" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                    <line x1="130" y1="130" x2="380" y2="150" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                    <line x1="30" y1="110" x2="380" y2="110" stroke="currentColor" stroke-width="0.8" stroke-dasharray="5,4" opacity="0.4"/>
+                    <line x1="130" y1="195" x2="380" y2="195" stroke="currentColor" stroke-width="1.2"/>
+                    <line x1="130" y1="190" x2="130" y2="200" stroke="currentColor" stroke-width="1"/>
+                    <line x1="380" y1="190" x2="380" y2="200" stroke="currentColor" stroke-width="1"/>
+                    <text x="220" y="212" font-size="12" fill="currentColor" font-weight="bold">D（物理屏距）</text>
+                    <rect x="20" y="10" width="200" height="36" rx="4" fill="none" stroke="currentColor" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.6"/>
+                    <text x="28" y="25" font-size="10" fill="currentColor" opacity="0.9">显示映射：η = (u−u₀)/(4·Dsim·Z)</text>
+                    <text x="28" y="40" font-size="10" fill="currentColor" opacity="0.9">Dsim 仅控制显示比例，非物理 D</text>
+                </svg>
+            </div>
+            <p>单色光通过间距为 <em>d</em> 的双缝后，在距离 <em>D</em>（物理屏距）的观察屏上形成干涉条纹。归一化光强公式为：</p>
+            <p style="text-align:center;font-family:monospace;font-size:0.9rem;">I<sub>N</sub>(η) = sinc²(πaη/λ) · cos²(πdη/λ)</p>
+            <p>其中 sinc(t) = sin(t)/t，sinc(0) = 1。单缝衍射包络调制双缝干涉条纹，使高级次条纹强度递减。</p>
+            <p class="note"><strong>物理 D 与显示 Dsim 的区别：</strong>物理屏距 D 是实验中的真实几何量，决定条纹的实际空间分布。本仿真中的 Dsim（屏距参数）和 Z（缩放）仅用于将物理光强映射到屏幕像素坐标：η = (u − u₀) / (4·Dsim·Z)。改变 Dsim 或 Z 只改变显示比例，不改变物理光强分布和条纹级次。</p>
+        </div>
+    </div>
+    <script id="phy-sim-script">
+    (function() {
+        'use strict';
+        var PARAM_KEYS = ['wavelength','slitSeparation','slitWidth','screenDistance','zoom'];
+        var DEFAULTS = {wavelength:550,slitSeparation:5000,slitWidth:1000,screenDistance:50,zoom:1};
+        var LIMITS = {wavelength:[380,750],slitSeparation:[1000,10000],slitWidth:[200,3000],screenDistance:[1,100],zoom:[1,5]};
+        var ETA_REF = 0.11;
+
+        var params = null;
+        var hoverX = null;
+        var readyResolve = null;
+        var readyPromise = new Promise(function(r){ readyResolve = r; });
+        var firstFrameDone = false;
+
+        function clamp(v, lo, hi) { return v < lo ? lo : (v > hi ? hi : v); }
+
+        function normalize(partial, base) {
+            var b = base || params || DEFAULTS;
+            var out = {};
+            for (var i = 0; i < PARAM_KEYS.length; i++) {
+                var k = PARAM_KEYS[i];
+                var v;
+                if (partial && Object.prototype.hasOwnProperty.call(partial, k) && partial[k] !== undefined && partial[k] !== null) {
+                    v = Number(partial[k]);
+                } else {
+                    v = Number(b[k]);
+                }
+                if (!isFinite(v)) v = DEFAULTS[k];
+                v = clamp(v, LIMITS[k][0], LIMITS[k][1]);
+                out[k] = v;
+            }
+            if (out.slitWidth > out.slitSeparation) out.slitWidth = out.slitSeparation;
+            return out;
+        }
+
+        function sinc(t) {
+            if (t === 0) return 1;
+            return Math.sin(t) / t;
+        }
+
+        function intensityAtEta(eta, p) {
+            p = p || params || DEFAULTS;
+            var lam = p.wavelength, a = p.slitWidth, d = p.slitSeparation;
+            var t1 = Math.PI * a * eta / lam;
+            var t2 = Math.PI * d * eta / lam;
+            var s = sinc(t1);
+            var c = Math.cos(t2);
+            return s * s * c * c;
+        }
+
+        function etaFromX(x, cssW, p) {
+            p = p || params;
+            return (x - cssW / 2) / (4 * p.screenDistance * p.zoom);
+        }
+
+        function wavelengthToRGB(wl) {
+            var r = 0, g = 0, b = 0;
+            if (wl >= 380 && wl < 440) { r = -(wl - 440) / 60; b = 1; }
+            else if (wl >= 440 && wl < 490) { g = (wl - 440) / 50; b = 1; }
+            else if (wl >= 490 && wl < 510) { g = 1; b = -(wl - 510) / 20; }
+            else if (wl >= 510 && wl < 580) { r = (wl - 510) / 70; g = 1; }
+            else if (wl >= 580 && wl < 645) { r = 1; g = -(wl - 645) / 65; }
+            else if (wl >= 645 && wl <= 750) { r = 1; }
+            var f = 1;
+            if (wl >= 380 && wl < 420) f = 0.3 + 0.7 * (wl - 380) / 40;
+            else if (wl > 700 && wl <= 750) f = 0.3 + 0.7 * (750 - wl) / 50;
+            return [Math.round(r * f * 255), Math.round(g * f * 255), Math.round(b * f * 255)];
+        }
+
+        function getCriticalMarkers(p) {
+            p = p || params || DEFAULTS;
+            var result = { wavelength: [], slitSeparation: [] };
+            var d = p.slitSeparation, lam = p.wavelength;
+            var m, v;
+            for (m = 1; m <= 200; m++) {
+                v = d * ETA_REF / m;
+                if (v < LIMITS.wavelength[0]) break;
+                if (v <= LIMITS.wavelength[1]) {
+                    result.wavelength.push({ kind: 'bright', order: m, value: Math.round(v * 100) / 100 });
+                }
+            }
+            for (m = 0; m <= 200; m++) {
+                v = d * ETA_REF / (m + 0.5);
+                if (v < LIMITS.wavelength[0]) break;
+                if (v <= LIMITS.wavelength[1]) {
+                    result.wavelength.push({ kind: 'dark', order: m + 0.5, value: Math.round(v * 100) / 100 });
+                }
+            }
+            for (m = 1; m <= 500; m++) {
+                v = lam * m / ETA_REF;
+                if (v > LIMITS.slitSeparation[1]) break;
+                if (v >= LIMITS.slitSeparation[0]) {
+                    result.slitSeparation.push({ kind: 'bright', order: m, value: Math.round(v * 100) / 100 });
+                }
+            }
+            for (m = 0; m <= 500; m++) {
+                v = lam * (m + 0.5) / ETA_REF;
+                if (v > LIMITS.slitSeparation[1]) break;
+                if (v >= LIMITS.slitSeparation[0]) {
+                    result.slitSeparation.push({ kind: 'dark', order: m + 0.5, value: Math.round(v * 100) / 100 });
+                }
+            }
+            return result;
+        }
+
+        function renderMarkers() {
+            var cm = getCriticalMarkers(params);
+            var wlCont = document.getElementById('wavelength-markers');
+            var dsCont = document.getElementById('slitSeparation-markers');
+            if (!wlCont || !dsCont) return;
+            wlCont.innerHTML = '';
+            dsCont.innerHTML = '';
+            var wlMin = LIMITS.wavelength[0], wlMax = LIMITS.wavelength[1];
+            var dsMin = LIMITS.slitSeparation[0], dsMax = LIMITS.slitSeparation[1];
+            var i, mk, el, pct;
+            for (i = 0; i < cm.wavelength.length; i++) {
+                mk = cm.wavelength[i];
+                el = document.createElement('span');
+                el.className = 'marker ' + mk.kind;
+                el.setAttribute('data-kind', mk.kind);
+                pct = (mk.value - wlMin) / (wlMax - wlMin) * 100;
+                el.style.left = pct + '%';
+                el.title = mk.kind + ' m=' + mk.order + ' \u03BB=' + mk.value + 'nm';
+                wlCont.appendChild(el);
+            }
+            for (i = 0; i < cm.slitSeparation.length; i++) {
+                mk = cm.slitSeparation[i];
+                el = document.createElement('span');
+                el.className = 'marker ' + mk.kind;
+                el.setAttribute('data-kind', mk.kind);
+                pct = (mk.value - dsMin) / (dsMax - dsMin) * 100;
+                el.style.left = pct + '%';
+                el.title = mk.kind + ' m=' + mk.order + ' d=' + mk.value + 'nm';
+                dsCont.appendChild(el);
+            }
+        }
+
+        function setupCanvas(canvas) {
+            var dpr = window.devicePixelRatio || 1;
+            var rect = canvas.getBoundingClientRect();
+            var w = Math.max(1, Math.round(rect.width * dpr));
+            var h = Math.max(1, Math.round(rect.height * dpr));
+            if (canvas.width !== w || canvas.height !== h) {
+                canvas.width = w;
+                canvas.height = h;
+            }
+            var ctx = canvas.getContext('2d');
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            return { ctx: ctx, cssW: rect.width, cssH: rect.height, dpr: dpr };
+        }
+
+        function renderPattern() {
+            var canvas = document.getElementById('interferenceCanvas');
+            if (!canvas) return;
+            var info = setupCanvas(canvas);
+            var ctx = info.ctx, cssW = info.cssW, cssH = info.cssH;
+            var palette = document.documentElement.getAttribute('data-palette') || 'color';
+            var gamma = 0.8;
+            ctx.clearRect(0, 0, cssW, cssH);
+            var rgb = wavelengthToRGB(params.wavelength);
+            var xEnd = Math.ceil(cssW);
+            var x, eta, I, v;
+            for (x = 0; x < xEnd; x++) {
+                eta = etaFromX(x + 0.5, cssW, params);
+                I = intensityAtEta(eta, params);
+                I = clamp(I, 0, 1);
+                if (palette === 'grayscale') {
+                    v = Math.round(Math.pow(I, gamma) * 255);
+                    ctx.fillStyle = 'rgb(' + v + ',' + v + ',' + v + ')';
+                } else {
+                    ctx.fillStyle = 'rgb(' + Math.round(rgb[0] * I) + ',' + Math.round(rgb[1] * I) + ',' + Math.round(rgb[2] * I) + ')';
+                }
+                ctx.fillRect(x, 0, 1, cssH);
+            }
+            if (hoverX !== null) {
+                ctx.strokeStyle = 'rgba(255,255,0,0.85)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(hoverX, 0);
+                ctx.lineTo(hoverX, cssH);
+                ctx.stroke();
+            }
+        }
+
+        function renderCurve() {
+            var canvas = document.getElementById('intensityCanvas');
+            if (!canvas) return;
+            var info = setupCanvas(canvas);
+            var ctx = info.ctx, cssW = info.cssW, cssH = info.cssH;
+            var theme = document.documentElement.getAttribute('data-theme') || 'light';
+            var marginV = 18;
+            var plotH = cssH - marginV * 2;
+            ctx.clearRect(0, 0, cssW, cssH);
+            ctx.strokeStyle = theme === 'dark' ? '#555' : '#ccc';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, cssH - marginV);
+            ctx.lineTo(cssW, cssH - marginV);
+            ctx.stroke();
+            ctx.strokeStyle = theme === 'dark' ? '#4da3ff' : '#0055cc';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            var first = true;
+            var step = 0.5;
+            var x, eta, I, y;
+            for (x = 0; x <= cssW; x += step) {
+                eta = etaFromX(x, cssW, params);
+                I = intensityAtEta(eta, params);
+                y = cssH - marginV - I * plotH;
+                if (first) { ctx.moveTo(x, y); first = false; }
+                else { ctx.lineTo(x, y); }
+            }
+            ctx.stroke();
+            if (hoverX !== null) {
+                ctx.strokeStyle = 'rgba(255,200,0,0.9)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(hoverX, 0);
+                ctx.lineTo(hoverX, cssH);
+                ctx.stroke();
+                var hEta = etaFromX(hoverX, cssW, params);
+                var hI = intensityAtEta(hEta, params);
+                var dotY = cssH - marginV - hI * plotH;
+                ctx.fillStyle = 'rgba(255,200,0,1)';
+                ctx.beginPath();
+                ctx.arc(hoverX, dotY, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function render() {
+            if (!params) params = normalize({});
+            renderPattern();
+            renderCurve();
+            renderMarkers();
+            if (!firstFrameDone) {
+                firstFrameDone = true;
+                if (readyResolve) readyResolve();
+            }
+        }
+
+        function updateOutputs() {
+            var el;
+            el = document.getElementById('wavelength-output');
+            if (el) el.textContent = params.wavelength + ' nm';
+            el = document.getElementById('slitSeparation-output');
+            if (el) el.textContent = params.slitSeparation + ' nm';
+            el = document.getElementById('slitWidth-output');
+            if (el) el.textContent = params.slitWidth + ' nm';
+            el = document.getElementById('screenDistance-output');
+            if (el) el.textContent = String(params.screenDistance);
+            el = document.getElementById('zoom-output');
+            if (el) el.textContent = '\u00D7' + params.zoom.toFixed(1);
+        }
+
+        function syncInputs() {
+            PARAM_KEYS.forEach(function(k) {
+                var el = document.getElementById(k);
+                if (el) el.value = params[k];
+            });
+            updateOutputs();
+        }
+
+        function setParams(partial) {
+            params = normalize(partial || {}, params || DEFAULTS);
+            syncInputs();
+            render();
+            return getParams();
+        }
+
+        function getParams() {
+            var copy = {};
+            PARAM_KEYS.forEach(function(k) { copy[k] = params[k]; });
+            return copy;
+        }
+
+        function readURL() {
+            var q = {};
+            try {
+                var search = window.location.search || '';
+                if (search.charAt(0) === '?') search = search.substring(1);
+                var pairs = search.split('&');
+                for (var i = 0; i < pairs.length; i++) {
+                    var idx = pairs[i].indexOf('=');
+                    if (idx > 0) {
+                        var key = decodeURIComponent(pairs[i].substring(0, idx));
+                        var val = decodeURIComponent(pairs[i].substring(idx + 1));
+                        q[key] = val;
+                    }
+                }
+            } catch (e) {}
+            return q;
+        }
+
+        function applyURL() {
+            var q = readURL();
+            var p = {};
+            PARAM_KEYS.forEach(function(k) {
+                if (q[k] !== undefined) p[k] = Number(q[k]);
+            });
+            params = normalize(p, DEFAULTS);
+            var html = document.documentElement;
+            var theme = q.theme;
+            if (theme === 'auto') {
+                try {
+                    theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+                } catch (e) { theme = 'light'; }
+            }
+            if (theme === 'dark' || theme === 'light') html.setAttribute('data-theme', theme);
+            if (q.palette === 'grayscale' || q.palette === 'color') html.setAttribute('data-palette', q.palette);
+            document.body.setAttribute('data-compact', q.compact === '1' ? 'true' : 'false');
+        }
+
+        function showTooltip(x, cssW) {
+            var tooltip = document.getElementById('intensity-tooltip');
+            if (!tooltip) return;
+            var eta = etaFromX(x, cssW, params);
+            var I = intensityAtEta(eta, params);
+            tooltip.textContent = '\u03B7=' + eta.toFixed(5) + '  I_N=' + (I * 100).toFixed(1) + '%';
+            tooltip.style.display = 'block';
+            tooltip.setAttribute('aria-hidden', 'false');
+            var tx = clamp(x + 10, 5, Math.max(5, cssW - 170));
+            tooltip.style.left = tx + 'px';
+            tooltip.style.top = '5px';
+        }
+
+        function hideTooltip() {
+            var tooltip = document.getElementById('intensity-tooltip');
+            if (!tooltip) return;
+            tooltip.style.display = 'none';
+            tooltip.setAttribute('aria-hidden', 'true');
+        }
+
+        function init() {
+            applyURL();
+            syncInputs();
+
+            PARAM_KEYS.forEach(function(k) {
+                var el = document.getElementById(k);
+                if (el) {
+                    el.addEventListener('input', function() {
+                        var obj = {};
+                        obj[k] = Number(el.value);
+                        params = normalize(obj, params);
+                        syncInputs();
+                        render();
+                    });
+                }
+            });
+
+            document.getElementById('reset-button').addEventListener('click', function() {
+                params = normalize({}, DEFAULTS);
+                syncInputs();
+                render();
+            });
+
+            document.getElementById('theme-button').addEventListener('click', function() {
+                var html = document.documentElement;
+                var cur = html.getAttribute('data-theme');
+                html.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+                render();
+            });
+
+            document.getElementById('palette-button').addEventListener('click', function() {
+                var html = document.documentElement;
+                var cur = html.getAttribute('data-palette');
+                html.setAttribute('data-palette', cur === 'grayscale' ? 'color' : 'grayscale');
+                render();
+            });
+
+            var ic = document.getElementById('intensityCanvas');
+
+            ic.addEventListener('pointermove', function(e) {
+                var rect = ic.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                hoverX = clamp(x, 0, rect.width);
+                render();
+                showTooltip(hoverX, rect.width);
+            });
+
+            ic.addEventListener('pointerleave', function() {
+                hoverX = null;
+                hideTooltip();
+                render();
+            });
+
+            ic.addEventListener('keydown', function(e) {
+                var rect = ic.getBoundingClientRect();
+                var cssW = rect.width;
+                if (hoverX === null) hoverX = cssW / 2;
+                var step = 2;
+                if (e.key === 'ArrowLeft') {
+                    hoverX = clamp(hoverX - step, 0, cssW);
+                    e.preventDefault();
+                } else if (e.key === 'ArrowRight') {
+                    hoverX = clamp(hoverX + step, 0, cssW);
+                    e.preventDefault();
+                } else if (e.key === 'Home') {
+                    hoverX = cssW / 2;
+                    e.preventDefault();
+                } else {
+                    return;
+                }
+                render();
+                showTooltip(hoverX, cssW);
+            });
+
+            ic.addEventListener('blur', function() {
+                hoverX = null;
+                hideTooltip();
+                render();
+            });
+
+            var modal = document.getElementById('principle-modal');
+            var modalInner = modal.querySelector('.modal-inner');
+            var closeBtn = document.getElementById('modal-close-button');
+            var principleBtn = document.getElementById('principle-button');
+            var lastFocusedElement = null;
+
+            function getFocusableElements() {
+                var els = modalInner.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+                return Array.prototype.slice.call(els);
+            }
+
+            function openModal() {
+                lastFocusedElement = document.activeElement;
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                closeBtn.focus();
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                if (lastFocusedElement && lastFocusedElement.focus) {
+                    lastFocusedElement.focus();
+                }
+            }
+
+            principleBtn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('open')) return;
+                if (e.key === 'Escape') {
+                    closeModal();
+                    e.preventDefault();
+                    return;
+                }
+                if (e.key === 'Tab') {
+                    var focusable = getFocusableElements();
+                    if (focusable.length === 0) {
+                        e.preventDefault();
+                        return;
+                    }
+                    var idx = focusable.indexOf(document.activeElement);
+                    if (e.shiftKey) {
+                        if (idx <= 0) {
+                            focusable[focusable.length - 1].focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        if (idx >= focusable.length - 1) {
+                            focusable[0].focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+
+            var resizeTimer = null;
+            window.addEventListener('resize', function() {
+                if (resizeTimer) clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() { render(); }, 50);
+            });
+
+            requestAnimationFrame(function() {
+                render();
+            });
+        }
+
+        window.PhySim = {
+            version: '0.9.1',
+            defaults: JSON.parse(JSON.stringify(DEFAULTS)),
+            limits: JSON.parse(JSON.stringify(LIMITS)),
+            ready: readyPromise,
+            getParams: getParams,
+            setParams: setParams,
+            intensityAtEta: function(eta, p) { return intensityAtEta(eta, p || params || DEFAULTS); },
+            getCriticalMarkers: function(p) { return getCriticalMarkers(p || params || DEFAULTS); },
+            render: render
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
+</body>
+</html>

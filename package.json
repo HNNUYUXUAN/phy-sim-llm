@@ -1,0 +1,16 @@
+{
+  "name": "phy-sim-llm",
+  "version": "0.9.1",
+  "private": true,
+  "type": "module",
+  "description": "杨氏双缝教学仿真与论文读者复现工具",
+  "license": "MIT",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "preview": "node tests/serve.mjs",
+    "test": "node scripts/run-fixed-tests.mjs",
+    "test:tools": "node --test tests/tools.test.mjs",
+    "reproduce": "node scripts/reproduce.mjs",
+    "figures": "node scripts/capture-paper-figures.mjs"
+  }
+}

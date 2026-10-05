@@ -1,0 +1,336 @@
+{
+  "appPath": "D:\\VibePaper\\publication-staging\\20261005_reader_release\\reader-release\\index.html",
+  "sourceSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "source": "maintenance-deployment-frozen-teaching-scenes",
+  "figures": [
+    {
+      "file": "figure-03-overview.png",
+      "description": "默认参数下的完整平台界面",
+      "viewport": {
+        "width": 945,
+        "height": 840
+      },
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 0
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "8b4aae0cbb2b9d0a44ca6901a4aa91565e8cd5b82efad5d18a5126c65265caaf"
+    },
+    {
+      "file": "figure-04a-short-wavelength.png",
+      "description": "短波长条件",
+      "viewport": {
+        "width": 945,
+        "height": 520
+      },
+      "params": {
+        "wavelength": 430,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 430,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 1
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "cff4e16d3b7c8df2e3d53e6c663401d8973326b6ed5139ec991e470520e081ea"
+    },
+    {
+      "file": "figure-04b-long-wavelength.png",
+      "description": "长波长条件",
+      "viewport": {
+        "width": 945,
+        "height": 520
+      },
+      "params": {
+        "wavelength": 690,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 690,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 1
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "ef0f2a83f2d35efe584baea69580bb76f4e22227c51559b7ebce036123716746"
+    },
+    {
+      "file": "figure-05a-small-separation.png",
+      "description": "小缝间距条件",
+      "viewport": {
+        "width": 945,
+        "height": 520
+      },
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 3400,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 550,
+        "slitSeparation": 3400,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 1
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "9fe64b0ec9becccd0d944ff68ac5e0063afdeddd6936ff1d946e292a8c7b215d"
+    },
+    {
+      "file": "figure-05b-large-separation.png",
+      "description": "大缝间距条件",
+      "viewport": {
+        "width": 945,
+        "height": 520
+      },
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 7600,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 550,
+        "slitSeparation": 7600,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 1
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "e4d1a41379b317cbf078bcce995243c49d25ebfda75cea80e4f3f28880288e18"
+    },
+    {
+      "file": "figure-06-high-order-zoom.png",
+      "description": "高阶条纹显示缩放",
+      "viewport": {
+        "width": 945,
+        "height": 520
+      },
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 3
+      },
+      "requestedParams": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 3,
+        "compact": 1
+      },
+      "observedPeak": {
+        "eta": 0.21677249511509772,
+        "intensity": 0.577787185884725,
+        "searchedInterval": [
+          0.165,
+          0.275
+        ]
+      },
+      "idealSecondOrderEta": 0.22,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "80e16280fd4dc4474c99fda775c8b7703f42a1a6a6a2d1d08c5e7bfd35bf2cfe"
+    },
+    {
+      "file": "figure-07a-critical-bright.png",
+      "description": "固定参考eta=0.11：一级亮纹条件",
+      "viewport": {
+        "width": 945,
+        "height": 520
+      },
+      "params": {
+        "wavelength": 660,
+        "slitSeparation": 6000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 660,
+        "slitSeparation": 6000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 1
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "e67fe3e00a8ca2c084cfbf35f9e2468a7e74431e55ab5a75f9db949b77ec07e9"
+    },
+    {
+      "file": "figure-07b-critical-dark.png",
+      "description": "同一参考eta=0.11：1.5级暗纹条件",
+      "viewport": {
+        "width": 945,
+        "height": 520
+      },
+      "params": {
+        "wavelength": 440,
+        "slitSeparation": 6000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 440,
+        "slitSeparation": 6000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 1
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "grayscale",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": true,
+      "sha256": "b5bb9915bf4c481f769e4ba05aa4215989d12b84165c0ab4fbbd87e7c932c299"
+    },
+    {
+      "file": "mobile-responsive.png",
+      "description": "移动端响应式布局验收",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      },
+      "requestedParams": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1,
+        "compact": 0
+      },
+      "observedPeak": null,
+      "idealSecondOrderEta": null,
+      "palette": "color",
+      "theme": "light",
+      "dpr": 1,
+      "mode": "file:// with all external requests blocked",
+      "programSha256": "7fb9b215312d87c8bdabb418e72e40051ca763effd84993be955b8d1bbf2ddcd",
+      "parameterProvenance": "本次冻结教学场景；不声称原论文未披露的参数已恢复",
+      "consoleErrors": [],
+      "externalRequests": [],
+      "publicationFigure": false,
+      "sha256": "b266ea0222eef54fd34c855fad3f4ded2548b49044a8ace6246aea76c91f999c"
+    }
+  ]
+}

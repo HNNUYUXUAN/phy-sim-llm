@@ -1,0 +1,12 @@
+import {readFile} from 'node:fs/promises';
+import {dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+const url=new URL(process.argv[2]??'https://yslit.yuxuan.wiki/');
+if(url.protocol!=='https:'||url.username||url.password||url.search||url.hash)throw Error('Use a plain HTTPS website URL');
+const response=await fetch(url,{signal:AbortSignal.timeout(30000)});if(!response.ok)throw Error('Website HTTP '+response.status);
+const online=Buffer.from(await response.arrayBuffer());
+const local=await readFile(join(dirname(dirname(fileURLToPath(import.meta.url))),'index.html'));
+const hash=b=>createHash('sha256').update(b).digest('hex');
+const result={url:url.href,onlineSha256:hash(online),localSha256:hash(local),byteIdentical:online.equals(local)};
+console.log(JSON.stringify(result));if(!result.byteIdentical)process.exitCode=1;

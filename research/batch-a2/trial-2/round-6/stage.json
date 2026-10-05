@@ -1,0 +1,57 @@
+{
+  "round": 6,
+  "status": "finished",
+  "attempts": [
+    {
+      "attempt": 0,
+      "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a0-generate",
+      "status": "tested",
+      "requestId": "chatcmpl-36524785-966a-931a-84e9-ef3159365bf1",
+      "finishReason": "stop",
+      "responseHash": "ecaee741000a6c60e1d668bf7c1231f411e1ee8e609899db5a67efbaf6eb606c",
+      "snapshot": "attempt-0.html",
+      "htmlHash": "ecaee741000a6c60e1d668bf7c1231f411e1ee8e609899db5a67efbaf6eb606c",
+      "safetyIssues": [],
+      "testPassed": false,
+      "failures": [
+        {
+          "name": "desktop/file-offline/DPR1: initial dialog focus",
+          "passed": false,
+          "detail": null
+        }
+      ],
+      "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a0-review",
+      "review": {
+        "passed": false,
+        "issues": [
+          "A large modal window ('杨氏双缝干涉原理') is open and obscures the majority of the main simulation area (interference pattern) and the bottom intensity graph.",
+          "The tooltip 'η = 0.0000 I_N = 100.0%' overlaps with the legend box in the bottom right corner.",
+          "The text inside the open modal has very low contrast (dark grey text on dark grey background), making it difficult to read."
+        ]
+      }
+    },
+    {
+      "attempt": 1,
+      "callId": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a1-generate",
+      "status": "passed",
+      "requestId": "chatcmpl-27b262c1-4b2a-9555-816d-34ff7125f06f",
+      "finishReason": "stop",
+      "responseHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+      "snapshot": "attempt-1.html",
+      "htmlHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+      "safetyIssues": [],
+      "testPassed": true,
+      "failures": [],
+      "reviewCall": "r200-b9133064-1550-464f-989a-e653da91c5db-a2-t2-r6-a1-review",
+      "review": {
+        "passed": true,
+        "issues": []
+      }
+    }
+  ],
+  "modelRepairs": 1,
+  "safeSnapshot": "attempt-1.html",
+  "safeHash": "28d736f21abd6c6bcc33c1f28931303b80d8ddd7abd258e4ea823e97f092c051",
+  "passed": true,
+  "terminal": false
+}

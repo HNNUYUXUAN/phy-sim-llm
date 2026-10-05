@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 2,
+  "appSha256": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+  "round": 3,
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "browserFallback": "Browser plugin not available",
+  "checks": [
+    {
+      "name": "strict offline safety",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: offline HTML and credential scan",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 1096,
+        "widthB": 1096,
+        "leftA": 318,
+        "leftB": 318,
+        "dpr": 1,
+        "ratioA": 1,
+        "ratioB": 1
+      }
+    },
+    {
+      "name": "core: normalized center",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "core: a <= d normalized through API",
+      "passed": true,
+      "detail": {
+        "wavelength": 550,
+        "slitSeparation": 1000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      }
+    },
+    {
+      "name": "core: range input updates model",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: URL clamp and invalid defaults",
+      "passed": true,
+      "detail": {
+        "wavelength": 750,
+        "slitSeparation": 1000,
+        "slitWidth": 1000,
+        "screenDistance": 1,
+        "zoom": 5
+      }
+    },
+    {
+      "name": "core: curve hover percentage",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: hover hides on leave",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: keyboard curve probe",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "core: DPR 1: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "core: DPR 1: console and page health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: page identity",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no horizontal overflow",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: actual Canvas curve matches independent physics (2.5% raster bound)",
+      "passed": true,
+      "detail": {
+        "points": 2193,
+        "maxIntensityError": 2.220446049250313e-16
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: pattern pixel profile matches physics under monotone gamma",
+      "passed": true,
+      "detail": {
+        "meanIntensityError": 0.014986770546685083,
+        "gamma": 0.7500000000000003
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: hover percentage numerical accuracy",
+      "passed": true,
+      "detail": {
+        "text": "η=0.06667  I_N=10.2%",
+        "expectedPct": 10.190172807614463
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: same-x indicator actually appears on both canvases",
+      "passed": true,
+      "detail": {
+        "interferenceCanvas": {
+          "changedRows": 398,
+          "height": 398
+        },
+        "intensityCanvas": {
+          "changedRows": 398,
+          "height": 398
+        }
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: leave hides tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "desktop/file-offline/DPR1: Home/arrows operate curve",
+      "passed": true,
+      "detail": {
+        "home": "η=0.00000 I_N=100.0%",
+        "right": "η=0.00333 I_N=99.1%",
+        "left": "η=0.00000 I_N=100.0%"
+      }
+    },
+    {
+      "name": "desktop/file-offline/DPR1: console health",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "desktop/file-offline/DPR1: no external requests",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "desktop-file-offline-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "file-offline",
+      "params": {
+        "wavelength": 550,
+        "slitSeparation": 5000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 3
+      },
+      "theme": "light",
+      "palette": "grayscale",
+      "programSha256": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+      "sha256": "955d9d825a83aafec1133f1644bf450c7f92b511e812507bbaa06c26e78d05c8"
+    }
+  ],
+  "observations": [],
+  "untestedBrowsers": [
+    "Firefox",
+    "WebKit"
+  ],
+  "core": {
+    "schemaVersion": 1,
+    "round": 3,
+    "appSha256": "f8996e9c8d9e87f9ca2c6f84469c5953a54b176192239891be97a07ac3181f38",
+    "runtime": {
+      "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+      "browserStore": "C:/ProgramData/ms-playwright",
+      "version": "1.63.0-alpha-2026-08-31",
+      "chromiumRevision": "1243",
+      "browserVersion": "153.0.8010.12"
+    },
+    "checks": [
+      {
+        "name": "offline HTML and credential scan",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: title/content",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #wavelength",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitSeparation",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #slitWidth",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #screenDistance",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #zoom",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #interferenceCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensityCanvas",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: #intensity-tooltip",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: canvas alignment",
+        "passed": true,
+        "detail": {
+          "widthA": 1096,
+          "widthB": 1096,
+          "leftA": 318,
+          "leftB": 318,
+          "dpr": 1,
+          "ratioA": 1,
+          "ratioB": 1
+        }
+      },
+      {
+        "name": "normalized center",
+        "passed": true,
+        "detail": 1
+      },
+      {
+        "name": "a <= d normalized through API",
+        "passed": true,
+        "detail": {
+          "wavelength": 550,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 50,
+          "zoom": 1
+        }
+      },
+      {
+        "name": "range input updates model",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "URL clamp and invalid defaults",
+        "passed": true,
+        "detail": {
+          "wavelength": 750,
+          "slitSeparation": 1000,
+          "slitWidth": 1000,
+          "screenDistance": 1,
+          "zoom": 5
+        }
+      },
+      {
+        "name": "curve hover percentage",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "hover hides on leave",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "keyboard curve probe",
+        "passed": true,
+        "detail": null
+      },
+      {
+        "name": "DPR 1: zero external requests",
+        "passed": true,
+        "detail": []
+      },
+      {
+        "name": "DPR 1: console and page health",
+        "passed": true,
+        "detail": []
+      }
+    ],
+    "numericalRows": [],
+    "observations": [],
+    "screenshots": [
+      {
+        "file": "desktop-dpr1.png",
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "dpr": 1,
+        "mode": "rendered",
+        "sha256": "6b7bfa8bd63bc40ac8b2d90712a773d50b1af7bf26af9e41e1c80079e7005d93"
+      }
+    ],
+    "untestedBrowsers": [
+      "Firefox",
+      "WebKit"
+    ],
+    "passed": true
+  },
+  "passed": true
+}

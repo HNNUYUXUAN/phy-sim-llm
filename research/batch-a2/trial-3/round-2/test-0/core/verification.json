@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "round": 2,
+  "appSha256": "9ff06351abfb71a734023bacb817388b1a5fbeda408f07e25fa75a1643d9e638",
+  "runtime": {
+    "runtimeRoot": "C:/ProgramData/PlaywrightRuntime",
+    "browserStore": "C:/ProgramData/ms-playwright",
+    "version": "1.63.0-alpha-2026-08-31",
+    "chromiumRevision": "1243",
+    "browserVersion": "153.0.8010.12"
+  },
+  "checks": [
+    {
+      "name": "offline HTML and credential scan",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "DPR 1: title/content",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #wavelength",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #slitSeparation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #slitWidth",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #screenDistance",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #zoom",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #interferenceCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #intensityCanvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: #intensity-tooltip",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "DPR 1: canvas alignment",
+      "passed": true,
+      "detail": {
+        "widthA": 1096,
+        "widthB": 1096,
+        "leftA": 318,
+        "leftB": 318,
+        "dpr": 1,
+        "ratioA": 1,
+        "ratioB": 1
+      }
+    },
+    {
+      "name": "normalized center",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "a <= d normalized through API",
+      "passed": true,
+      "detail": {
+        "wavelength": 550,
+        "slitSeparation": 1000,
+        "slitWidth": 1000,
+        "screenDistance": 50,
+        "zoom": 1
+      }
+    },
+    {
+      "name": "range input updates model",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "URL clamp and invalid defaults",
+      "passed": true,
+      "detail": {
+        "wavelength": 750,
+        "slitSeparation": 1000,
+        "slitWidth": 1000,
+        "screenDistance": 1,
+        "zoom": 5
+      }
+    },
+    {
+      "name": "DPR 1: zero external requests",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "DPR 1: console and page health",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "numericalRows": [],
+  "observations": [],
+  "screenshots": [
+    {
+      "file": "desktop-dpr1.png",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "dpr": 1,
+      "mode": "rendered",
+      "sha256": "393fca41cbaca5b99c681a289e67790eb95dc67c366332da22bbde1ee4163ca7"
+    }
+  ],
+  "untestedBrowsers": [
+    "Firefox",
+    "WebKit"
+  ],
+  "passed": true
+}

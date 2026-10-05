@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="color">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨氏双缝干涉仿真</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+    
+    <style id="phy-sim-style">
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --panel-bg: #f9f9f9;
+            --border-color: #cccccc;
+            --accent-color: #007bff;
+            --canvas-bg: #ffffff;
+            --modal-backdrop: rgba(0, 0, 0, 0.5);
+            --font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --panel-bg: #2d2d2d;
+            --border-color: #444444;
+            --accent-color: #4da3ff;
+            --canvas-bg: #000000;
+            --modal-backdrop: rgba(0, 0, 0, 0.8);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Prevent body scroll, handle in panels */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-shrink: 0;
+        }
+
+        h1 { margin: 0; font-size: 1.5rem; }
+
+        .toolbar button {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 5px;
+        }
+
+        .toolbar button:hover { filter: brightness(0.9); }
+
+        main {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            flex-grow: 1;
+            min-height: 0; /* Important for nested scrolling */
+        }
+
+        @media (max-width: 768px) {
+            main { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+            body { height: auto; overflow: auto; }
+        }
+
+        /* Panels */
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .panel-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* Controls */
+        .control-group { margin-bottom: 15px; }
+        
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        input[type=range] {
+            width: 100%;
+            accent-color: var(--accent-color);
+            cursor: pointer;
+        }
+
+        .markers-container {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        /* Canvases */
+        .canvas-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .canvas-box {
+            flex: 1;
+            background: var(--canvas-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            outline: none;
+        }
+
+        /* Tooltip */
+        #intensity-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            z-index: 10;
+            white-space: nowrap;
+            transform: translate(-50%, -120%);
+            display: none;
+        }
+
+        /* Modal */
+        #principle-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--modal-backdrop);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        #principle-modal[open] { display: flex; }
+
+        dialog {
+            background: var(--bg-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        dialog::backdrop { background: transparent; } /* Handled by wrapper */
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .svg-container {
+            width: 100%;
+            height: 200px;
+            border: 1px dashed var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        svg text { fill: var(--text-color); font-size: 12px; }
+        svg line, svg rect { stroke: var(--text-color); stroke-width: 1.5; fill: none; }
+
+        /* Compact Mode */
+        body[data-compact="true"] .panel { padding: 10px; }
+        body[data-compact="true"] h1 { font-size: 1.2rem; }
+        body[data-compact="true"] .control-group { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>杨氏双缝干涉仿真</h1>
+        <div class="toolbar">
+            <button id="reset-button" title="重置参数">Reset</button>
+            <button id="theme-button" title="切换主题">Theme</button>
+            <button id="palette-button" title="切换配色">Palette</button>
+            <button id="principle-button" title="原理说明">Principle</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Left Panel: Controls -->
+        <section class="panel" aria-label="参数调控">
+            <div class="panel-title">CONTROLS 参数调控</div>
+            
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="wavelength">wavelength 波长</label>
+                    <output id="wavelength-output">550 nm</output>
+                </div>
+                <input type="range" id="wavelength" min="380" max="750" value="550" step="1">
+                <div class="markers-container" id="wavelength-markers"></div>
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitSeparation">slitSeparation 缝间距</label>
+                    <output id="slitSeparation-output">5000 nm</output>
+                </div>
+                <input type="range" id="slitSeparation" min="1000" max="10000" value="5000" step="10">
+                <div class="markers-container" id="slitSeparation-markers"></div>
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="slitWidth">slitWidth 缝宽</label>
+                    <output id="slitWidth-output">1000 nm</output>
+                </div>
+                <input type="range" id="slitWidth" min="200" max="3000" value="1000" step="10">
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="screenDistance">screenDistance 显示屏距</label>
+                    <output id="screenDistance-output">50</output>
+                </div>
+                <input type="range" id="screenDistance" min="1" max="100" value="50" step="1">
+            </div>
+
+            <div class="control-group">
+                <div class="label-row">
+                    <label for="zoom">zoom 缩放</label>
+                    <output id="zoom-output">1</output>
+                </div>
+                <input type="range" id="zoom" min="1" max="5" value="1" step="0.1">
+            </div>
+        </section>
+
+        <!-- Right Panel: Visualization -->
+        <section class="panel" aria-label="可视化区域">
+            <div class="canvas-wrapper">
+                <!-- Pattern Canvas -->
+                <div class="canvas-box">
+                    <div class="panel-title" style="position:absolute; top:5px; left:10px; background:transparent; border:none;">PATTERN 干涉条纹图样</div>
+                    <canvas id="interferenceCanvas"></canvas>
+                </div>
+
+                <!-- Curve Canvas -->
+                <div class="canvas-box">
+                    <div class="panel-title" style="position:absolute; top:5px; left:10px; background:transparent; border:none;">CURVE 归一化光强</div>
+                    <canvas id="intensityCanvas" tabindex="0"></canvas>
+                    <div id="intensity-tooltip" role="tooltip" aria-hidden="true"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Principle Modal -->
+    <div id="principle-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <dialog open>
+            <div class="modal-header">
+                <h2 id="modal-title" style="margin:0; font-size:1.2rem;">杨氏双缝干涉原理</h2>
+                <button id="modal-close-button" class="modal-close" aria-label="关闭">&times;</button>
+            </div>
+            
+            <div class="svg-container">
+                <!-- Inline SVG Geometry Diagram -->
+                <svg viewBox="0 0 400 200" width="100%" height="100%">
+                    <!-- Source -->
+                    <circle cx="50" cy="100" r="3" fill="currentColor"/>
+                    <text x="30" y="90">S</text>
+                    
+                    <!-- Slits -->
+                    <line x1="150" y1="20" x2="150" y2="85" />
+                    <line x1="150" y1="115" x2="150" y2="180" />
+                    <text x="130" y="105">d</text>
+                    <line x1="150" y1="100" x2="150" y2="100" stroke-dasharray="2,2" /> <!-- Center mark -->
+                    
+                    <!-- Screen -->
+                    <line x1="350" y1="20" x2="350" y2="180" stroke-width="2"/>
+                    <text x="360" y="100">Screen</text>
+                    
+                    <!-- Rays -->
+                    <line x1="50" y1="100" x2="150" y2="100" stroke-dasharray="4,4" opacity="0.5"/>
+                    <line x1="150" y1="85" x2="350" y2="80" opacity="0.7"/>
+                    <line x1="150" y1="115" x2="350" y2="120" opacity="0.7"/>
+                    
+                    <!-- Labels -->
+                    <text x="200" y="150">D (Distance)</text>
+                    <path d="M 150 140 L 350 140" marker-end="url(#arrow)" />
+                </svg>
+            </div>
+            
+            <p style="font-size: 0.9rem; line-height: 1.5;">
+                当单色光通过两个相距为 $d$ 的狭缝时，会在距离为 $D$ 的屏幕上产生干涉条纹。
+                光强分布由双缝干涉因子 $\cos^2$ 和单缝衍射因子 $\text{sinc}^2$ 共同决定。
+            </p>
+        </dialog>
+    </div>
+
+    <script id="phy-sim-script">
+        // Placeholder for simulation logic in future rounds.
+        // This script ensures the DOM is interactive for basic UI elements as requested.
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeBtn = document.getElementById('theme-button');
+            const paletteBtn = document.getElementById('palette-button');
+            const modal = document.getElementById('principle-modal');
+            const closeBtn = document.getElementById('modal-close-button');
+            const principleBtn = document.getElementById('principle-button');
+            const html = document.documentElement;
+
+            // Theme Toggle
+            themeBtn.addEventListener('click', () => {
+                const current = html.getAttribute('data-theme');
+                html.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+            });
+
+            // Palette Toggle
+            paletteBtn.addEventListener('click', () => {
+                const current = html.getAttribute('data-palette');
+                html.setAttribute('data-palette', current === 'color' ? 'grayscale' : 'color');
+            });
+
+            // Modal Logic
+            const openModal = () => {
+                modal.style.display = 'flex';
+                closeBtn.focus();
+            };
+            
+            const closeModal = () => {
+                modal.style.display = 'none';
+                principleBtn.focus();
+            };
+
+            principleBtn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+            
+            // Close on backdrop click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // Escape key to close modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeModal();
+                }
+            });
+
+            // Basic Input Feedback (Visual only for scaffold)
+            const inputs = document.querySelectorAll('input[type=range]');
+            inputs.forEach(input => {
+                input.addEventListener('input', (e) => {
+                    const output = document.getElementById(e.target.id + '-output');
+                    if (output) {
+                        let val = e.target.value;
+                        if (e.target.id === 'wavelength' || e.target.id === 'slitSeparation' || e.target.id === 'slitWidth') {
+                            val += ' nm';
+                        }
+                        output.textContent = val;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
