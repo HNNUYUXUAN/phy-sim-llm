@@ -17,13 +17,13 @@ try { await readFile(join(outputDir,"manifest.json")); throw new Error("Capture 
 const defaults = { slitWidth: 1000, screenDistance: 50 };
 const figures = [
   { file: "figure-03-overview.png", viewport: [945, 840], params: { wavelength: 550, slitSeparation: 5000, ...defaults, zoom: 1, compact: 0 }, description: "默认参数下的完整平台界面" },
-  { file: "figure-04a-short-wavelength.png", viewport: [945, 520], params: { wavelength: 430, slitSeparation: 5000, ...defaults, zoom: 1, compact: 1 }, description: "短波长条件" },
-  { file: "figure-04b-long-wavelength.png", viewport: [945, 520], params: { wavelength: 690, slitSeparation: 5000, ...defaults, zoom: 1, compact: 1 }, description: "长波长条件" },
-  { file: "figure-05a-small-separation.png", viewport: [945, 520], params: { wavelength: 550, slitSeparation: 3400, ...defaults, zoom: 1, compact: 1 }, description: "小缝间距条件" },
-  { file: "figure-05b-large-separation.png", viewport: [945, 520], params: { wavelength: 550, slitSeparation: 7600, ...defaults, zoom: 1, compact: 1 }, description: "大缝间距条件" },
-  { file: "figure-06-high-order-zoom.png", viewport: [945, 520], params: { wavelength: 550, slitSeparation: 5000, ...defaults, zoom: 3, compact: 1 }, description: "高阶条纹显示缩放" },
-  { file: "figure-07a-critical-bright.png", viewport: [945, 520], params: { wavelength: 660, slitSeparation: 6000, ...defaults, zoom: 1, compact: 1 }, description: "固定参考eta=0.11：一级亮纹条件" },
-  { file: "figure-07b-critical-dark.png", viewport: [945, 520], params: { wavelength: 440, slitSeparation: 6000, ...defaults, zoom: 1, compact: 1 }, description: "同一参考eta=0.11：1.5级暗纹条件" },
+  { file: "figure-04a-short-wavelength.png", viewport: [945, 840], params: { wavelength: 430, slitSeparation: 5000, ...defaults, zoom: 1, compact: 0 }, description: "短波长条件" },
+  { file: "figure-04b-long-wavelength.png", viewport: [945, 840], params: { wavelength: 690, slitSeparation: 5000, ...defaults, zoom: 1, compact: 0 }, description: "长波长条件" },
+  { file: "figure-05a-small-separation.png", viewport: [945, 840], params: { wavelength: 550, slitSeparation: 3400, ...defaults, zoom: 1, compact: 0 }, description: "小缝间距条件" },
+  { file: "figure-05b-large-separation.png", viewport: [945, 840], params: { wavelength: 550, slitSeparation: 7600, ...defaults, zoom: 1, compact: 0 }, description: "大缝间距条件" },
+  { file: "figure-06-high-order-zoom.png", viewport: [945, 840], params: { wavelength: 550, slitSeparation: 5000, ...defaults, zoom: 3, compact: 0 }, description: "高阶条纹显示缩放" },
+  { file: "figure-07a-critical-bright.png", viewport: [945, 840], params: { wavelength: 660, slitSeparation: 6000, ...defaults, zoom: 1, compact: 0 }, description: "固定参考eta=0.11：一级亮纹条件" },
+  { file: "figure-07b-critical-dark.png", viewport: [945, 840], params: { wavelength: 440, slitSeparation: 6000, ...defaults, zoom: 1, compact: 0 }, description: "同一参考eta=0.11：1.5级暗纹条件" },
   {
     file: "mobile-responsive.png",
     viewport: [390, 844],

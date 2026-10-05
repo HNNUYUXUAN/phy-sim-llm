@@ -50,7 +50,7 @@
       "description": "短波长条件",
       "viewport": {
         "width": 945,
-        "height": 520
+        "height": 840
       },
       "params": {
         "wavelength": 430,
@@ -65,7 +65,7 @@
         "slitWidth": 1000,
         "screenDistance": 50,
         "zoom": 1,
-        "compact": 1
+        "compact": 0
       },
       "observedPeak": null,
       "idealSecondOrderEta": null,
@@ -78,14 +78,14 @@
       "consoleErrors": [],
       "externalRequests": [],
       "publicationFigure": true,
-      "sha256": "cff4e16d3b7c8df2e3d53e6c663401d8973326b6ed5139ec991e470520e081ea"
+      "sha256": "6c4f9bb274419d4a25f8df0fd2824ffab3e8155ab4166bc812556c95c5d80cac"
     },
     {
       "file": "figure-04b-long-wavelength.png",
       "description": "长波长条件",
       "viewport": {
         "width": 945,
-        "height": 520
+        "height": 840
       },
       "params": {
         "wavelength": 690,
@@ -100,7 +100,7 @@
         "slitWidth": 1000,
         "screenDistance": 50,
         "zoom": 1,
-        "compact": 1
+        "compact": 0
       },
       "observedPeak": null,
       "idealSecondOrderEta": null,
@@ -113,14 +113,14 @@
       "consoleErrors": [],
       "externalRequests": [],
       "publicationFigure": true,
-      "sha256": "ef0f2a83f2d35efe584baea69580bb76f4e22227c51559b7ebce036123716746"
+      "sha256": "a400a9e6aa44c42d6d066d98ed98f7de2d89688d655b8e6cd2558395db54a74d"
     },
     {
       "file": "figure-05a-small-separation.png",
       "description": "小缝间距条件",
       "viewport": {
         "width": 945,
-        "height": 520
+        "height": 840
       },
       "params": {
         "wavelength": 550,
@@ -135,7 +135,7 @@
         "slitWidth": 1000,
         "screenDistance": 50,
         "zoom": 1,
-        "compact": 1
+        "compact": 0
       },
       "observedPeak": null,
       "idealSecondOrderEta": null,
@@ -148,14 +148,14 @@
       "consoleErrors": [],
       "externalRequests": [],
       "publicationFigure": true,
-      "sha256": "9fe64b0ec9becccd0d944ff68ac5e0063afdeddd6936ff1d946e292a8c7b215d"
+      "sha256": "16eb8fcf2004b258bae38697c8377b2592e776c06efa14fe1cc28c6dd71c43b1"
     },
     {
       "file": "figure-05b-large-separation.png",
       "description": "大缝间距条件",
       "viewport": {
         "width": 945,
-        "height": 520
+        "height": 840
       },
       "params": {
         "wavelength": 550,
@@ -170,7 +170,7 @@
         "slitWidth": 1000,
         "screenDistance": 50,
         "zoom": 1,
-        "compact": 1
+        "compact": 0
       },
       "observedPeak": null,
       "idealSecondOrderEta": null,
@@ -183,14 +183,14 @@
       "consoleErrors": [],
       "externalRequests": [],
       "publicationFigure": true,
-      "sha256": "e4d1a41379b317cbf078bcce995243c49d25ebfda75cea80e4f3f28880288e18"
+      "sha256": "41df6b2976a179887f927b66ded71e13ed47410e846ec67a8e5e11a28202ba2e"
     },
     {
       "file": "figure-06-high-order-zoom.png",
       "description": "高阶条纹显示缩放",
       "viewport": {
         "width": 945,
-        "height": 520
+        "height": 840
       },
       "params": {
         "wavelength": 550,
@@ -205,7 +205,7 @@
         "slitWidth": 1000,
         "screenDistance": 50,
         "zoom": 3,
-        "compact": 1
+        "compact": 0
       },
       "observedPeak": {
         "eta": 0.21677249511509772,
@@ -225,14 +225,14 @@
       "consoleErrors": [],
       "externalRequests": [],
       "publicationFigure": true,
-      "sha256": "80e16280fd4dc4474c99fda775c8b7703f42a1a6a6a2d1d08c5e7bfd35bf2cfe"
+      "sha256": "636d68d04758955f6af26fcfcd84a76d5b1227792115874884db57ea96921624"
     },
     {
       "file": "figure-07a-critical-bright.png",
       "description": "固定参考eta=0.11：一级亮纹条件",
       "viewport": {
         "width": 945,
-        "height": 520
+        "height": 840
       },
       "params": {
         "wavelength": 660,
@@ -247,7 +247,7 @@
         "slitWidth": 1000,
         "screenDistance": 50,
         "zoom": 1,
-        "compact": 1
+        "compact": 0
       },
       "observedPeak": null,
       "idealSecondOrderEta": null,
@@ -260,14 +260,14 @@
       "consoleErrors": [],
       "externalRequests": [],
       "publicationFigure": true,
-      "sha256": "e67fe3e00a8ca2c084cfbf35f9e2468a7e74431e55ab5a75f9db949b77ec07e9"
+      "sha256": "0cb5ffd2cb2836f4d99c9c7c287d518909935453b55accdea822af0b4b5f4d68"
     },
     {
       "file": "figure-07b-critical-dark.png",
       "description": "同一参考eta=0.11：1.5级暗纹条件",
       "viewport": {
         "width": 945,
-        "height": 520
+        "height": 840
       },
       "params": {
         "wavelength": 440,
@@ -282,7 +282,7 @@
         "slitWidth": 1000,
         "screenDistance": 50,
         "zoom": 1,
-        "compact": 1
+        "compact": 0
       },
       "observedPeak": null,
       "idealSecondOrderEta": null,
@@ -295,7 +295,7 @@
       "consoleErrors": [],
       "externalRequests": [],
       "publicationFigure": true,
-      "sha256": "b5bb9915bf4c481f769e4ba05aa4215989d12b84165c0ab4fbbd87e7c932c299"
+      "sha256": "a1778c714d332f3949a45e166eced20e36a42ba6cba3d098392fc0688660ad30"
     },
     {
       "file": "mobile-responsive.png",

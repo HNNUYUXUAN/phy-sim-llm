@@ -74,43 +74,43 @@
     },
     {
       "file": "docs/figures/figure-04a-short-wavelength.png",
-      "bytes": 68497,
-      "sha256": "cff4e16d3b7c8df2e3d53e6c663401d8973326b6ed5139ec991e470520e081ea"
+      "bytes": 100084,
+      "sha256": "6c4f9bb274419d4a25f8df0fd2824ffab3e8155ab4166bc812556c95c5d80cac"
     },
     {
       "file": "docs/figures/figure-04b-long-wavelength.png",
-      "bytes": 69793,
-      "sha256": "ef0f2a83f2d35efe584baea69580bb76f4e22227c51559b7ebce036123716746"
+      "bytes": 101543,
+      "sha256": "a400a9e6aa44c42d6d066d98ed98f7de2d89688d655b8e6cd2558395db54a74d"
     },
     {
       "file": "docs/figures/figure-05a-small-separation.png",
-      "bytes": 67605,
-      "sha256": "9fe64b0ec9becccd0d944ff68ac5e0063afdeddd6936ff1d946e292a8c7b215d"
+      "bytes": 98452,
+      "sha256": "16eb8fcf2004b258bae38697c8377b2592e776c06efa14fe1cc28c6dd71c43b1"
     },
     {
       "file": "docs/figures/figure-05b-large-separation.png",
-      "bytes": 71387,
-      "sha256": "e4d1a41379b317cbf078bcce995243c49d25ebfda75cea80e4f3f28880288e18"
+      "bytes": 103837,
+      "sha256": "41df6b2976a179887f927b66ded71e13ed47410e846ec67a8e5e11a28202ba2e"
     },
     {
       "file": "docs/figures/figure-06-high-order-zoom.png",
-      "bytes": 76495,
-      "sha256": "80e16280fd4dc4474c99fda775c8b7703f42a1a6a6a2d1d08c5e7bfd35bf2cfe"
+      "bytes": 107713,
+      "sha256": "636d68d04758955f6af26fcfcd84a76d5b1227792115874884db57ea96921624"
     },
     {
       "file": "docs/figures/figure-07a-critical-bright.png",
-      "bytes": 74877,
-      "sha256": "e67fe3e00a8ca2c084cfbf35f9e2468a7e74431e55ab5a75f9db949b77ec07e9"
+      "bytes": 107487,
+      "sha256": "0cb5ffd2cb2836f4d99c9c7c287d518909935453b55accdea822af0b4b5f4d68"
     },
     {
       "file": "docs/figures/figure-07b-critical-dark.png",
-      "bytes": 74512,
-      "sha256": "b5bb9915bf4c481f769e4ba05aa4215989d12b84165c0ab4fbbd87e7c932c299"
+      "bytes": 106988,
+      "sha256": "a1778c714d332f3949a45e166eced20e36a42ba6cba3d098392fc0688660ad30"
     },
     {
       "file": "docs/figures/manifest.json",
       "bytes": 10550,
-      "sha256": "26b4cc05e1d30c9a4554c1d0ad39127076e284805dc7857421158223768c5087"
+      "sha256": "6e04483d98ebf22f7c49eec137f7060ecfe1a1b0d20c014f1a5f1c23500c6388"
     },
     {
       "file": "docs/figures/mobile-responsive.png",
@@ -2480,7 +2480,7 @@
     {
       "file": "scripts/capture-paper-figures.mjs",
       "bytes": 6275,
-      "sha256": "309815b219edd5ac86073238dc069cf8612cf10e76859e8b0cebea2042f099c6"
+      "sha256": "3635be2f946cc59cb30e950cbbd1ba57a1f903e6056191c6ebda8f8fde35b8a5"
     },
     {
       "file": "scripts/check-online.mjs",
